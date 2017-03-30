@@ -1,4 +1,4 @@
-package ReferenceManager;
+package satunnaisoliot;
 
 public class Main {
     public static void main(String[] args) {

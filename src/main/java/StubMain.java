@@ -1,4 +1,5 @@
 import satunnaisoliot.*;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
@@ -6,6 +7,7 @@ import java.sql.SQLException;
 public class StubMain {
 
     public static void main(String[] args) {
+        // An example on how to use SqlDatastore
         SqlDatastore datastore = new SqlDatastore("foo.sqlite");
         Statement stmt = datastore.getNewStatement();
         try {
@@ -28,6 +30,10 @@ public class StubMain {
             rs.close();
         } catch (SQLException ex) {
             System.err.println(ex.toString());
+        }
+        File f = new File("foo.sqlite");
+        if (f.exists()) {
+            f.delete();
         }
     }
 

@@ -25,14 +25,14 @@ public class SqlDatastore {
     }
 
     public Statement getNewStatement() {
+        Statement stmt = null;
         try {
-            Statement stmt = this.connection.createStatement();
+            stmt = this.connection.createStatement();
             stmt.setQueryTimeout(QUERY_TIMEOUT);
-            return stmt;
         } catch (SQLException ex) {
             System.err.println(ex.toString());
         }
-        return null;
+        return stmt;
     }
 
     public ResultSet query(String sqlSelectQuery) {
