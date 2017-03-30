@@ -16,13 +16,16 @@ repositories {
     jcenter()
 }
 
+apply plugin: 'application'
+
+mainClassName = 'Sample'
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
     // SQLite library
-    compile 'org.xerial:sqlite-jbdc:3.16.1'
+    compile 'org.xerial:sqlite-jdbc:3.16.1'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
