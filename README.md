@@ -6,3 +6,6 @@ Projektin speksi: https://github.com/mluukkai/ohtu2017/wiki/miniprojekti-speksi
 
 Miniprojektin pääsivu: https://github.com/mluukkai/ohtu2017/wiki/Miniprojekti
 
+~~~~~
+
+SQLite dependency: https://github.com/xerial/sqlite-jdbc
