@@ -43,7 +43,7 @@ jar {
 apply plugin: 'application'
 
 //mainClassName = 'ReferenceManager.Main'
-mainClassName = 'StubMain'
+mainClassName = 'satunnaisoliot.Main'
 
 run {
     standardInput = System.in
