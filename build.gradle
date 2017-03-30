@@ -30,6 +30,19 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'ReferenceManager.Main'
+    }
+}
+
+apply plugin: 'application'
+
+mainClassName = 'ReferenceManager.Main'
+
+run {
+    standardInput = System.in
+}
 
 // just leave this in here at the end please
 /* vim: set shiftwidth=4 tabstop=4 expandtab : */
