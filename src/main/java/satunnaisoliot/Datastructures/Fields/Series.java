@@ -14,4 +14,9 @@ public class Series extends GenericStringField {
         return FieldType.SERIES;
     }
 
+    @Override
+    public String getTypeString() {
+        return "series";
+    }
+
 }

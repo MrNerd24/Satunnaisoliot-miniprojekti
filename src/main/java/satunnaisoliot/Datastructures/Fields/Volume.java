@@ -14,4 +14,9 @@ public class Volume extends GenericStringField {
         return FieldType.VOLUME;
     }
 
+    @Override
+    public String getTypeString() {
+        return "volume";
+    }
+
 }

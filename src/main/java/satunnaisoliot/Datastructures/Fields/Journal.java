@@ -14,4 +14,9 @@ public class Journal extends GenericStringField {
         return FieldType.JOURNAL;
     }
 
+    @Override
+    public String getTypeString() {
+        return "journal";
+    }
+
 }

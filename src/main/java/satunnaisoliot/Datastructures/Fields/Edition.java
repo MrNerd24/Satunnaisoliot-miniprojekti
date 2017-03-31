@@ -24,4 +24,9 @@ public class Edition extends GenericNumberField {
         return Edition.editions.get(edition);
     }
 
+    @Override
+    public String getTypeString() {
+        return "edition";
+    }
+
 }

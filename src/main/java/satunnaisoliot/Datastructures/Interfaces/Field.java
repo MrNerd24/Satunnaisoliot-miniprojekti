@@ -14,4 +14,6 @@ public interface Field {
     public String toBibTex();
 
     public FieldType getType();
+    
+    public String getTypeString();
 }

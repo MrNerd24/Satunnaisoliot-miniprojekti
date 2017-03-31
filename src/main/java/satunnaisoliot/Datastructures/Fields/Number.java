@@ -24,4 +24,11 @@ public class Number extends GenericNumberField {
         return Number.numbers.get(number);
     }
 
+    @Override
+    public String getTypeString() {
+        return "number";
+    }
+    
+    
+
 }

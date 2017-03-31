@@ -14,4 +14,9 @@ public class Address extends GenericStringField {
         return FieldType.ADDRESS;
     }
 
+    @Override
+    public String getTypeString() {
+        return "address";
+    }
+
 }

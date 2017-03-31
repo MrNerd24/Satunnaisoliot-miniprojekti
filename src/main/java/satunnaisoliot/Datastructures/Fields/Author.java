@@ -96,4 +96,9 @@ public class Author extends GenericField {
         return true;
     }
 
+    @Override
+    public String getTypeString() {
+        return "author";
+    }
+
 }

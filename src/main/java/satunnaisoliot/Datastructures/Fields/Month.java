@@ -23,4 +23,9 @@ public class Month extends GenericNumberField {
         }
         return Month.months.get(month);
     }
+
+    @Override
+    public String getTypeString() {
+        return "month";
+    }
 }
