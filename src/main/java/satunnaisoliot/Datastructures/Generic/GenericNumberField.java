@@ -26,4 +26,28 @@ public abstract class GenericNumberField extends GenericField {
         return Integer.toString(content);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + this.content;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GenericNumberField other = (GenericNumberField) obj;
+        if (this.content != other.content) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+
 }

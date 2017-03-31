@@ -6,6 +6,7 @@ import satunnaisoliot.Datastructures.Interfaces.Reference;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Objects;
 import satunnaisoliot.Datastructures.Fields.Key;
 
 public abstract class GenericReference implements Reference {
@@ -48,5 +49,29 @@ public abstract class GenericReference implements Reference {
     public List<Field> getKeys() {
         return getFields(FieldType.YEAR);
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.entries);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GenericReference other = (GenericReference) obj;
+        if (!Objects.equals(this.entries, other.entries)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }
