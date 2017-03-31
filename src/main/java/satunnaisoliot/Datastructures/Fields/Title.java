@@ -14,4 +14,9 @@ public class Title extends GenericStringField {
         return FieldType.TITLE;
     }
 
+    @Override
+    public String getTypeString() {
+        return "title";
+    }
+
 }

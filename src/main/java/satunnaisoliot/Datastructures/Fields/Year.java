@@ -23,4 +23,9 @@ public class Year extends GenericNumberField {
         }
         return Year.years.get(year);
     }
+
+    @Override
+    public String getTypeString() {
+        return "year";
+    }
 }

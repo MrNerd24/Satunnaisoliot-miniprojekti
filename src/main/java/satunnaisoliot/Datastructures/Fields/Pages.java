@@ -23,4 +23,10 @@ public class Pages extends GenericNumberField {
         }
         return Pages.pagesMap.get(pages);
     }
+
+    @Override
+    public String getTypeString() {
+        return "pages";
+    }
+    
 }

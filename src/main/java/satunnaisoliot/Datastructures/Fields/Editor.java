@@ -14,4 +14,9 @@ public class Editor extends GenericStringField {
         return FieldType.EDITOR;
     }
 
+    @Override
+    public String getTypeString() {
+        return "editor";
+    }
+
 }

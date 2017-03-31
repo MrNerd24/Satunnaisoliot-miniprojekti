@@ -14,4 +14,9 @@ public class Note extends GenericStringField {
         return FieldType.NOTE;
     }
 
+    @Override
+    public String getTypeString() {
+        return "note";
+    }
+
 }

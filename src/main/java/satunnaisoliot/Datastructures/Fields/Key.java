@@ -23,4 +23,9 @@ public class Key extends GenericNumberField {
         }
         return Key.keys.get(key);
     }
+
+    @Override
+    public String getTypeString() {
+        return "key";
+    }
 }

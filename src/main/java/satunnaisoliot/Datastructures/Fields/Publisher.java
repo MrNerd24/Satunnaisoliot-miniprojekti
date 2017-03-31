@@ -14,4 +14,9 @@ public class Publisher extends GenericStringField {
         return FieldType.PUBLISHER;
     }
 
+    @Override
+    public String getTypeString() {
+        return "publisher";
+    }
+
 }

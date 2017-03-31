@@ -14,4 +14,9 @@ public class Organization extends GenericStringField {
         return FieldType.ORGANIZATION;
     }
 
+    @Override
+    public String getTypeString() {
+        return "organization";
+    }
+
 }
