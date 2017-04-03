@@ -233,7 +233,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
         list[8] = organizationField.getText();
         list[9] = noteField.getText();
         list[10] = keyField.getText();
-        LomakeController.SaveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
+        LomakeController.saveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
 

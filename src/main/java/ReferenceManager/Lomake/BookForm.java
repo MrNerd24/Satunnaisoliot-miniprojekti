@@ -216,7 +216,7 @@ public class BookForm extends javax.swing.JFrame {
         list[7] = monthField.getText();
         list[8] = noteField.getText();
         list[9] = keyField.getText();
-        LomakeController.SaveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
+        LomakeController.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {
