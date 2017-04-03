@@ -1,0 +1,3 @@
+CREATE TABLE Article (id SERIAL PRIMARY KEY, author varchar, title varchar, journal varchar, year varchar, volume varchar, number varchar, pages varchar, month varchar, note varchar, key varchar);
+CREATE TABLE Book (id SERIAL PRIMARY KEY, author varchar, title varchar, publisher varchar, year varchar, volume varchar, series varchar, address varchar, month varchar, note varchar, key varchar);
+CREATE TABLE Proceedings (id SERIAL PRIMARY KEY, title varchar, year varchar, editor varchar, volume varchar, series varchar, address varchar, month varchar, publisher varchar, organization varchar, note varchar, key varchar);
