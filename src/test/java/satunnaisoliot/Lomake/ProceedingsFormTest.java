@@ -1,4 +1,4 @@
-package satunnaisoliot.lomake;
+package satunnaisoliot.Lomake;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -6,13 +6,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import satunnaisoliot.lomake.ProceedingsForm;
 
 /**
  *
  * @author Peter
  */
 public class ProceedingsFormTest {
-    private static BookForm instance = new BookForm();
+    private static ProceedingsForm instance = new ProceedingsForm();
     
     public ProceedingsFormTest() {
     }
@@ -47,7 +48,7 @@ public class ProceedingsFormTest {
     }
     @Test
     public void testSetAndGetAllFields() {
-        instance.setAllFields("asd", "asd", "", "", "", "", "", "", "", "");
+        instance.setAllFields("asd", "asd", "", "", "", "", "", "", "", "","");
         String[] a = instance.getAllFields();
         if(a[0].equals("asd") && a[1].equals("asd") && a[2].equals("")){
         }else fail("setteri ja getteri ei toimi");
