@@ -16,16 +16,16 @@ apply plugin: 'java'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
     jcenter()
 }
-
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
+    // SQLite library
+    compile 'org.xerial:sqlite-jdbc:3.16.1'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
@@ -33,7 +33,6 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
 }
-
 
 jar {
     manifest {
@@ -43,13 +42,14 @@ jar {
 
 apply plugin: 'application'
 
-mainClassName = 'ReferenceManager.Main'
+//mainClassName = 'ReferenceManager.Main'
+mainClassName = 'satunnaisoliot.Main'
 
 run {
     standardInput = System.in
 }
 
-apply plugin: "jacoco" 
+apply plugin: "jacoco"
 
 jacocoTestReport {
     reports {
@@ -57,8 +57,6 @@ jacocoTestReport {
         html.enabled = true
     }
 }
-
-
 
 // just leave this in here at the end please
 /* vim: set shiftwidth=4 tabstop=4 expandtab : */
