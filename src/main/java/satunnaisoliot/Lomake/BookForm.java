@@ -19,6 +19,36 @@ public class BookForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi kirja");
     }
+    public BookForm(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+        initComponents();
+        this.setTitle("Uusi kirja");
+    }
+    public void setAllFields(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+        authorField.setText(author);
+        titleField.setText(title);
+        publisherField.setText(publisher);
+        yearField.setText(year);
+        volumeField.setText(volume);
+        seriesField.setText(series);
+        addressField.setText(address);
+        monthField.setText(month);
+        noteField.setText(note);
+        keyField.setText(key);
+    }
+    public String[] getAllFields() {
+        String[] list = new String[10];
+        list[0] = authorField.getText();
+        list[1] = titleField.getText();
+        list[2] = publisherField.getText();
+        list[3] = yearField.getText();
+        list[4] = volumeField.getText();
+        list[5] = seriesField.getText();
+        list[6] = addressField.getText();
+        list[7] = monthField.getText();
+        list[8] = noteField.getText();
+        list[9] = keyField.getText();
+        return list;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,28 +224,10 @@ public class BookForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        authorField.setText("");
-        titleField.setText("");
-        publisherField.setText("");
-        yearField.setText("");
-        volumeField.setText("");
-        seriesField.setText("");
-        addressField.setText("");
-        monthField.setText("");
-        noteField.setText("");
-        keyField.setText("");
+        setAllFields("","","","","","","","","","");
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        list[0] = authorField.getText();
-        list[1] = titleField.getText();
-        list[2] = publisherField.getText();
-        list[3] = yearField.getText();
-        list[4] = volumeField.getText();
-        list[5] = seriesField.getText();
-        list[6] = addressField.getText();
-        list[7] = monthField.getText();
-        list[8] = noteField.getText();
-        list[9] = keyField.getText();
+        String[] list = getAllFields();
         LomakeController.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
