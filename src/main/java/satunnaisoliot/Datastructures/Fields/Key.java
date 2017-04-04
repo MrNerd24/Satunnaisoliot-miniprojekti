@@ -8,7 +8,7 @@ public class Key extends GenericNumberField {
 
     private static HashMap<Integer, Key> keys = new HashMap<>();
 
-    private Key(int key) {
+    public Key(int key) {
         super(key);
     }
 
