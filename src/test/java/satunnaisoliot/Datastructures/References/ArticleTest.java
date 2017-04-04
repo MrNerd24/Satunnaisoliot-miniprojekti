@@ -44,11 +44,11 @@ public class ArticleTest {
     
     @Before
     public void setUp() {
-        Author author = Author.getAuthorObject("Matti Meikäläinen");
-        Title title = Title.getTitleObject("Great Article");
-        Journal journal = Journal.getJournalObject("Great Journal");
+        Author author = new Author("Matti", "Meikäläinen");
+        Title title = new Title("Great Article");
+        Journal journal = new Journal("Journal of great articles");
         Year year = Year.getYearObject(2017);
-        Volume volume = Volume.getVolumeObject("1");
+        Volume volume = new Volume("1");
         article = new Article(author, title, journal, year, volume);
     }
     
@@ -63,7 +63,7 @@ public class ArticleTest {
     public void testSetAuthor() {
         Field originalAuthor = article.getAuthors().get(0);
         assertEquals("Matti Meikäläinen", originalAuthor.toString());
-        article.setAuthor(0, Author.getAuthorObject("Maija Meikäläinen"));
+        article.setAuthor(0, new Author("Maija", "Meikäläinen"));
         assertEquals("Maija Meikäläinen", article.getAuthors().get(0).toString());
         assertTrue(article.getAuthors().get(0).getReferences().contains(article));
         assertTrue(!originalAuthor.getReferences().contains(article));
@@ -74,7 +74,7 @@ public class ArticleTest {
      */
     @Test
     public void testAddAuthor() {
-        article.addAuthor(Author.getAuthorObject("Maija Meikäläinen"));
+        article.addAuthor(new Author("Maija", "Meikäläinen"));
         assertEquals("Matti Meikäläinen", article.getAuthors().get(0).toString());
         assertEquals("Maija Meikäläinen", article.getAuthors().get(1).toString());
         assertTrue(article.getAuthors().get(0).getReferences().contains(article));
@@ -87,7 +87,7 @@ public class ArticleTest {
     @Test
     public void testGetAuthors() {
         Author first = (Author) article.getAuthors().get(0);
-        Author second = Author.getAuthorObject("Maija Meikäläinen");
+        Author second = new Author("Maija", "Meikäläinen");
         article.addAuthor(second);
         assertEquals(first, article.getAuthors().get(0));
         assertEquals(second, article.getAuthors().get(1));
@@ -98,7 +98,7 @@ public class ArticleTest {
      */
     @Test
     public void testSetTitle() {
-        Title title = Title.getTitleObject("Better title");
+        Title title = new Title("Better title");
         article.setTitle(0, title);
         assertEquals("Better title", article.getTitles().get(0).toString());
     }
