@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.Lomake;
+package satunnaisoliot.lomake;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -63,7 +63,6 @@ public class LomakeControllerTest {
         String note = "0";
         String key = "0";
         LomakeController.saveArticle(author, title, journal, year, volume, number, pages, month, note, key);
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -84,7 +83,7 @@ public class LomakeControllerTest {
         String author = "asd";
         String title = "asd";
         String publisher = "asd";
-        String year = "one";
+        String year = "1";
         String volume = "0";
         String series = "0";
         String address = "0";

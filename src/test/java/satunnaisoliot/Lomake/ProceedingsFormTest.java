@@ -1,4 +1,4 @@
-package satunnaisoliot.Lomake;
+package satunnaisoliot.lomake;
 
 import org.junit.After;
 import org.junit.AfterClass;
