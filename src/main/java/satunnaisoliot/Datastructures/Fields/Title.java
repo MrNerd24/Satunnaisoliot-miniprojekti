@@ -1,11 +1,14 @@
 package satunnaisoliot.Datastructures.Fields;
 
+import java.util.HashMap;
 import satunnaisoliot.Datastructures.Enums.FieldType;
 import satunnaisoliot.Datastructures.Generic.GenericStringField;
 
 public class Title extends GenericStringField {
 
-    public Title(String content) {
+    private static HashMap<String, Title> titles = new HashMap<>();
+
+    private Title(String content) {
         super(content);
     }
 
@@ -17,6 +20,13 @@ public class Title extends GenericStringField {
     @Override
     public String getTypeString() {
         return "title";
+    }
+
+    public static Title getTitleObject(String title) {
+        if (Title.titles.get(title) == null) {
+            Title.titles.put(title, new Title(title));
+        }
+        return Title.titles.get(title);
     }
 
 }

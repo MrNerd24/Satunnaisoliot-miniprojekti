@@ -1,11 +1,14 @@
 package satunnaisoliot.Datastructures.Fields;
 
+import java.util.HashMap;
 import satunnaisoliot.Datastructures.Enums.FieldType;
 import satunnaisoliot.Datastructures.Generic.GenericStringField;
 
 public class Editor extends GenericStringField {
 
-    public Editor(String content) {
+    private static HashMap<String, Editor> editors = new HashMap<>();
+
+    private Editor(String content) {
         super(content);
     }
 
@@ -17,6 +20,13 @@ public class Editor extends GenericStringField {
     @Override
     public String getTypeString() {
         return "editor";
+    }
+    
+    public static Editor getEditorObject(String editor) {
+        if (Editor.editors.get(editor) == null) {
+            Editor.editors.put(editor, new Editor(editor));
+        }
+        return Editor.editors.get(editor);
     }
 
 }

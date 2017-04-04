@@ -12,6 +12,7 @@ public abstract class GenericStringField extends GenericField {
 
     /**
      * Creates a new String field.
+     *
      * @param content of the field.
      */
     public GenericStringField(String content) {
@@ -19,19 +20,11 @@ public abstract class GenericStringField extends GenericField {
     }
 
     /**
-     * 
+     *
      * @return the content saved in this field.
      */
     public String getContent() {
         return content;
-    }
-
-    /**
-     * Sets a new value to this field.
-     * @param content that should be the new value saved in this object.
-     */
-    public void setContent(String content) {
-        this.content = content;
     }
 
     @Override
@@ -40,7 +33,10 @@ public abstract class GenericStringField extends GenericField {
     }
 
     /**
-     * Returns the value of this field in BibTex friendly format. Doesn't give the type of this field, only value. Some fields can have many values, these values have to be combined by the method caller.
+     * Returns the value of this field in BibTex friendly format. Doesn't give
+     * the type of this field, only value. Some fields can have many values,
+     * these values have to be combined by the method caller.
+     *
      * @return BibTex field value;
      */
     @Override

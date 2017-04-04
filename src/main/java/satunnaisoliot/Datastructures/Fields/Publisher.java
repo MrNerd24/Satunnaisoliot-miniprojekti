@@ -1,11 +1,14 @@
 package satunnaisoliot.Datastructures.Fields;
 
+import java.util.HashMap;
 import satunnaisoliot.Datastructures.Enums.FieldType;
 import satunnaisoliot.Datastructures.Generic.GenericStringField;
 
 public class Publisher extends GenericStringField {
 
-    public Publisher(String content) {
+    private static HashMap<String, Publisher> publishers = new HashMap<>();
+
+    private Publisher(String content) {
         super(content);
     }
 
@@ -17,6 +20,13 @@ public class Publisher extends GenericStringField {
     @Override
     public String getTypeString() {
         return "publisher";
+    }
+    
+    public static Publisher getPublisherObject(String publisher) {
+        if (Publisher.publishers.get(publisher) == null) {
+            Publisher.publishers.put(publisher, new Publisher(publisher));
+        }
+        return Publisher.publishers.get(publisher);
     }
 
 }
