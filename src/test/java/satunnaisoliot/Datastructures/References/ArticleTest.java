@@ -5,6 +5,7 @@
  */
 package satunnaisoliot.Datastructures.References;
 
+import satunnaisoliot.datastructures.references.Article;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,16 +13,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import satunnaisoliot.Datastructures.Fields.Author;
-import satunnaisoliot.Datastructures.Fields.Journal;
-import satunnaisoliot.Datastructures.Fields.Month;
-import satunnaisoliot.Datastructures.Fields.Note;
-import satunnaisoliot.Datastructures.Fields.Number;
-import satunnaisoliot.Datastructures.Fields.Pages;
-import satunnaisoliot.Datastructures.Fields.Title;
-import satunnaisoliot.Datastructures.Fields.Volume;
-import satunnaisoliot.Datastructures.Fields.Year;
-import satunnaisoliot.Datastructures.Interfaces.Field;
+import satunnaisoliot.datastructures.fields.Author;
+import satunnaisoliot.datastructures.fields.Journal;
+import satunnaisoliot.datastructures.fields.Month;
+import satunnaisoliot.datastructures.fields.Note;
+import satunnaisoliot.datastructures.fields.Number;
+import satunnaisoliot.datastructures.fields.Pages;
+import satunnaisoliot.datastructures.fields.Title;
+import satunnaisoliot.datastructures.fields.Volume;
+import satunnaisoliot.datastructures.fields.Year;
+import satunnaisoliot.datastructures.interfaces.Field;
 
 /**
  *
@@ -44,11 +45,11 @@ public class ArticleTest {
     
     @Before
     public void setUp() {
-        Author author = new Author("Matti", "Meikäläinen");
-        Title title = new Title("Great Article");
-        Journal journal = new Journal("Journal of great articles");
+        Author author = Author.getAuthorObject("Matti Meikäläinen");
+        Title title = Title.getTitleObject("Great Article");
+        Journal journal = Journal.getJournalObject("Great Journal");
         Year year = Year.getYearObject(2017);
-        Volume volume = new Volume("1");
+        Volume volume = Volume.getVolumeObject("1");
         article = new Article(author, title, journal, year, volume);
     }
     
@@ -63,7 +64,7 @@ public class ArticleTest {
     public void testSetAuthor() {
         Field originalAuthor = article.getAuthors().get(0);
         assertEquals("Matti Meikäläinen", originalAuthor.toString());
-        article.setAuthor(0, new Author("Maija", "Meikäläinen"));
+        article.setAuthor(0, Author.getAuthorObject("Maija Meikäläinen"));
         assertEquals("Maija Meikäläinen", article.getAuthors().get(0).toString());
         assertTrue(article.getAuthors().get(0).getReferences().contains(article));
         assertTrue(!originalAuthor.getReferences().contains(article));
@@ -74,7 +75,7 @@ public class ArticleTest {
      */
     @Test
     public void testAddAuthor() {
-        article.addAuthor(new Author("Maija", "Meikäläinen"));
+        article.addAuthor(Author.getAuthorObject("Maija Meikäläinen"));
         assertEquals("Matti Meikäläinen", article.getAuthors().get(0).toString());
         assertEquals("Maija Meikäläinen", article.getAuthors().get(1).toString());
         assertTrue(article.getAuthors().get(0).getReferences().contains(article));
@@ -87,7 +88,7 @@ public class ArticleTest {
     @Test
     public void testGetAuthors() {
         Author first = (Author) article.getAuthors().get(0);
-        Author second = new Author("Maija", "Meikäläinen");
+        Author second = Author.getAuthorObject("Maija Meikäläinen");
         article.addAuthor(second);
         assertEquals(first, article.getAuthors().get(0));
         assertEquals(second, article.getAuthors().get(1));
@@ -98,7 +99,7 @@ public class ArticleTest {
      */
     @Test
     public void testSetTitle() {
-        Title title = new Title("Better title");
+        Title title = Title.getTitleObject("Better title");
         article.setTitle(0, title);
         assertEquals("Better title", article.getTitles().get(0).toString());
     }
