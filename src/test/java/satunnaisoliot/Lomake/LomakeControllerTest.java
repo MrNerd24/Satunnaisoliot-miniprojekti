@@ -40,11 +40,11 @@ public class LomakeControllerTest {
     /**
      * Test of newArticle method, of class LomakeController.
      */
-    @Test
-    public void testNewArticle() {
-        System.out.println("newArticle");
-        LomakeController.newArticle();
-    }
+//    @Test
+//    public void testNewArticle() {
+//        System.out.println("newArticle");
+//        LomakeController.newArticle();
+//    }
 
     /**
      * Test of saveArticle method, of class LomakeController.
@@ -69,10 +69,10 @@ public class LomakeControllerTest {
      * Test of newBook method, of class LomakeController.
      */
     @Test
-    public void testNewBook() {
-        System.out.println("newBook");
-        LomakeController.newBook();
-    }
+//    public void testNewBook() {
+//        System.out.println("newBook");
+//        LomakeController.newBook();
+//    }
 
     /**
      * Test of saveBook method, of class LomakeController.
@@ -96,11 +96,11 @@ public class LomakeControllerTest {
     /**
      * Test of newProceeding method, of class LomakeController.
      */
-    @Test
-    public void testNewProceeding() {
-        System.out.println("newProceeding");
-        LomakeController.newProceeding();
-    }
+//    @Test
+//    public void testNewProceeding() {
+//        System.out.println("newProceeding");
+//        LomakeController.newProceeding();
+//    }
 
     /**
      * Test of saveProceeding method, of class LomakeController.
