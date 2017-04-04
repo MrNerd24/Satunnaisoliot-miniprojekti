@@ -8,7 +8,7 @@ public class Month extends GenericNumberField {
 
     private static HashMap<Integer, Month> months = new HashMap<>();
 
-    private Month(int month) {
+    public Month(int month) {
         super(month);
     }
 

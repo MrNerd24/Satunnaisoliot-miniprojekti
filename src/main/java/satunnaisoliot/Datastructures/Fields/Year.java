@@ -8,7 +8,7 @@ public class Year extends GenericNumberField {
 
     private static HashMap<Integer, Year> years = new HashMap<>();
 
-    private Year(int year) {
+    public Year(int year) {
         super(year);
     }
 
