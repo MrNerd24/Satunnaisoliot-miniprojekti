@@ -3,32 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ReferenceManager.Lomake;
+package satunnaisoliot.Lomake;
 
 /**
  *
  * @author Peter
  */
-public class BookStub {
+public class ArticleStub {
     String author = "";
     String title = "";
-    String publisher = "";
+    String journal = "";
     String year = "";
     String volume = "";
-    String series = "";
-    String address = "";
+    String number = "";
+    String pages = "";
     String month = "";
     String note = "";
     String key = "";
     
-    public BookStub(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key){
+    public ArticleStub(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key){
         this.author = author;
         this.title = title;
-        this.publisher = publisher;
+        this.journal = journal;
         this.year = year;
         this.volume = volume;
-        this.series = series;
-        this.address = address;
+        this.number = number;
+        this.pages = pages;
         this.month = month;
         this.note = note;
         this.key = key;
