@@ -68,7 +68,6 @@ public class LomakeControllerTest {
     /**
      * Test of newBook method, of class LomakeController.
      */
-    @Test
 //    public void testNewBook() {
 //        System.out.println("newBook");
 //        LomakeController.newBook();
