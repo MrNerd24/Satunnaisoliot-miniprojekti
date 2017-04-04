@@ -19,6 +19,38 @@ public class ProceedingsForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi proceeding");
     }
+    public ProceedingsForm(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+        initComponents();
+        this.setTitle("Uusi proceeding");
+    }
+    public void setAllFields(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+        titleField.setText(title);
+        yearField.setText(year);
+        editorField.setText(editor);
+        volumeField.setText(volume);
+        seriesField.setText(series);
+        addressField.setText(address);
+        monthField.setText(month);
+        publisherField.setText(publisher);
+        organizationField.setText(organization);
+        noteField.setText(note);
+        keyField.setText(key);
+    }
+    public String[] getAllFields() {
+        String[] list = new String[11];
+        list[0] = titleField.getText();
+        list[1] = yearField.getText();
+        list[2] = editorField.getText();
+        list[3] = volumeField.getText();
+        list[4] = seriesField.getText();
+        list[5] = addressField.getText();
+        list[6] = monthField.getText();
+        list[7] = publisherField.getText();
+        list[8] = organizationField.getText();
+        list[9] = noteField.getText();
+        list[10] = keyField.getText();
+        return list;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,30 +241,10 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        titleField.setText("");
-        yearField.setText("");
-        editorField.setText("");
-        volumeField.setText("");
-        seriesField.setText("");
-        addressField.setText("");
-        monthField.setText("");
-        publisherField.setText("");
-        organizationField.setText("");
-        noteField.setText("");
-        keyField.setText("");
+        setAllFields("","","","","","","","","","","");
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        list[0] = titleField.getText();
-        list[1] = yearField.getText();
-        list[2] = editorField.getText();
-        list[3] = volumeField.getText();
-        list[4] = seriesField.getText();
-        list[5] = addressField.getText();
-        list[6] = monthField.getText();
-        list[7] = publisherField.getText();
-        list[8] = organizationField.getText();
-        list[9] = noteField.getText();
-        list[10] = keyField.getText();
+        String[] list = getAllFields();
         LomakeController.saveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
