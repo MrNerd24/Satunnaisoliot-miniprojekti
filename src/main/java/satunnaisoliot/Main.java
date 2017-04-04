@@ -1,8 +1,8 @@
 package satunnaisoliot;
 
-import satunnaisoliot.Datastructures.Database.ArticleDao;
-import satunnaisoliot.Datastructures.Database.BookDao;
-import satunnaisoliot.Datastructures.Database.ProceedingsDao;
+import satunnaisoliot.datastructures.database.ArticleDao;
+import satunnaisoliot.datastructures.database.BookDao;
+import satunnaisoliot.datastructures.database.ProceedingsDao;
 
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -5,6 +5,7 @@
  */
 package satunnaisoliot.Datastructures.References;
 
+import satunnaisoliot.datastructures.references.Article;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,16 +13,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import satunnaisoliot.Datastructures.Fields.Author;
-import satunnaisoliot.Datastructures.Fields.Journal;
-import satunnaisoliot.Datastructures.Fields.Month;
-import satunnaisoliot.Datastructures.Fields.Note;
-import satunnaisoliot.Datastructures.Fields.Number;
-import satunnaisoliot.Datastructures.Fields.Pages;
-import satunnaisoliot.Datastructures.Fields.Title;
-import satunnaisoliot.Datastructures.Fields.Volume;
-import satunnaisoliot.Datastructures.Fields.Year;
-import satunnaisoliot.Datastructures.Interfaces.Field;
+import satunnaisoliot.datastructures.fields.Author;
+import satunnaisoliot.datastructures.fields.Journal;
+import satunnaisoliot.datastructures.fields.Month;
+import satunnaisoliot.datastructures.fields.Note;
+import satunnaisoliot.datastructures.fields.Number;
+import satunnaisoliot.datastructures.fields.Pages;
+import satunnaisoliot.datastructures.fields.Title;
+import satunnaisoliot.datastructures.fields.Volume;
+import satunnaisoliot.datastructures.fields.Year;
+import satunnaisoliot.datastructures.interfaces.Field;
 
 /**
  *
