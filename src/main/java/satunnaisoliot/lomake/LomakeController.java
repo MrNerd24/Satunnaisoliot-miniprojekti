@@ -36,17 +36,24 @@ import satunnaisoliot.datastructures.references.Proceedings;
  * @author Peter
  */
 public class LomakeController {
+    SqlDatastore db;
+    public LomakeController(){
+        
+    }
+    public LomakeController(SqlDatastore sql){
+        this.db = sql;
+    }
 
-    public static void main(String[] args) { //stub testaamiselle
+    public void main(String[] args) { //stub testaamiselle
         ArticleForm af = new ArticleForm();
         af.showForm();
     }
 
-    public static void newArticle() {
+    public void newArticle() {
         ArticleForm af = new ArticleForm();
         af.showForm();
     }
-    public static void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
+    public void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         ArticleDao ad = new ArticleDao(new SqlDatastore("referenceDB.db"));
         Author auth = Author.getAuthorObject(author);
         Title tit = Title.getTitleObject(title);
@@ -74,11 +81,11 @@ public class LomakeController {
         }
     }
 
-    public static void newBook() {
+    public void newBook() {
         BookForm bf = new BookForm();
         bf.showForm();
     }
-    public static void saveBook(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+    public void saveBook(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         Author auth = Author.getAuthorObject(author);
         Title tit = Title.getTitleObject(title);
         Publisher pub = Publisher.getPublisherObject(publisher);
@@ -106,11 +113,11 @@ public class LomakeController {
         }
     }
 
-    public static void newProceeding() {
+    public void newProceeding() {
         ProceedingsForm pf = new ProceedingsForm();
         pf.showForm();
     }
-    public static void saveProceeding(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+    public void saveProceeding(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         Title tit = Title.getTitleObject(title);
         Year yr = Year.getYearObject(Integer.parseInt(year));
         Editor ed = Editor.getEditorObject(editor);
