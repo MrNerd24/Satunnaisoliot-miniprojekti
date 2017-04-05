@@ -17,6 +17,7 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class LomakeControllerTest {
+    LomakeController lc = new LomakeController();
     
     public LomakeControllerTest() {
     }
@@ -62,7 +63,7 @@ public class LomakeControllerTest {
         String month = "0";
         String note = "0";
         String key = "0";
-        LomakeController.saveArticle(author, title, journal, year, volume, number, pages, month, note, key);
+        lc.saveArticle(author, title, journal, year, volume, number, pages, month, note, key);
     }
 
     /**
@@ -89,7 +90,7 @@ public class LomakeControllerTest {
         String month = "0";
         String note = "0";
         String key = "0";
-        LomakeController.saveBook(author, title, publisher, year, volume, series, address, month, note, key);
+        lc.saveBook(author, title, publisher, year, volume, series, address, month, note, key);
     }
 
     /**
@@ -118,7 +119,7 @@ public class LomakeControllerTest {
         String organization = "0";
         String note = "0";
         String key = "0";
-        LomakeController.saveProceeding(title, year, editor, volume, series, address, month, publisher, organization, note, key);
+        lc.saveProceeding(title, year, editor, volume, series, address, month, publisher, organization, note, key);
     }
     
 }

@@ -10,6 +10,7 @@ package satunnaisoliot.lomake;
  * @author Peter
  */
 public class BookForm extends javax.swing.JFrame {
+    LomakeController lc;
 
     /**
      * Creates new form ArticleForm
@@ -19,7 +20,7 @@ public class BookForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi kirja");
     }
-    public BookForm(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+    public BookForm(LomakeController lc, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         initComponents();
         this.setTitle("Uusi kirja");
     }
@@ -228,7 +229,7 @@ public class BookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
-        LomakeController.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
+        lc.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {

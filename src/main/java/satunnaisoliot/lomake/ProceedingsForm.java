@@ -10,6 +10,7 @@ package satunnaisoliot.lomake;
  * @author Peter
  */
 public class ProceedingsForm extends javax.swing.JFrame {
+    LomakeController lc;
 
     /**
      * Creates new form ArticleForm
@@ -19,7 +20,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi proceeding");
     }
-    public ProceedingsForm(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+    public ProceedingsForm(LomakeController lc, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         initComponents();
         this.setTitle("Uusi proceeding");
     }
@@ -245,7 +246,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
-        LomakeController.saveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
+        lc.saveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
 
