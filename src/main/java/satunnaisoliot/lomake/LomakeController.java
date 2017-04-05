@@ -83,7 +83,7 @@ public class LomakeController {
         
         //tee jotain kirjalle
 
-        BookDao bd = new BookDao(new SqlDatastore("referenceDB.db"));
+        BookDao bd = new BookDao(this.db);
         try {
             bd.addBook(author, title, publisher, year, volume, series, address, month, note, key);
         } catch (SQLException ex) {
@@ -112,7 +112,7 @@ public class LomakeController {
         
         //tee jotain proceedingille
 
-        ProceedingsDao pd = new ProceedingsDao(new SqlDatastore("referenceDB.db"));
+        ProceedingsDao pd = new ProceedingsDao(this.db);
         try {
             pd.addProceedings(title, year, editor, volume, series, address, month, publisher, organization, note, key);
         } catch (SQLException ex) {
