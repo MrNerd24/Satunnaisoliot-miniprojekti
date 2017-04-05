@@ -1,13 +1,11 @@
 package satunnaisoliot.datastructures.generic;
 
 import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.interfaces.Field;
 import satunnaisoliot.datastructures.interfaces.Reference;
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
-import satunnaisoliot.datastructures.fields.Key;
+
 
 /**
  *
@@ -15,65 +13,23 @@ import satunnaisoliot.datastructures.fields.Key;
  */
 public abstract class GenericReference implements Reference {
 
-    EnumMap<FieldType, List<Field>> entries = new EnumMap<FieldType, List<Field>>(FieldType.class);
+    EnumMap<FieldType, String> entries = new EnumMap<FieldType, String>(FieldType.class);
 
-    /**
-     * Adds a new field value to the list of values of the FieldType. This methods should be used over doing add operations to the list returned by getFields().
-     * @param name Type of the field the value belongs to.
-     * @param value to be added.
-     */
     @Override
-    public void addField(FieldType name, Field value) {
-        if (entries.get(name) == null) {
-            entries.put(name, new ArrayList<Field>());
-        }
-        entries.get(name).add(value);
-        value.linkReference(this);
-    }
-
-    /**
-     * Sets a new value to the list of Field values. This methods should be used over doing add operations to the list returned by getFields().
-     * @param name of the FieldType this value belongs to.
-     * @param index of the value to be replaced in the list.
-     * @param value to be set to the index. 
-     */
-    @Override
-    public void setField(FieldType name, int index, Field value) {
-        if (entries.get(name) == null) {
-            entries.put(name, new ArrayList<Field>());
-        }
-        entries.get(name).get(index).removeReference(this);
-        value.linkReference(this);
-        entries.get(name).set(index, value);
+    public void setField(FieldType name, String value) {
+        entries.put(name, value);
 
     }
 
-    /**
-     * Returns the Field values of the type given.
-     * @param name of the Field type.
-     * @return a list of Fields of the type given.
-     */
     @Override
-    public List<Field> getFields(FieldType name) {
+    public String getField(FieldType name) {
         return entries.get(name);
-    }
-    
-    public void setKey(int index, Key value) {
-        setField(FieldType.YEAR, index, value);
-    }
-
-    public void addKey(Key value) {
-        addField(FieldType.YEAR, value);
-    }
-
-    public List<Field> getKeys() {
-        return getFields(FieldType.YEAR);
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.entries);
+        hash = 83 * hash + Objects.hashCode(this.entries);
         return hash;
     }
 
@@ -91,7 +47,15 @@ public abstract class GenericReference implements Reference {
         }
         return true;
     }
-    
-    
 
+    @Override
+    public List<String> toBibTex() {
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return "GenericReference{" + '}';
+    }
+    
 }

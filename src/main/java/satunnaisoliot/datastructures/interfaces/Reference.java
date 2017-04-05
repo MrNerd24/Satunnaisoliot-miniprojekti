@@ -2,14 +2,18 @@ package satunnaisoliot.datastructures.interfaces;
 
 import satunnaisoliot.datastructures.enums.FieldType;
 import java.util.List;
+import satunnaisoliot.datastructures.enums.ReferenceType;
 
 public interface Reference {
 
-    public void addField(FieldType name, Field value);
+    public void setField(FieldType name, String value);
 
-    public void setField(FieldType name, int index, Field value);
-
-    public List<Field> getFields(FieldType name);
+    public String getField(FieldType name);
 
     public List<String> toBibTex();
+
+    public ReferenceType getType();
+
+    @Override
+    public String toString();
 }
