@@ -5,6 +5,9 @@
  */
 package satunnaisoliot.lomake;
 
+import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.datastructures.database.BookDao;
+import satunnaisoliot.datastructures.database.ProceedingsDao;
 import satunnaisoliot.datastructures.fields.Address;
 import satunnaisoliot.datastructures.fields.Publisher;
 import satunnaisoliot.datastructures.fields.Year;
@@ -44,7 +47,7 @@ public class LomakeController {
         af.showForm();
     }
     public static void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
-        //ArticleDao ad = new ArticleDao();
+        ArticleDao ad = new ArticleDao(new SqlDatastore("referenceDB.db"));
         Author auth = Author.getAuthorObject(author);
         Title tit = Title.getTitleObject(title);
         Journal jour = Journal.getJournalObject(journal);
@@ -63,12 +66,12 @@ public class LomakeController {
         article.addNote(nte);
         article.addKey(k);
         //tee jotain artikkelille
-        
-//        try {
-//            ad.addArticle(author, title, journal, year, volume, number, pages, month, note, key);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
+        try {
+            ad.addArticle(author, title, journal, year, volume, number, pages, month, note, key);
+        } catch (SQLException ex) {
+            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void newBook() {
@@ -94,6 +97,13 @@ public class LomakeController {
         book.addNote(nte);
         book.addKey(k);
         //tee jotain kirjalle
+
+        BookDao bd = new BookDao(new SqlDatastore("referenceDB.db"));
+        try {
+            bd.addBook(author, title, publisher, year, volume, series, address, month, note, key);
+        } catch (SQLException ex) {
+            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void newProceeding() {
@@ -124,5 +134,12 @@ public class LomakeController {
         proceeding.addNote(nte);
         proceeding.addKey(k);
         //tee jotain proceedingille
+
+        ProceedingsDao pd = new ProceedingsDao(new SqlDatastore("referenceDB.db"));
+        try {
+            pd.addProceedings(title, year, editor, volume, series, address, month, publisher, organization, note, key);
+        } catch (SQLException ex) {
+            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
