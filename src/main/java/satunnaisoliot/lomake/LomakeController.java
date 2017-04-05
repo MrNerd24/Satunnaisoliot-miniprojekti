@@ -54,7 +54,7 @@ public class LomakeController {
         af.showForm();
     }
     public void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
-        ArticleDao ad = new ArticleDao(new SqlDatastore("referenceDB.db"));
+        ArticleDao ad = new ArticleDao(this.db);
         Author auth = Author.getAuthorObject(author);
         Title tit = Title.getTitleObject(title);
         Journal jour = Journal.getJournalObject(journal);
@@ -105,7 +105,7 @@ public class LomakeController {
         book.addKey(k);
         //tee jotain kirjalle
 
-        BookDao bd = new BookDao(new SqlDatastore("referenceDB.db"));
+        BookDao bd = new BookDao(this.db);
         try {
             bd.addBook(author, title, publisher, year, volume, series, address, month, note, key);
         } catch (SQLException ex) {
@@ -142,7 +142,7 @@ public class LomakeController {
         proceeding.addKey(k);
         //tee jotain proceedingille
 
-        ProceedingsDao pd = new ProceedingsDao(new SqlDatastore("referenceDB.db"));
+        ProceedingsDao pd = new ProceedingsDao(this.db);
         try {
             pd.addProceedings(title, year, editor, volume, series, address, month, publisher, organization, note, key);
         } catch (SQLException ex) {
