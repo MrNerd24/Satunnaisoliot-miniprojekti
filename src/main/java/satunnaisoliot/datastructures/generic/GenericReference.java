@@ -64,7 +64,7 @@ public abstract class GenericReference implements Reference {
         }
         ArrayList<String> lines = new ArrayList<String>();
 
-        String type = getType().toString();
+        String type = getType().toString().toLowerCase();
         String start = "@" + type + "{" + getBibTexKey() + ",";
         lines.add(replaceBibTexSpecialChars(start));
         
@@ -80,7 +80,7 @@ public abstract class GenericReference implements Reference {
                 value = value + " and " + values[i] ;
             }
             value = replaceBibTexSpecialChars(value);
-            lines.add(field.toString() + " = \"" + value + "\"");
+            lines.add(field.toString().toLowerCase() + " = {" + value + "}");
         }
         lines.add("}");
         return lines;
@@ -92,13 +92,13 @@ public abstract class GenericReference implements Reference {
     }
 
     private String replaceBibTexSpecialChars(String input) {
-        input = input.replaceAll("ä", "{\\\"a}");
-        input = input.replaceAll("ö", "{\\\"o}");
-        input = input.replaceAll("å", "{\\aa}");
+        input = input.replaceAll("ä", "{\\\\\"a}");
+        input = input.replaceAll("ö", "{\\\\\"o}");
+        input = input.replaceAll("å", "{\\\\aa}");
 
-        input = input.replaceAll("Ä", "{\\\"A}");
-        input = input.replaceAll("Ö", "{\\\"O}");
-        input = input.replaceAll("Å", "{\\AA}");
+        input = input.replaceAll("Ä", "{\\\\\"A}");
+        input = input.replaceAll("Ö", "{\\\\\"O}");
+        input = input.replaceAll("Å", "{\\\\AA}");
 
         return input;
     }
