@@ -67,14 +67,14 @@ public abstract class GenericReference implements Reference {
         String type = getType().toString().toLowerCase();
         String start = "@" + type + "{" + getBibTexKey() + ",";
         lines.add(replaceBibTexSpecialChars(start));
-        
+
         for (FieldType field : FieldType.values()) {
             String content = getField(field);
             if (content == null) {
                 continue;
             }
             String[] values = content.split(";");
-            
+
             String value = values[0];
             for (int i = 1; i < values.length; i++) {
                 value = value + " and " + values[i] ;
@@ -102,5 +102,4 @@ public abstract class GenericReference implements Reference {
 
         return input;
     }
-
 }
