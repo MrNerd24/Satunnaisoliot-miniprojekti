@@ -1,3 +1,5 @@
+package satunnaisoliot.gui;
+
 //package satunnaisoliot.lomake;
 //
 //import org.junit.After;

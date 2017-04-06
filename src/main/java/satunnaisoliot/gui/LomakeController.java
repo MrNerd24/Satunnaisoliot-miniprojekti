@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.lomake;
+package satunnaisoliot.gui;
 
+import satunnaisoliot.gui.BookForm;
+import satunnaisoliot.gui.ArticleForm;
 import satunnaisoliot.SqlDatastore;
 import satunnaisoliot.datastructures.database.BookDao;
 import satunnaisoliot.datastructures.database.ProceedingsDao;
