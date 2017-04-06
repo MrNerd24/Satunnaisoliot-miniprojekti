@@ -13,19 +13,19 @@ public class BibtexTextTransformTest {
         assertFalse("U+007F DELETE, a control character, cannot be exported verbatim.", BibtexTextTransform.canBeExportedVerbatim(127));
         assertFalse("U+0085 NEXT LINE, a control character, cannot be exported verbatim.", BibtexTextTransform.canBeExportedVerbatim('\u0085'));
     }
-    
+
     @Test
     public void testCanBeExportedVerbatimWorksForNonAsciiNonControl() {
         assertFalse("U+00C4 Ä, a non-ASCII character, cannot be exported verbatim.", BibtexTextTransform.canBeExportedVerbatim('Ä'));
         assertFalse("U+10459 SHAVIAN LETTER HUNG, a non-ASCII character, cannot be exported verbatim.", BibtexTextTransform.canBeExportedVerbatim(66649));
     }
-    
+
     @Test
     public void testCanBeExportedVerbatimWorksForAscii() {
         assertTrue("U+0041 A, an ASCII character, can be exported verbatim.", BibtexTextTransform.canBeExportedVerbatim('A'));
         assertTrue("U+005A Z, an ASCII character, can be exported verbatim.", BibtexTextTransform.canBeExportedVerbatim(0x5A));
     }
-    
+
     @Test
     public void testTexifyGraphemeWithNonNormalizableChars() {
         String s = "æ"; // æ cannot be broken down.
@@ -33,7 +33,7 @@ public class BibtexTextTransformTest {
         s = "a";
         assertEquals(s, BibtexTextTransform.texifyGrapheme(s));
     }
-    
+
     @Test
     public void testTexifyGraphemeWithLigatures() {
         String s = "\uFB00"; // ff ligature
@@ -41,7 +41,7 @@ public class BibtexTextTransformTest {
         s = "\u0133"; // ij ligature ĳ
         assertEquals("ij", BibtexTextTransform.texifyGrapheme(s));
     }
-    
+
     @Test
     public void testTexifyGrapheme() {
         String s = "Ä";
@@ -51,14 +51,14 @@ public class BibtexTextTransformTest {
         expected = "\\`{e}";
         assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
     }
-    
+
     @Test
     public void testTexifyGraphemeWithPreDecomposedChars() {
         String s = "E\u0301"; // U+0301 COMBINING ACUTE ACCENT
         String expected = "\\'{E}";
         assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
     }
-    
+
     @Test
     public void testTexifyGraphemeWithIJ() {
         String s = "ï";
@@ -68,7 +68,7 @@ public class BibtexTextTransformTest {
         expected = "\\^{\\j}";
         assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
     }
-    
+
     @Test
     public void testTexifyGraphemeWithPeculiarAccents() {
         String s = "a\u033D"; // U+033D COMBINING X ABOVE
@@ -78,7 +78,7 @@ public class BibtexTextTransformTest {
         expected = "j";
         assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
     }
-    
+
     @Test
     public void testTexifyString() {
         String s = "Érdőš";

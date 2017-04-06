@@ -139,19 +139,19 @@ public class BibtexTextTransform {
             return baseChar;
         }
     }
-    
+
     public static String texifyString(String unicodey) {
         if (unicodey.length() <= 1) {
             return texifyGrapheme(unicodey);
         }
-        
+
         // Because Java doesn't have a grapheme-based string traversal system
         // (like that in Perl 6), we have to go thru the string and check
         // if a sequence of characters make up a grapheme we can separate
         // and pass to texifyGrapheme
         String grapheme = unicodey.substring(0, 1);
         String texified = "";
-        
+
         for (int i = 1; i < unicodey.length(); i++) {
             char current = unicodey.charAt(i);
             // Combining characters are in the "Mark, Nonspacing (Mn)" Unicode
@@ -165,24 +165,7 @@ public class BibtexTextTransform {
         }
         // do the same for the final character
         texified += texifyGrapheme(grapheme);
-        
-        return texified;
-    }
 
-    public static void main(String[] args) {
-        System.out.println(Normalizer.normalize("\uFB03", Normalizer.Form.NFKD)); // ffi ligature
-        System.out.println(Normalizer.normalize("Å", Normalizer.Form.NFKD));
-        System.out.println(Normalizer.normalize("ß", Normalizer.Form.NFKD));
-        System.out.println(Normalizer.normalize("ĳ", Normalizer.Form.NFKD));
-        System.out.println(Normalizer.normalize("Ꜳ", Normalizer.Form.NFKD));
-        System.out.println(Normalizer.normalize("ﬀ", Normalizer.Form.NFKD));
-        System.out.println(Normalizer.normalize("Ǳ", Normalizer.Form.NFKD));
-        System.out.println(texifyGrapheme("\uFB03"));
-        System.out.println(texifyGrapheme("å"));
-        System.out.println(texifyGrapheme("ö"));
-        System.out.println(texifyGrapheme("í"));
-        System.out.println(texifyGrapheme("ő"));
-        System.out.println(texifyString("abcd"));
-        System.out.println(texifyString("Érdőš"));
+        return texified;
     }
 }
