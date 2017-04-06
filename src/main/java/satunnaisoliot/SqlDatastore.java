@@ -1,10 +1,6 @@
 package satunnaisoliot;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SqlDatastore {
 
@@ -28,6 +24,17 @@ public class SqlDatastore {
         Statement stmt = null;
         try {
             stmt = this.connection.createStatement();
+            stmt.setQueryTimeout(QUERY_TIMEOUT);
+        } catch (SQLException ex) {
+            System.err.println(ex.toString());
+        }
+        return stmt;
+    }
+
+    public PreparedStatement getNewPreparedStatement(String query) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = this.connection.prepareStatement(query);
             stmt.setQueryTimeout(QUERY_TIMEOUT);
         } catch (SQLException ex) {
             System.err.println(ex.toString());

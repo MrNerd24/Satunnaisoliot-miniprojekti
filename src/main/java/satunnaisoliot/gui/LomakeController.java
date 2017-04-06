@@ -5,15 +5,14 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.gui.BookForm;
-import satunnaisoliot.gui.ArticleForm;
+import satunnaisoliot.datastructures.database.ReferenceDao;
+import satunnaisoliot.datastructures.interfaces.Reference;
 import satunnaisoliot.SqlDatastore;
-import satunnaisoliot.datastructures.database.BookDao;
-import satunnaisoliot.datastructures.database.ProceedingsDao;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import satunnaisoliot.datastructures.database.ArticleDao;
+
 import satunnaisoliot.datastructures.references.Article;
 import satunnaisoliot.datastructures.references.Book;
 import satunnaisoliot.datastructures.references.Proceedings;
@@ -41,9 +40,6 @@ public class LomakeController {
         af.showForm();
     }
     public void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
-        ArticleDao ad = new ArticleDao(new SqlDatastore("referenceDB.db"));
-
-        
         Article article = new Article();
         article.setAuthor(author);
         article.setTitle(title);
@@ -57,12 +53,7 @@ public class LomakeController {
         article.setKey(key);
         
         //tee jotain artikkelille
-
-        try {
-            ad.addArticle(author, title, journal, year, volume, number, pages, month, note, key);
-        } catch (SQLException ex) {
-            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        addReference(article);
     }
 
     public void newBook() {
@@ -84,13 +75,7 @@ public class LomakeController {
         book.setKey(key);
         
         //tee jotain kirjalle
-
-        BookDao bd = new BookDao(this.db);
-        try {
-            bd.addBook(author, title, publisher, year, volume, series, address, month, note, key);
-        } catch (SQLException ex) {
-            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        addReference(book);
     }
 
     public void newProceeding() {
@@ -114,9 +99,14 @@ public class LomakeController {
         
         //tee jotain proceedingille
 
-        ProceedingsDao pd = new ProceedingsDao(this.db);
+        addReference(proceedings);
+    }
+
+    public void addReference(Reference ref) {
+        ReferenceDao rd = new ReferenceDao(this.db);
         try {
-            pd.addProceedings(title, year, editor, volume, series, address, month, publisher, organization, note, key);
+            rd.addReference(ref);
+            throw new SQLException();
         } catch (SQLException ex) {
             Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
         }
