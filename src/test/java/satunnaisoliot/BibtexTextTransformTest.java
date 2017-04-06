@@ -27,10 +27,8 @@ public class BibtexTextTransformTest {
     }
 
     @Test
-    public void testTexifyGraphemeWithNonNormalizableChars() {
-        String s = "æ"; // æ cannot be broken down.
-        assertEquals(s, BibtexTextTransform.texifyGrapheme(s));
-        s = "a";
+    public void testTexifyGraphemeWithSimpleChars() {
+        String s = "a";
         assertEquals(s, BibtexTextTransform.texifyGrapheme(s));
     }
 
@@ -49,6 +47,12 @@ public class BibtexTextTransformTest {
         assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
         s = "è";
         expected = "\\`{e}";
+        assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
+        s = "Æ";
+        expected = "\\AE";
+        assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
+        s = "þ";
+        expected = "\\th";
         assertEquals(expected, BibtexTextTransform.texifyGrapheme(s));
     }
 

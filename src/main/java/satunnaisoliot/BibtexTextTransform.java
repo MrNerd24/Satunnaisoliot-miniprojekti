@@ -19,6 +19,8 @@ public class BibtexTextTransform {
     static final Map<String, String> charTransforms;
     static {
         Map<String, String> map = new HashMap();
+        map.put("å", "\\aa");
+        map.put("Å", "\\AA");
         map.put("æ", "\\ae");
         map.put("Æ", "\\AE");
         map.put("œ", "\\oe");
@@ -100,6 +102,10 @@ public class BibtexTextTransform {
     }
 
     static String texifyGrapheme(String grapheme) {
+        if (charTransforms.keySet().contains(grapheme)) {
+            return charTransforms.get(grapheme);
+        }
+
         String normalizedSequence = Normalizer.normalize(grapheme, Normalizer.Form.NFKD);
 
         // Some normalizations come out as just a sequence of a-z, for example

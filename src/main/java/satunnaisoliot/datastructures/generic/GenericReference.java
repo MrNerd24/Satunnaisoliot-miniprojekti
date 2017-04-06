@@ -1,6 +1,7 @@
 package satunnaisoliot.datastructures.generic;
 
 import java.util.ArrayList;
+import satunnaisoliot.BibtexTextTransform;
 import satunnaisoliot.datastructures.enums.FieldType;
 import satunnaisoliot.datastructures.interfaces.Reference;
 import java.util.EnumMap;
@@ -66,7 +67,7 @@ public abstract class GenericReference implements Reference {
 
         String type = getType().toString().toLowerCase();
         String start = "@" + type + "{" + getBibTexKey() + ",";
-        lines.add(replaceBibTexSpecialChars(start));
+        lines.add(BibtexTextTransform.texifyString(start));
 
         for (FieldType field : FieldType.values()) {
             String content = getField(field);
@@ -79,7 +80,7 @@ public abstract class GenericReference implements Reference {
             for (int i = 1; i < values.length; i++) {
                 value = value + " and " + values[i] ;
             }
-            value = replaceBibTexSpecialChars(value);
+            value = BibtexTextTransform.texifyString(value);
             lines.add(field.toString().toLowerCase() + " = {" + value + "}");
         }
         lines.add("}");
@@ -91,15 +92,4 @@ public abstract class GenericReference implements Reference {
         return getType().toString() + " " + getBibTexKey();
     }
 
-    private String replaceBibTexSpecialChars(String input) {
-        input = input.replaceAll("ä", "{\\\\\"a}");
-        input = input.replaceAll("ö", "{\\\\\"o}");
-        input = input.replaceAll("å", "{\\\\aa}");
-
-        input = input.replaceAll("Ä", "{\\\\\"A}");
-        input = input.replaceAll("Ö", "{\\\\\"O}");
-        input = input.replaceAll("Å", "{\\\\AA}");
-
-        return input;
-    }
 }
