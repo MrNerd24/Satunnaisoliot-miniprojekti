@@ -26,7 +26,7 @@ public class ReferenceDao {
             PreparedStatement stmt = this.datastore.getNewPreparedStatement("INSERT INTO Reference (reference_type) VALUES (?)");
             stmt.setString(1, type);
             stmt.executeUpdate();
-            ResultSet rs = stmt.getResultSet();
+            ResultSet rs = stmt.getGeneratedKeys();
             if(rs.next()) {
                 int id = rs.getInt("id");
                 for (FieldType field : FieldType.values()) {

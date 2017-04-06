@@ -5,6 +5,7 @@
  */
 package satunnaisoliot.gui;
 
+import satunnaisoliot.SqlDatastore;
 import satunnaisoliot.gui.LomakeController;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,7 +19,7 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class LomakeControllerTest {
-    LomakeController lc = new LomakeController();
+    LomakeController lc = new LomakeController(new SqlDatastore("testDB.db"));
     
     public LomakeControllerTest() {
     }
