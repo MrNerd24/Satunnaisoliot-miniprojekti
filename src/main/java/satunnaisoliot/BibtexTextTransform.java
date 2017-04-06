@@ -87,29 +87,20 @@ public class BibtexTextTransform {
         diacriticsAboveLetter = Collections.unmodifiableSet(set);
     }
 
-
-    private static boolean canBeExported(char c) {
+    static boolean canBeExportedVerbatim(char c) {
         // Some characters, like for instance the control characters U+007F
         // and U+0000 to U+0019, can't be exported in the resultant BiBTex file.
-        return Character.isISOControl(c);
+        if (Character.isISOControl(c)) return false;
+        return Character.UnicodeBlock.of(c) == Character.UnicodeBlock.BASIC_LATIN;
     }
 
-    private static boolean canBeExported(int c) {
-        return Character.isISOControl(c);
+    static boolean canBeExportedVerbatim(int c) {
+        if (Character.isISOControl(c)) return false;
+        return Character.UnicodeBlock.of(c) == Character.UnicodeBlock.BASIC_LATIN;
     }
 
-    private static boolean requiresNormalization(char c) {
-        // Basic ASCII characters don't need any manipulation.
-        return Character.UnicodeBlock.of(c) != Character.UnicodeBlock.BASIC_LATIN;
-    }
-
-    private static boolean requiresNormalization(int c) {
-        return Character.UnicodeBlock.of(c) != Character.UnicodeBlock.BASIC_LATIN;
-    }
-
-    private static String normalizeChar(String singleChar) {
-        String normalizedSequence = Normalizer.normalize(singleChar, Normalizer.Form.NFKD);
-        if (normalizedSequence.equals(singleChar)) return singleChar;
+    static String texifyGrapheme(String grapheme) {
+        String normalizedSequence = Normalizer.normalize(grapheme, Normalizer.Form.NFKD);
 
         // Some normalizations come out as just a sequence of a-z, for example
         // the fi ligature U+FB01
@@ -148,15 +139,50 @@ public class BibtexTextTransform {
             return baseChar;
         }
     }
+    
+    public static String texifyString(String unicodey) {
+        if (unicodey.length() <= 1) {
+            return texifyGrapheme(unicodey);
+        }
+        
+        // Because Java doesn't have a grapheme-based string traversal system
+        // (like that in Perl 6), we have to go thru the string and check
+        // if a sequence of characters make up a grapheme we can separate
+        // and pass to texifyGrapheme
+        String grapheme = unicodey.substring(0, 1);
+        String texified = "";
+        
+        for (int i = 1; i < unicodey.length(); i++) {
+            char current = unicodey.charAt(i);
+            // Combining characters are in the "Mark, Nonspacing (Mn)" Unicode
+            // category http://www.fileformat.info/info/unicode/category/Mn/list.htm
+            if (Character.getType(current) == Character.NON_SPACING_MARK) {
+                grapheme += current;
+            } else {
+                texified += texifyGrapheme(grapheme);
+                grapheme = Character.toString(current);
+            }
+        }
+        // do the same for the final character
+        texified += texifyGrapheme(grapheme);
+        
+        return texified;
+    }
 
     public static void main(String[] args) {
         System.out.println(Normalizer.normalize("\uFB03", Normalizer.Form.NFKD)); // ffi ligature
         System.out.println(Normalizer.normalize("Å", Normalizer.Form.NFKD));
         System.out.println(Normalizer.normalize("ß", Normalizer.Form.NFKD));
-        System.out.println(normalizeChar("\uFB03"));
-        System.out.println(normalizeChar("å"));
-        System.out.println(normalizeChar("ö"));
-        System.out.println(normalizeChar("í"));
-        System.out.println(normalizeChar("ő"));
+        System.out.println(Normalizer.normalize("ĳ", Normalizer.Form.NFKD));
+        System.out.println(Normalizer.normalize("Ꜳ", Normalizer.Form.NFKD));
+        System.out.println(Normalizer.normalize("ﬀ", Normalizer.Form.NFKD));
+        System.out.println(Normalizer.normalize("Ǳ", Normalizer.Form.NFKD));
+        System.out.println(texifyGrapheme("\uFB03"));
+        System.out.println(texifyGrapheme("å"));
+        System.out.println(texifyGrapheme("ö"));
+        System.out.println(texifyGrapheme("í"));
+        System.out.println(texifyGrapheme("ő"));
+        System.out.println(texifyString("abcd"));
+        System.out.println(texifyString("Érdőš"));
     }
 }
