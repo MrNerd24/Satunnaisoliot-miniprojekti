@@ -1,5 +1,5 @@
-CREATE TABLE Reference (
-  id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Reference (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   reference_type varchar,
   bibtex_key varchar,
   address varchar,
@@ -9,6 +9,7 @@ CREATE TABLE Reference (
   chapter varchar,
   crossref varchar,
   edition varchar,
+  editor varchar,
   howpublished varchar,
   institution varchar,
   journal varchar,

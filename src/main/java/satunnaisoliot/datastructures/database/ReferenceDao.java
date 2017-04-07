@@ -28,14 +28,15 @@ public class ReferenceDao {
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             if(rs.next()) {
-                int id = rs.getInt("id");
+                int id = rs.getInt(1);
+
                 for (FieldType field : FieldType.values()) {
                     String content = ref.getField(field);
+                    String column = field.toString().toLowerCase();
                     if (content == null) {
                         continue;
                     }
-
-                    stmt = this.datastore.getNewPreparedStatement("INSERT INTO Reference (" + field.toString().toLowerCase() +") VALUES (?) WHERE id = " + id);
+                    stmt = this.datastore.getNewPreparedStatement("UPDATE Reference SET " + column + " = ? WHERE id = " + id);
                     stmt.setString(1, content);
                     stmt.executeUpdate();
                 }
