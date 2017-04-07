@@ -23,7 +23,7 @@ public class SelectReferenceTypeWin extends javax.swing.JFrame {
         lista = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lista.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Article reference", "Book reference", "Proceedings reference", " " };

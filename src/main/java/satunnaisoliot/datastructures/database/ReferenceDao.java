@@ -12,13 +12,14 @@ import java.sql.SQLException;
 /**
  * Created by laura on 6.4.2017.
  */
-public class ReferenceDao {
+public class ReferenceDao implements Dao {
     private SqlDatastore datastore;
 
     public ReferenceDao(SqlDatastore datastore) {
         this.datastore = datastore;
     }
-
+    
+    @Override
     public void addReference(Reference ref) {
         String type = ref.getType().toString().toLowerCase();
 
@@ -47,4 +48,5 @@ public class ReferenceDao {
         }
 
     }
+
 }

@@ -82,6 +82,7 @@ public class LomakeController {
         ProceedingsForm pf = new ProceedingsForm();
         pf.showForm();
     }
+    
     public void saveProceeding(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         
         Proceedings proceedings = new Proceedings();
