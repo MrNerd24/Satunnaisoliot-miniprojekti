@@ -188,7 +188,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // Tähän tulee tietueenlisäysikkunan luonti.
-        showUnimplementedFeatureMessageBox();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new SelectReferenceTypeWin().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed

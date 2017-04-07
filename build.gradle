@@ -43,8 +43,8 @@ jar {
 apply plugin: 'application'
 
 //mainClassName = 'ReferenceManager.Main'
-mainClassName = 'satunnaisoliot.lomake.LomakeController'
-//mainClassName = 'satunnaisoliot.Main'
+//mainClassName = 'satunnaisoliot.lomake.LomakeController'
+mainClassName = 'satunnaisoliot.Main'
 
 run {
     standardInput = System.in
