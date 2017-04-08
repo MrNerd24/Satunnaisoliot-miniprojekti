@@ -14,7 +14,8 @@ public class MainWindow extends javax.swing.JFrame {
         // tehään tällä jotain, ehkä? vai halutaanko MainWindowille
         // antaa SqlDatastore-viite erikseen? olisi kai DAO-periaatteen
         // mukaista että tehtäisiin näin.
-        datastore = new SqlDatastore(":memory:");
+//        datastore = new SqlDatastore(":memory:");
+        datastore = new SqlDatastore("referenceDB.db");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

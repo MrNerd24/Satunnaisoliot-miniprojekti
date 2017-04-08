@@ -8,12 +8,6 @@ package satunnaisoliot.gui;
 import satunnaisoliot.datastructures.database.ReferenceDao;
 import satunnaisoliot.datastructures.interfaces.Reference;
 import satunnaisoliot.SqlDatastore;
-
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import satunnaisoliot.datastructures.enums.FieldType;
-
 import satunnaisoliot.datastructures.references.Article;
 import satunnaisoliot.datastructures.references.Book;
 import satunnaisoliot.datastructures.references.Proceedings;
@@ -106,11 +100,6 @@ public class LomakeController {
 
     public void addReference(Reference ref) {
         ReferenceDao rd = new ReferenceDao(this.db);
-        try {
             rd.addReference(ref);
-            throw new SQLException();
-        } catch (SQLException ex) {
-            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
