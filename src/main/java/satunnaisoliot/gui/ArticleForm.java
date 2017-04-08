@@ -5,12 +5,22 @@
  */
 package satunnaisoliot.gui;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.datastructures.database.ReferenceDao;
+import satunnaisoliot.datastructures.enums.FieldType;
+import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.datastructures.references.Article;
+
 /**
  *
  * @author Peter
  */
 public class ArticleForm extends javax.swing.JFrame {
     LomakeController lc;
+//    SqlDatastore db;
 
     /**
      * Creates new form ArticleForm
@@ -19,8 +29,8 @@ public class ArticleForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi artikkeli");
     }
-    public ArticleForm(LomakeController lc, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
-        this.lc = lc;
+    public ArticleForm(LomakeController loc, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
+        this.lc = loc;
         initComponents();
         this.setTitle("Uusi artikkeli");
     }
@@ -228,17 +238,45 @@ public class ArticleForm extends javax.swing.JFrame {
         setAllFields("","","","","","","","","","");
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        String[] list = getAllFields();
+        String[] list = this.getAllFields();
+        
+        Article article = new Article();
+        article.setAuthor(list[0]);
+        article.setTitle(list[1]);
+        article.setJournal(list[2]);
+        article.setYear(list[3]);
+        article.setVolume(list[4]);
+        article.setNumber(list[5]);
+        article.setPages(list[6]);
+        article.setMonth(list[7]);
+        article.setNote(list[8]);
+        article.setKey(list[9]);
+//        for(int i =0; i<list.length;i++){ 
+//            if(list[i].equals("")){
+//                list[i] = " ";
+//            }
+//        }
         lc.saveArticle(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
+//        addReference(article);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ArticleForm().setVisible(true);
+                setVisible(true);
             }
         });
     }
+//        public void addReference(Reference ref) {
+//        ReferenceDao rd = new ReferenceDao(this.db);
+//        try {
+//            ref.setField(FieldType.TYPE,"Article");
+//            rd.addReference(ref);
+//            throw new SQLException();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ArticleForm.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField authorField;
     private javax.swing.JLabel authorLabel;

@@ -191,7 +191,7 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SelectReferenceTypeWin().setVisible(true);
+                new SelectReferenceTypeWin(datastore).setVisible(true);
             }
         });
     }//GEN-LAST:event_addButtonActionPerformed

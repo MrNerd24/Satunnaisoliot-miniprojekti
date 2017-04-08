@@ -258,7 +258,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProceedingsForm().setVisible(true);
+                setVisible(true);
             }
         });
     }

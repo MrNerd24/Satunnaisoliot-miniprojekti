@@ -1,12 +1,19 @@
 
 package satunnaisoliot.gui;
 
+import satunnaisoliot.SqlDatastore;
+
 public class SelectReferenceTypeWin extends javax.swing.JFrame {
 
     /**
      * Creates new form ReferenceTypeWin
      */
+    private SqlDatastore db;
     public SelectReferenceTypeWin() {
+        initComponents();
+    }
+    public SelectReferenceTypeWin(SqlDatastore datastore) {
+        db = datastore;
         initComponents();
     }
 
@@ -66,7 +73,7 @@ public class SelectReferenceTypeWin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaMouseClicked
-       LomakeController lomake = new LomakeController();
+       LomakeController lomake = new LomakeController(db);
         
        if(lista.getSelectedValue().equals("Article reference")){
            lomake.newArticle();

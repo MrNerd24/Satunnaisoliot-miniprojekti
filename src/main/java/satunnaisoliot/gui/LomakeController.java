@@ -12,6 +12,7 @@ import satunnaisoliot.SqlDatastore;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import satunnaisoliot.datastructures.enums.FieldType;
 
 import satunnaisoliot.datastructures.references.Article;
 import satunnaisoliot.datastructures.references.Book;
@@ -30,13 +31,13 @@ public class LomakeController {
         this.db = sql;
     }
 
-    public void main(String[] args) { //stub testaamiselle
-        ArticleForm af = new ArticleForm();
-        af.showForm();
-    }
+//    public void main(String[] args) { //stub testaamiselle
+//        ArticleForm af = new ArticleForm();
+//        af.showForm();
+//    }
 
     public void newArticle() {
-        ArticleForm af = new ArticleForm();
+        ArticleForm af = new ArticleForm(this,"","", "","","","","","","","");
         af.showForm();
     }
     public void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
@@ -52,7 +53,7 @@ public class LomakeController {
         article.setNote(note);
         article.setKey(key);
         
-        //tee jotain artikkelille
+      //  tee jotain artikkelille
         addReference(article);
     }
 

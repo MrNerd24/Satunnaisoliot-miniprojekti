@@ -235,7 +235,7 @@ public class BookForm extends javax.swing.JFrame {
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookForm().setVisible(true);
+                setVisible(true);
             }
         });
     }
