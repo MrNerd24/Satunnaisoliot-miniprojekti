@@ -50,11 +50,12 @@ public class BibTexGenerationTest {
         }
         
         swebok = new Book();
-        swebok.setBibTexKey("SWEBOK7");
-        swebok.setPublisher("IEEE Couter Society");
-        swebok.setEditor("Abram, an;More, James W;Bourgue Pierre;Dupuis Robert");
+        swebok.setBibTexKey("test");
+        swebok.setPublisher("åbo akademi");
+        swebok.setEditor("åke åström");
         swebok.setYear("2004");
-        swebok.setTitle("Guide to the Software Engdseering Body of Knownledge");
+        swebok.setTitle("öfäååäåsäöåÖsÄÅÖfdÅjÄÖqÖjtÅÖÄ");
+        swebok.setNote("Ääliö älä lyö, ööliä läikkyy");
         
         for (String line : swebok.toBibTex()) {
             System.out.println(line);
