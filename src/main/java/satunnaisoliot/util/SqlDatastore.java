@@ -4,34 +4,35 @@ import java.sql.*;
 
 public class SqlDatastore {
 
-    private static final String createSql = "CREATE TABLE IF NOT EXISTS Reference (\n" +
-        "id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-        "reference_type varchar,\n" +
-        "bibtex_key varchar,\n" +
-        "address varchar,\n" +
-        "annote varchar,\n" +
-        "author varchar,\n" +
-        "booktitle varchar,\n" +
-        "chapter varchar,\n" +
-        "crossref varchar,\n" +
-        "edition varchar,\n" +
-        "editor varchar,\n" +
-        "howpublished varchar,\n" +
-        "institution varchar,\n" +
-        "journal varchar,\n" +
-        "bibkey varchar,\n" +
-        "month varchar,\n" +
-        "note varchar,\n" +
-        "number varchar,\n" +
-        "organization varchar,\n" +
-        "pages varchar,\n" +
-        "publisher varchar,\n" +
-        "school varchar,\n" +
-        "series varchar,\n" +
-        "title varchar,\n" +
-        "type varchar,\n" +
-        "volume varchar,\n" +
-        "year varchar\n" +
+    // by reference table names should be lowercase....
+    private static final String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS Reference (" +
+        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        "reference_type VARCHAR," +
+        "bibtex_key VARCHAR," +
+        "address VARCHAR," +
+        "annote VARCHAR, " +
+        "author VARCHAR, " +
+        "booktitle VARCHAR, " +
+        "chapter VARCHAR, " +
+        "crossref VARCHAR, " +
+        "edition VARCHAR, " +
+        "editor VARCHAR, " +
+        "howpublished VARCHAR, " +
+        "institution VARCHAR, " +
+        "journal VARCHAR, " +
+        "bibkey VARCHAR, " +
+        "month VARCHAR, " +
+        "note VARCHAR, " +
+        "number VARCHAR, " +
+        "organization VARCHAR, " +
+        "pages VARCHAR, " +
+        "publisher VARCHAR, " +
+        "school VARCHAR, " +
+        "series VARCHAR, " +
+        "title VARCHAR, " +
+        "type VARCHAR, " +
+        "volume VARCHAR, " +
+        "year VARCHAR " +
         ");";
 
     private Connection connection;
@@ -48,7 +49,7 @@ public class SqlDatastore {
             // Because of our use of the IF NOT EXISTS clause,
             // this overwrites nothing.
             Statement stmt = connection.createStatement();
-            stmt.executeQuery(createSql);
+            stmt.executeUpdate(SQL_CREATE_TABLE);
         } catch (SQLException ex) {
             // should do something smarter in this case probably
             System.err.println(ex.toString());
