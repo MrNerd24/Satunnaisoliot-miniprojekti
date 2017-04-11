@@ -8,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import satunnaisoliot.datastructures.database.Dao;
 import satunnaisoliot.datastructures.enums.FieldType;
+import satunnaisoliot.datastructures.enums.ReferenceType;
 import satunnaisoliot.datastructures.interfaces.Reference;
 
 public class ReferenceTable extends AbstractTableModel {
@@ -42,6 +43,9 @@ public class ReferenceTable extends AbstractTableModel {
         "year",
     };
 
+    // This can be used to have one set of column names for accessing the
+    // reference data, and another set of names to display to the user.
+    // The order 0f both arrays has to remain the same.
     private static final String[] guiColumns = {
         "Type",
         "Key",
@@ -78,7 +82,7 @@ public class ReferenceTable extends AbstractTableModel {
         updateReferenceList();
     }
 
-    private void updateReferenceList() {
+    public void updateReferenceList() {
         this.referenceList = dao.findAll();
     }
 
@@ -112,11 +116,22 @@ public class ReferenceTable extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Reference ref = referenceList.get(rowIndex);
-        String colToGet = dbColumns[columnIndex];
-        String colNameAsEnumName = colToGet.toUpperCase(Locale.ROOT);
-        FieldType ft = FieldType.valueOf(colNameAsEnumName);
-        String fieldValue = ref.getField(ft);
-        return fieldValue;
+        String fieldToGet = dbColumns[columnIndex];
+
+        if (fieldToGet.equals("reference_type")) {
+            ReferenceType reftype = ref.getType();
+            return reftype.toString();
+        } else if (fieldToGet.equals("bibtex_key")) {
+            return ref.getBibTexKey();
+        } else if (fieldToGet.equals("bibkey")) {
+            FieldType ft = FieldType.valueOf("KEY");
+            return ref.getField(ft);
+        } else {
+            String fieldNameAsEnumName = fieldToGet.toUpperCase(Locale.ROOT);
+            FieldType ft = FieldType.valueOf(fieldNameAsEnumName);
+            String fieldValue = ref.getField(ft);
+            return fieldValue;
+        }
     }
 
     @Override

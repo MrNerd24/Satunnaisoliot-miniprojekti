@@ -3,6 +3,7 @@ package satunnaisoliot.gui;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
 
@@ -12,32 +13,14 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     public MainWindow() {
-        System.out.println("MainWindow is valid: " + this.isValid());
-        this.setMinimumSize(new Dimension(300, 300));
-        initComponents();
-        System.out.println("MainWindow is valid: " + this.isValid());
+
+        this.setMinimumSize(new Dimension(200, 80));
+        this.setPreferredSize(new Dimension(1024, 500));
+
         datastore = DataManager.getSqlDatastore();
         tableModel = new ReferenceTable(DataManager.getReferenceDao());
-        
-        mainTable = new JTable(tableModel);
-        mainTable.setPreferredScrollableViewportSize(new Dimension(500, 70));
-        mainTable.setFillsViewportHeight(true);
-        System.out.println("Created mainTable");
-        System.out.println("MainWindow is valid: " + this.isValid());
-        tableScroller.add(mainTable);
-        System.out.println("Added mainTable to tableScroller");
-        System.out.println("MainWindow is valid: " + this.isValid());
-        System.out.println("mainTable is visible: " + mainTable.isVisible());
-        
-        this.revalidate();
-        System.out.println("Revalidated");
-        System.out.println("MainWindow is valid: " + this.isValid());
-        System.out.println("mainTable is valid: " + mainTable.isValid());
-        System.out.println("tableScroller is valid: " + tableScroller.isValid());
-        System.out.println("mainTable is visible: " + mainTable.isVisible());
-        
-        System.out.println("tableModel columns: " + tableModel.getColumnCount());
-        System.out.println("tableModel rows: " + tableModel.getRowCount());
+
+        initComponents();
     }
 
     private javax.swing.JButton addButton;
@@ -52,12 +35,12 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton openButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JScrollPane tableScroller;
-    private JTable mainTable;
-    private ReferenceTable tableModel;
+    private JTable mainTable; // tableModel has to be created before mainTable
+    private final ReferenceTable tableModel;
     private SqlDatastore datastore;
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    // <editor-fold defaultstate="collapsed" desc="initComponents()">
     private void initComponents() {
 
         mainToolbar = new javax.swing.JToolBar();
@@ -71,7 +54,6 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         searchButton = new javax.swing.JButton();
-        tableScroller = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ReferenceManager");
@@ -162,9 +144,17 @@ public class MainWindow extends javax.swing.JFrame {
 
         getContentPane().add(mainToolbar, java.awt.BorderLayout.PAGE_START);
 
-        tableScroller.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        tableScroller.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        tableScroller.setViewportBorder(javax.swing.BorderFactory.createEtchedBorder());
+        mainTable = new JTable(tableModel);
+        mainTable.setFillsViewportHeight(true);
+
+        /*for (int i = 0; i < tableModel.getColumnCount(); i++) {
+            TableColumn col = mainTable.getColumnModel().getColumn(i);
+            col.setPreferredWidth(40);
+        }*/
+
+        tableScroller = new javax.swing.JScrollPane(mainTable);
+        tableScroller.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        tableScroller.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         getContentPane().add(tableScroller, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -214,5 +204,9 @@ public class MainWindow extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "This feature is unimplemented.");
     }
 
-}
+    // Call this method after creating/deleting/modifying data.
+    public void updateDataTable() {
+        this.tableModel.updateReferenceList();
+    }
 
+}
