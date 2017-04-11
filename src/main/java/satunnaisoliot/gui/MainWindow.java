@@ -185,7 +185,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
         // Tähän tulee export-ikkunan luonti.
-        showUnimplementedFeatureMessageBox();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new ExportTexWindow().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_exportButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed

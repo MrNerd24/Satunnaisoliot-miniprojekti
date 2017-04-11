@@ -61,13 +61,13 @@ public class ReferenceDao implements Dao {
 
     }
 
-    public List<GenericReference> findAll() throws SQLException {
-        List<GenericReference> references = new ArrayList<>();
+    public List<Reference> findAll() throws SQLException {
+        List<Reference> references = new ArrayList<>();
         ResultSet rs = this.datastore.query("SELECT * FROM Reference");
 
         while (rs.next()) {
             String referenceType = rs.getString("reference_type");
-            GenericReference ref;
+            Reference ref;
 
             switch (referenceType) {
                 case "article":

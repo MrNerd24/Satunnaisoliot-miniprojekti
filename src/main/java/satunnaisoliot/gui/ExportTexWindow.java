@@ -5,12 +5,20 @@
  */
 package satunnaisoliot.gui;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import satunnaisoliot.util.BibFileWriter;
+import satunnaisoliot.util.DataManager;
+
 /**
  *
  * @author jambo
  */
 public class ExportTexWindow extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ExportTexWindow
      */
@@ -28,16 +36,16 @@ public class ExportTexWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        filePath = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Give file path and name");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        filePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                filePathActionPerformed(evt);
             }
         });
 
@@ -58,7 +66,7 @@ public class ExportTexWindow extends javax.swing.JFrame {
                 .addGap(119, 119, 119))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -71,7 +79,7 @@ public class ExportTexWindow extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
                 .addGap(32, 32, 32)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
@@ -80,12 +88,30 @@ public class ExportTexWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
+        
+    }//GEN-LAST:event_filePathActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        //implement exporting action
+        String fPath = filePath.getText();
+        
+        
+        File file= new File(fPath);
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(ExportTexWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        try {
+            BibFileWriter.writeToFile(file, DataManager.getReferenceDao().findAll());
+        } catch (SQLException ex) {
+            Logger.getLogger(ExportTexWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -124,8 +150,8 @@ public class ExportTexWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField filePath;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
