@@ -80,8 +80,13 @@ public abstract class GenericReference implements Reference {
             for (int i = 1; i < values.length; i++) {
                 value = value + " and " + values[i] ;
             }
+<<<<<<< HEAD
             value = BibtexTextTransform.texifyString(value);
             lines.add(field.toString().toLowerCase() + " = {" + value + "}");
+=======
+            value = replaceBibTexSpecialChars(value);
+            lines.add(field.toString().toLowerCase() + " = {" + value + "},");
+>>>>>>> refs/remotes/origin/tietorakenteet
         }
         lines.add("}");
         return lines;
