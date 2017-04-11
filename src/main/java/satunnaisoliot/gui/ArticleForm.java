@@ -6,6 +6,7 @@
 package satunnaisoliot.gui;
 
 import satunnaisoliot.datastructures.references.Article;
+import satunnaisoliot.util.BibTexKeyManager;
 
 /**
  *
