@@ -71,7 +71,7 @@ public abstract class GenericReference implements Reference {
 
         for (FieldType field : FieldType.values()) {
             String content = getField(field);
-            if (content == null) {
+            if (content == null || content.isEmpty()) {
                 continue;
             }
             String[] values = content.split(";");

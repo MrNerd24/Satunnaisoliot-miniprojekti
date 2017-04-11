@@ -34,6 +34,7 @@ public class BibFileWriter {
             }
             writer.println();
         }
+        writer.close();
     }
     
 }

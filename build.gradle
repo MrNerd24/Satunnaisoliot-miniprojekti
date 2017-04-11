@@ -23,6 +23,8 @@ project.ext {
     cucumberVersion = '1.2.5'
 }
 
+
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
@@ -37,8 +39,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //cucumber
     testCompile 'info.cukes:cucumber-java:' + cucumberVersion
-    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion   
-    
+    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
+
 }
 
 jar {
@@ -52,6 +54,10 @@ apply plugin: 'application'
 //mainClassName = 'ReferenceManager.Main'
 //mainClassName = 'satunnaisoliot.lomake.LomakeController'
 mainClassName = 'satunnaisoliot.Main'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = 'satunnaisoliot.Main'
+}
 
 run {
     standardInput = System.in
