@@ -2,16 +2,18 @@ package satunnaisoliot.datastructures.database;
 
 import satunnaisoliot.SqlDatastore;
 import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.enums.ReferenceType;
+import satunnaisoliot.datastructures.generic.GenericReference;
 import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.datastructures.references.Article;
+import satunnaisoliot.datastructures.references.Book;
+import satunnaisoliot.datastructures.references.Proceedings;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by laura on 6.4.2017.
- */
 public class ReferenceDao implements Dao {
     private SqlDatastore datastore;
 
@@ -42,11 +44,42 @@ public class ReferenceDao implements Dao {
                     stmt.executeUpdate();
                 }
             }
+            rs.close();
             stmt.close();
         } catch (SQLException ex) {
             System.err.println(ex.toString());
         }
 
+    }
+
+    public List<GenericReference> findAll() throws SQLException {
+        List<GenericReference> references = new ArrayList<>();
+        ResultSet rs = this.datastore.query("SELECT * FROM Reference");
+
+        while(rs.next()) {
+            String referenceType = rs.getString("reference_type");
+            GenericReference ref;
+
+            switch(referenceType) {
+                case "article": ref = new Article();
+                                break;
+                case "book":    ref = new Book();
+                                break;
+                case "proceedings": ref = new Proceedings();
+                                    break;
+                default: throw new UnsupportedOperationException("Reference type not supported yet.");
+            }
+
+            for(FieldType field : FieldType.values()) {
+                String column = field.toString().toLowerCase();
+                String content = rs.getString(column);
+                ref.setField(field, content);
+            }
+            references.add(ref);
+        }
+        rs.close();
+
+        return references;
     }
 
 }
