@@ -14,7 +14,7 @@ import satunnaisoliot.datastructures.database.ReferenceDao;
 public class DataManager {
 
     private static SqlDatastore datastore = null;
-    private static ReferenceDao dao = new ReferenceDao(datastore);
+    private static ReferenceDao dao = null;
 
     public static SqlDatastore getSqlDatastore() {
         if (datastore == null) {
