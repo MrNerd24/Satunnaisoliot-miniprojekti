@@ -18,7 +18,7 @@ import satunnaisoliot.util.DataManager;
  * @author jambo
  */
 public class ExportTexWindow extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form ExportTexWindow
      */
@@ -89,29 +89,26 @@ public class ExportTexWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
-        
+
     }//GEN-LAST:event_filePathActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //implement exporting action
         String fPath = filePath.getText();
-        
-        
-        File file= new File(fPath);
-        if(!file.exists()){
+
+        File file = new File(fPath);
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
                 Logger.getLogger(ExportTexWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
-        try {
-            BibFileWriter.writeToFile(file, DataManager.getReferenceDao().findAll());
-        } catch (SQLException ex) {
-            Logger.getLogger(ExportTexWindow.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+
+        BibFileWriter.writeToFile(file, DataManager.getReferenceDao().findAll());
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
