@@ -55,6 +55,8 @@ public class LomakeControllerTest {
     @Test
     public void testSaveArticle() {
         System.out.println("saveArticle");
+        
+        String bibkey = "asd";
         String author = "asd";
         String title = "asd";
         String journal = "asd";
@@ -65,7 +67,7 @@ public class LomakeControllerTest {
         String month = "0";
         String note = "0";
         String key = "0";
-        lc.saveArticle(author, title, journal, year, volume, number, pages, month, note, key);
+        lc.saveArticle(bibkey,author, title, journal, year, volume, number, pages, month, note, key);
     }
 
     /**
@@ -82,6 +84,7 @@ public class LomakeControllerTest {
     @Test
     public void testSaveBook() {
         System.out.println("saveBook");
+        String bibkey = "asd";
         String author = "asd";
         String title = "asd";
         String publisher = "asd";
@@ -92,7 +95,7 @@ public class LomakeControllerTest {
         String month = "0";
         String note = "0";
         String key = "0";
-        lc.saveBook(author, title, publisher, year, volume, series, address, month, note, key);
+        lc.saveBook(bibkey, author, title, publisher, year, volume, series, address, month, note, key);
     }
 
     /**
@@ -110,6 +113,7 @@ public class LomakeControllerTest {
     @Test
     public void testSaveProceeding() {
         System.out.println("saveProceeding");
+        String bibkey = "asdasd";
         String title = "asdasd";
         String year = "0";
         String editor = "asdad";
@@ -121,7 +125,7 @@ public class LomakeControllerTest {
         String organization = "0";
         String note = "0";
         String key = "0";
-        lc.saveProceeding(title, year, editor, volume, series, address, month, publisher, organization, note, key);
+        lc.saveProceeding(bibkey, title, year, editor, volume, series, address, month, publisher, organization, note, key);
     }
     
 }

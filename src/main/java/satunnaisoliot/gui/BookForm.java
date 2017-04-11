@@ -20,11 +20,12 @@ public class BookForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi kirja");
     }
-    public BookForm(LomakeController lc, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+    public BookForm(LomakeController lc,String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         initComponents();
         this.setTitle("Uusi kirja");
     }
     public void setAllFields(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+        BibtexkeyField.setText(bibkey);
         authorField.setText(author);
         titleField.setText(title);
         publisherField.setText(publisher);
@@ -38,18 +39,17 @@ public class BookForm extends javax.swing.JFrame {
     }
     public String[] getAllFields() {
         String[] list = new String[11];
-        list[0] = authorField.getText();
-        list[1] = titleField.getText();
-        list[2] = publisherField.getText();
-        list[3] = yearField.getText();
-        list[4] = volumeField.getText();
-        list[5] = seriesField.getText();
-        list[6] = addressField.getText();
-        list[7] = monthField.getText();
-        list[8] = noteField.getText();
-        list[9] = keyField.getText();
-        list[10] = bibtexKeyField.getText();
-
+        list[0] = BibtexkeyField.getText();
+        list[1] = authorField.getText();
+        list[2] = titleField.getText();
+        list[3] = publisherField.getText();
+        list[4] = yearField.getText();
+        list[5] = volumeField.getText();
+        list[6] = seriesField.getText();
+        list[7] = addressField.getText();
+        list[8] = monthField.getText();
+        list[9] = noteField.getText();
+        list[10] = keyField.getText();
         return list;
     }
     /**
@@ -252,7 +252,7 @@ public class BookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
-        lc.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9]);
+        lc.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {

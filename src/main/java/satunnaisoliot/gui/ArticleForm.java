@@ -41,18 +41,19 @@ public class ArticleForm extends javax.swing.JFrame {
         bibtexKeyField.setText(bibkey);
     }
     public String[] getAllFields() {
-        String[] list = new String[11];
-        list[0] = authorField.getText();
-        list[1] = titleField.getText();
-        list[2] = journalField.getText();
-        list[3] = yearField.getText();
-        list[4] = volumeField.getText();
-        list[5] = numberField.getText();
-        list[6] = pagesField.getText();
-        list[7] = monthField.getText();
-        list[8] = noteField.getText();
-        list[9] = keyField.getText();
-        list[10] = bibtexKeyField.getText();
+        String[] list = new String[12];
+        list[0]= BibtexkeyField.getText();
+        list[1] = authorField.getText();
+        list[2] = titleField.getText();
+        list[3] = journalField.getText();
+        list[4] = yearField.getText();
+        list[5] = volumeField.getText();
+        list[6] = numberField.getText();
+        list[7] = pagesField.getText();
+        list[8] = monthField.getText();
+        list[9] = noteField.getText();
+        list[10] = keyField.getText();
+        list[11]= BibtexkeyField.getText();
         return list;
     }
     /**
