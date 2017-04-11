@@ -1,7 +1,7 @@
 package satunnaisoliot.gui;
 
 import javax.swing.JOptionPane;
-import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.util.SqlDatastore;
 
 public class MainWindow extends javax.swing.JFrame {
 

@@ -1,4 +1,4 @@
-package satunnaisoliot;
+package satunnaisoliot.util;
 
 import java.text.CharacterIterator;
 import java.text.Normalizer;

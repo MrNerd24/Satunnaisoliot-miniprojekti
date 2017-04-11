@@ -7,7 +7,7 @@ package satunnaisoliot.gui;
 
 import satunnaisoliot.datastructures.database.ReferenceDao;
 import satunnaisoliot.datastructures.interfaces.Reference;
-import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.datastructures.references.Article;
 import satunnaisoliot.datastructures.references.Book;
 import satunnaisoliot.datastructures.references.Proceedings;

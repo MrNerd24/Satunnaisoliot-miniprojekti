@@ -1,7 +1,7 @@
 
 package satunnaisoliot.gui;
 
-import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.util.SqlDatastore;
 
 public class SelectReferenceTypeWin extends javax.swing.JFrame {
 

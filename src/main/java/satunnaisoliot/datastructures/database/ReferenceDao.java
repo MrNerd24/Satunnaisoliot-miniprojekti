@@ -1,6 +1,6 @@
 package satunnaisoliot.datastructures.database;
 
-import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.datastructures.enums.FieldType;
 import satunnaisoliot.datastructures.generic.GenericReference;
 import satunnaisoliot.datastructures.interfaces.Reference;
@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReferenceDao implements Dao {
+
     private SqlDatastore datastore;
 
     public ReferenceDao(SqlDatastore datastore) {
         this.datastore = datastore;
     }
-    
+
     @Override
     public void addReference(Reference ref) {
         String type = ref.getType().toString().toLowerCase();
@@ -30,7 +31,7 @@ public class ReferenceDao implements Dao {
             stmt.setString(1, type);
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
-            if(rs.next()) {
+            if (rs.next()) {
                 int id = rs.getInt(1);
 
                 for (FieldType field : FieldType.values()) {
@@ -39,10 +40,18 @@ public class ReferenceDao implements Dao {
                     if (content == null) {
                         continue;
                     }
+                    if (column == "key") {
+                        column = "bibkey";
+                    }
                     stmt = this.datastore.getNewPreparedStatement("UPDATE Reference SET " + column + " = ? WHERE id = " + id);
                     stmt.setString(1, content);
                     stmt.executeUpdate();
                 }
+
+                stmt = this.datastore.getNewPreparedStatement("UPDATE Reference SET bibtex_key = ? WHERE id = " + id);
+                stmt.setString(1, ref.getBibTexKey());
+                stmt.executeUpdate();
+
             }
             rs.close();
             stmt.close();
@@ -56,21 +65,25 @@ public class ReferenceDao implements Dao {
         List<GenericReference> references = new ArrayList<>();
         ResultSet rs = this.datastore.query("SELECT * FROM Reference");
 
-        while(rs.next()) {
+        while (rs.next()) {
             String referenceType = rs.getString("reference_type");
             GenericReference ref;
 
-            switch(referenceType) {
-                case "article": ref = new Article();
-                                break;
-                case "book":    ref = new Book();
-                                break;
-                case "proceedings": ref = new Proceedings();
-                                    break;
-                default: throw new UnsupportedOperationException("Reference type not supported yet.");
+            switch (referenceType) {
+                case "article":
+                    ref = new Article();
+                    break;
+                case "book":
+                    ref = new Book();
+                    break;
+                case "proceedings":
+                    ref = new Proceedings();
+                    break;
+                default:
+                    throw new UnsupportedOperationException("Reference type not supported yet.");
             }
 
-            for(FieldType field : FieldType.values()) {
+            for (FieldType field : FieldType.values()) {
                 String column = field.toString().toLowerCase();
                 String content = rs.getString(column);
                 ref.setField(field, content);

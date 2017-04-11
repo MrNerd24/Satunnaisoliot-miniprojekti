@@ -1,7 +1,7 @@
 package satunnaisoliot.datastructures.generic;
 
 import java.util.ArrayList;
-import satunnaisoliot.BibtexTextTransform;
+import satunnaisoliot.util.BibtexTextTransform;
 import satunnaisoliot.datastructures.enums.FieldType;
 import satunnaisoliot.datastructures.interfaces.Reference;
 import java.util.EnumMap;

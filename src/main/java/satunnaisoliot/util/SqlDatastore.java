@@ -1,4 +1,4 @@
-package satunnaisoliot;
+package satunnaisoliot.util;
 
 import java.sql.*;
 

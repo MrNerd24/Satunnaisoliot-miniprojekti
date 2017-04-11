@@ -5,7 +5,7 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.gui.LomakeController;
 import org.junit.After;
 import org.junit.AfterClass;

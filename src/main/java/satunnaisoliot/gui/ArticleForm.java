@@ -8,7 +8,7 @@ package satunnaisoliot.gui;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.datastructures.database.ReferenceDao;
 import satunnaisoliot.datastructures.enums.FieldType;
 import satunnaisoliot.datastructures.interfaces.Reference;

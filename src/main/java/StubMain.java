@@ -1,3 +1,4 @@
+import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.*;
 import java.io.File;
 import java.sql.ResultSet;
