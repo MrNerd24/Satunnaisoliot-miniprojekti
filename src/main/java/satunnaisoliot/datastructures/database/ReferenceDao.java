@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import satunnaisoliot.util.DataManager;
 
 public class ReferenceDao implements Dao {
@@ -62,42 +64,46 @@ public class ReferenceDao implements Dao {
 
     }
 
-    public List<Reference> findAll() throws SQLException {
-        List<Reference> references = new ArrayList<>();
-        ResultSet rs = this.datastore.query("SELECT * FROM Reference");
-
-        while (rs.next()) {
-            String referenceType = rs.getString("reference_type");
-            Reference ref;
-
-            switch (referenceType) {
-                case "article":
-                    ref = new Article();
-                    break;
-                case "book":
-                    ref = new Book();
-                    break;
-                case "proceedings":
-                    ref = new Proceedings();
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Reference type not supported yet.");
-            }
-
-            for (FieldType field : FieldType.values()) {
-                String column = field.toString().toLowerCase();
-                if (column.equals("key")) {
-                    column = "bibkey";
+    public List<Reference> findAll() {
+        try {
+            List<Reference> references = new ArrayList<>();
+            ResultSet rs = this.datastore.query("SELECT * FROM Reference");
+            
+            while (rs.next()) {
+                String referenceType = rs.getString("reference_type");
+                Reference ref;
+                
+                switch (referenceType) {
+                    case "article":
+                        ref = new Article();
+                        break;
+                    case "book":
+                        ref = new Book();
+                        break;
+                    case "proceedings":
+                        ref = new Proceedings();
+                        break;
+                    default:
+                        throw new UnsupportedOperationException("Reference type not supported yet.");
                 }
-                String content = rs.getString(column);
-                ref.setField(field, content);
+                
+                for (FieldType field : FieldType.values()) {
+                    String column = field.toString().toLowerCase();
+                    if (column.equals("key")) {
+                        column = "bibkey";
+                    }
+                    String content = rs.getString(column);
+                    ref.setField(field, content);
+                }
+                ref.setBibTexKey(rs.getString("bibtex_key"));
+                references.add(ref);
             }
-            ref.setBibTexKey(rs.getString("bibtex_key"));
-            references.add(ref);
+            rs.close();
+            
+            return references;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
         }
-        rs.close();
-
-        return references;
     }
 
 }

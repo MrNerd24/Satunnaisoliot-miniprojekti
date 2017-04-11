@@ -7,6 +7,7 @@ package satunnaisoliot.util;
 
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import satunnaisoliot.datastructures.database.ReferenceDao;
@@ -18,29 +19,15 @@ import satunnaisoliot.datastructures.interfaces.Reference;
  */
 public class BibTexKeyManager {
     
-    private static HashSet<String> keys = null;
     
     public static boolean hasKey(String bibkey) {
-        if (keys == null) {
-            pullKeysFromDatabase();
-        }
-        return keys.contains(bibkey);
-    }
-
-    public static void pullKeysFromDatabase() {
-        keys = new HashSet<String>();
-        ReferenceDao dao = DataManager.getReferenceDao();
-        try {
-            for (Reference ref : dao.findAll()) {
-                keys.add(ref.getBibTexKey());
+        List<Reference> references = DataManager.getReferenceDao().findAll();
+        for (Reference reference : references) {
+            if (reference.getBibTexKey().equals(bibkey)) {
+                return true;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(BibTexKeyManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public static void addKey(String bibKey) {
-        keys.add(bibKey);
+        return false;
     }
     
 }
