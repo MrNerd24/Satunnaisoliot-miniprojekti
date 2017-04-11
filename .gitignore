@@ -6,4 +6,5 @@ build/
 .nb-gradle-properties
 .idea
 referenceDB.db
+test.bib
 
