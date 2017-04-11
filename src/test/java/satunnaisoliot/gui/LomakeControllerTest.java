@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class LomakeControllerTest {
-    LomakeController lc = new LomakeController(new SqlDatastore("testDB.db"));
+    LomakeController lc = new LomakeController();
     
     public LomakeControllerTest() {
     }

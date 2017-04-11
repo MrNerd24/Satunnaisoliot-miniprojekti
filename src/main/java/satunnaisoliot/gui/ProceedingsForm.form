@@ -86,6 +86,7 @@
                       <Component id="titleLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="editorLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="organizationLabel" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="bibtexKeyLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -100,6 +101,7 @@
                       <Component id="noteField" min="-2" pref="300" max="-2" attributes="0"/>
                       <Component id="keyField" min="-2" pref="300" max="-2" attributes="0"/>
                       <Component id="organizationField" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="bibtexKeyField" min="-2" pref="300" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -109,6 +111,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="bibtexKeyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bibtexKeyField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="titleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="titleField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="titleLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -117,7 +125,7 @@
                       <Component id="yearLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="yearField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="editorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="editorField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -246,6 +254,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Key:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="bibtexKeyLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="BibTeX Key:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="bibtexKeyField">
         </Component>
       </SubComponents>
     </Container>

@@ -1,12 +1,12 @@
 package satunnaisoliot.datastructures.generic;
 
 import java.util.ArrayList;
-import satunnaisoliot.util.BibtexTextTransform;
 import satunnaisoliot.datastructures.enums.FieldType;
 import satunnaisoliot.datastructures.interfaces.Reference;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
+import satunnaisoliot.util.BibtexTextTransform;
 
 /**
  *
@@ -78,11 +78,10 @@ public abstract class GenericReference implements Reference {
 
             String value = values[0];
             for (int i = 1; i < values.length; i++) {
-                value = value + " and " + values[i];
+                value = value + " and " + values[i] ;
             }
             value = BibtexTextTransform.texifyString(value);
             lines.add(field.toString().toLowerCase() + " = {" + value + "}");
-
         }
         lines.add("}");
         return lines;
