@@ -188,7 +188,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="pagesLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pages"/>
+        <Property name="text" type="java.lang.String" value="Pages:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="monthLabel">

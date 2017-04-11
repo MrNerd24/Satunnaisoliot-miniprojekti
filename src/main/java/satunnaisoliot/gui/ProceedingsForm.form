@@ -73,8 +73,8 @@
                       <Component id="publisherLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="titleLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="editorLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="organizationLabel" min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="bibtexKeyLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="organizationLabel" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -204,7 +204,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="addressLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Address"/>
+            <Property name="text" type="java.lang.String" value="Address:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="addressField">
