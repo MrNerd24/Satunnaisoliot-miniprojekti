@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import satunnaisoliot.util.DataManager;
 
 public class ReferenceDao implements Dao {
 
@@ -27,7 +28,7 @@ public class ReferenceDao implements Dao {
         String type = ref.getType().toString().toLowerCase();
 
         try {
-            PreparedStatement stmt = this.datastore.getNewPreparedStatement("INSERT INTO Reference (reference_type) VALUES (?)");
+            PreparedStatement stmt = DataManager.getSqlDatastore().getNewPreparedStatement("INSERT INTO Reference (reference_type) VALUES (?)");
             stmt.setString(1, type);
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
