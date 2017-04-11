@@ -5,3 +5,5 @@ build/
 .nb-gradle/
 .nb-gradle-properties
 .idea
+referenceDB.db
+
