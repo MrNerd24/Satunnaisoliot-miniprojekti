@@ -54,7 +54,7 @@ public class LomakeController {
     }
 
     public void newBook() {
-        BookForm bf = new BookForm();
+        BookForm bf = new BookForm(this,"","", "","","","","","","","","");
         bf.showForm();
     }
     public void saveBook(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
@@ -77,7 +77,7 @@ public class LomakeController {
     }
 
     public void newProceeding() {
-        ProceedingsForm pf = new ProceedingsForm();
+        ProceedingsForm pf = new ProceedingsForm(this,"","", "","","","","","","","","","");
         pf.showForm();
     }
     

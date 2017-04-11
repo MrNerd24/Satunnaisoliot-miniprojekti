@@ -35,7 +35,7 @@
                                   <Component id="noteLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="monthLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="pagesLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="numberLabel" alignment="0" pref="70" max="32767" attributes="0"/>
+                                  <Component id="numberLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="volumeLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="yearLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="journalLabel" alignment="0" max="32767" attributes="0"/>

@@ -5,25 +5,32 @@
  */
 package satunnaisoliot.gui;
 
+import satunnaisoliot.util.BibTexKeyManager;
+
 /**
  *
  * @author Peter
  */
 public class BookForm extends javax.swing.JFrame {
+
     LomakeController lc;
 
     /**
      * Creates new form ArticleForm
      */
-    private String[] list = new String[10];
+    private String[] list = new String[11];
+
     public BookForm() {
         initComponents();
         this.setTitle("Uusi kirja");
     }
-    public BookForm(LomakeController lc,String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+
+    public BookForm(LomakeController lc, String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+        this.lc=lc;
         initComponents();
         this.setTitle("Uusi kirja");
     }
+
     public void setAllFields(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         bibtexKeyField.setText(bibkey);
         authorField.setText(author);
@@ -37,6 +44,7 @@ public class BookForm extends javax.swing.JFrame {
         noteField.setText(note);
         keyField.setText(key);
     }
+
     public String[] getAllFields() {
         String[] list = new String[11];
         list[0] = bibtexKeyField.getText();
@@ -52,6 +60,7 @@ public class BookForm extends javax.swing.JFrame {
         list[10] = keyField.getText();
         return list;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -234,12 +243,19 @@ public class BookForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        setAllFields("","","","","","","","","","","");
+        setAllFields("", "", "", "", "", "", "", "", "", "", "");
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
-        lc.saveBook(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
-        this.dispose();
+     
+        if (!BibTexKeyManager.hasKey(list[0])) {
+            lc.saveBook(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
+            this.dispose();
+        } else {
+            new ErrorWindow("That BibTeX key allready exists.").setVisible(true);
+        }
+
+
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {

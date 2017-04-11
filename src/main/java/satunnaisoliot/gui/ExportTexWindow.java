@@ -39,7 +39,7 @@ public class ExportTexWindow extends javax.swing.JFrame {
         filePath = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Give file path and name");
 
@@ -100,14 +100,15 @@ public class ExportTexWindow extends javax.swing.JFrame {
         if (!file.exists()) {
             try {
                 file.createNewFile();
+                
             } catch (IOException ex) {
                 Logger.getLogger(ExportTexWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
         }
 
         BibFileWriter.writeToFile(file, DataManager.getReferenceDao().findAll());
-
+        this.dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
