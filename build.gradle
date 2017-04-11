@@ -10,8 +10,6 @@
      id 'com.github.kt3k.coveralls' version '2.8.1'
  }
 
-compileJava.options.encoding = 'UTF-8'
-compileTestJava.options.encoding = 'UTF-8'
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
@@ -67,6 +65,9 @@ jacocoTestReport {
         html.enabled = true
     }
 }
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 // just leave this in here at the end please
 /* vim: set shiftwidth=4 tabstop=4 expandtab : */
