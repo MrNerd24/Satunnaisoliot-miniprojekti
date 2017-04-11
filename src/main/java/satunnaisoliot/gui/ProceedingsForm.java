@@ -22,11 +22,12 @@ public class ProceedingsForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi proceeding");
     }
-    public ProceedingsForm(LomakeController lc, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+    public ProceedingsForm(LomakeController lc,String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         initComponents();
         this.setTitle("Uusi proceeding");
     }
-    public void setAllFields(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+    public void setAllFields(String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+        BibtexkeyField.setText(bibkey);
         titleField.setText(title);
         yearField.setText(year);
         editorField.setText(editor);
@@ -41,17 +42,18 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }
     public String[] getAllFields() {
         String[] list = new String[11];
-        list[0] = titleField.getText();
-        list[1] = yearField.getText();
-        list[2] = editorField.getText();
-        list[3] = volumeField.getText();
-        list[4] = seriesField.getText();
-        list[5] = addressField.getText();
-        list[6] = monthField.getText();
-        list[7] = publisherField.getText();
-        list[8] = organizationField.getText();
-        list[9] = noteField.getText();
-        list[10] = keyField.getText();
+        list[0] = BibtexkeyField.getText();
+        list[1] = titleField.getText();
+        list[2] = yearField.getText();
+        list[3] = editorField.getText();
+        list[4] = volumeField.getText();
+        list[5] = seriesField.getText();
+        list[6] = addressField.getText();
+        list[7] = monthField.getText();
+        list[8] = publisherField.getText();
+        list[9] = organizationField.getText();
+        list[10] = noteField.getText();
+        list[11] = keyField.getText();
         return list;
     }
     /**
@@ -258,11 +260,11 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        setAllFields("","","","","","","","","","","");
+        setAllFields("","","","","","","","","","","","");
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
-        lc.saveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
+        lc.saveProceeding(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10],list[11]);
         this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
 

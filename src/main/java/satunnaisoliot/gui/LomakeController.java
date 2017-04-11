@@ -31,10 +31,10 @@ public class LomakeController {
 //    }
 
     public void newArticle() {
-        ArticleForm af = new ArticleForm(this,"","", "","","","","","","","");
+        ArticleForm af = new ArticleForm(this,"","", "","","","","","","","","");
         af.showForm();
     }
-    public void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
+    public void saveArticle(String bibkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         Article article = new Article();
         article.setAuthor(author);
         article.setTitle(title);
@@ -46,6 +46,7 @@ public class LomakeController {
         article.setMonth(month);
         article.setNote(note);
         article.setKey(key);
+        article.setBibTexKey(bibkey);
         
       //  tee jotain artikkelille
         addReference(article);
@@ -55,7 +56,7 @@ public class LomakeController {
         BookForm bf = new BookForm();
         bf.showForm();
     }
-    public void saveBook(String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+    public void saveBook(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         
         Book book = new Book();
         book.setAuthor(author);
@@ -68,6 +69,7 @@ public class LomakeController {
         book.setMonth(month);
         book.setNote(note);
         book.setKey(key);
+        book.setBibTexKey(bibkey);
         
         //tee jotain kirjalle
         addReference(book);
@@ -78,7 +80,7 @@ public class LomakeController {
         pf.showForm();
     }
     
-    public void saveProceeding(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+    public void saveProceeding(String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         
         Proceedings proceedings = new Proceedings();
         proceedings.setTitle(title);
@@ -92,6 +94,7 @@ public class LomakeController {
         proceedings.setMonth(month);
         proceedings.setNote(note);
         proceedings.setKey(key);
+        proceedings.setBibTexKey(bibkey);
         
         //tee jotain proceedingille
 
