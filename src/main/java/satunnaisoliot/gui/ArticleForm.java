@@ -13,6 +13,7 @@ import satunnaisoliot.util.BibTexKeyManager;
  * @author Peter
  */
 public class ArticleForm extends javax.swing.JFrame {
+
     LomakeController lc;
 //    SqlDatastore db;
 
@@ -23,11 +24,13 @@ public class ArticleForm extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Uusi artikkeli");
     }
-    public ArticleForm(LomakeController loc,String bibtexkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
+
+    public ArticleForm(LomakeController loc, String bibtexkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         this.lc = loc;
         initComponents();
         this.setTitle("Uusi artikkeli");
     }
+
     public void setAllFields(String bibkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         authorField.setText(author);
         titleField.setText(title);
@@ -41,9 +44,10 @@ public class ArticleForm extends javax.swing.JFrame {
         keyField.setText(key);
         bibtexKeyField.setText(bibkey);
     }
+
     public String[] getAllFields() {
         String[] list = new String[11];
-        list[0]= bibtexKeyField.getText();
+        list[0] = bibtexKeyField.getText();
         list[1] = authorField.getText();
         list[2] = titleField.getText();
         list[3] = journalField.getText();
@@ -56,6 +60,7 @@ public class ArticleForm extends javax.swing.JFrame {
         list[10] = keyField.getText();
         return list;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -242,32 +247,35 @@ public class ArticleForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        setAllFields("","","","","","","","","","","");
+        setAllFields("", "", "", "", "", "", "", "", "", "", "");
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = this.getAllFields();
-        
-        Article article = new Article();
-        article.setAuthor(list[0]);
-        article.setTitle(list[1]);
-        article.setJournal(list[2]);
-        article.setYear(list[3]);
-        article.setVolume(list[4]);
-        article.setNumber(list[5]);
-        article.setPages(list[6]);
-        article.setMonth(list[7]);
-        article.setNote(list[8]);
-        article.setKey(list[9]);
-        
-        article.setBibTexKey(list[10]);
+
+//        Article article = new Article();
+//        article.setAuthor(list[0]);
+//        article.setTitle(list[1]);
+//        article.setJournal(list[2]);
+//        article.setYear(list[3]);
+//        article.setVolume(list[4]);
+//        article.setNumber(list[5]);
+//        article.setPages(list[6]);
+//        article.setMonth(list[7]);
+//        article.setNote(list[8]);
+//        article.setKey(list[9]);
+//        
+//        article.setBibTexKey(list[10]);
 //        for(int i =0; i<list.length;i++){ 
 //            if(list[i].equals("")){
 //                list[i] = " ";
 //            }
 //        }
-        lc.saveArticle(list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10]);
+        if (!BibTexKeyManager.hasKey(list[10])) {
+            lc.saveArticle(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
+            this.dispose();
+        }
+
 //        addReference(article);
-        this.dispose();
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
