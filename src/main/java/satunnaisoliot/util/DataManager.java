@@ -12,17 +12,24 @@ import satunnaisoliot.datastructures.database.ReferenceDao;
  * @author juuso_j0pbwen
  */
 public class DataManager {
-    
-    private static SqlDatastore datastore = new SqlDatastore("referenceDB.db");
+
+    private static SqlDatastore datastore = null;
     private static ReferenceDao dao = new ReferenceDao(datastore);
 
     public static SqlDatastore getSqlDatastore() {
+        if (datastore == null) {
+            datastore = new SqlDatastore("referenceDB.db");
+        }
         return datastore;
     }
+
     public static ReferenceDao getReferenceDao() {
+        if (dao == null) {
+            dao = new ReferenceDao(getSqlDatastore());
+        }
         return dao;
     }
-    
+
     public static void setDatabaseFileName(String name) {
         datastore = new SqlDatastore(name);
         dao = new ReferenceDao(datastore);

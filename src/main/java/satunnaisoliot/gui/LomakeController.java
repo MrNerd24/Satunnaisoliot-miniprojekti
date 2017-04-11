@@ -11,6 +11,7 @@ import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.datastructures.references.Article;
 import satunnaisoliot.datastructures.references.Book;
 import satunnaisoliot.datastructures.references.Proceedings;
+import satunnaisoliot.util.DataManager;
 
 /**
  *
@@ -102,7 +103,7 @@ public class LomakeController {
     }
 
     public void addReference(Reference ref) {
-        ReferenceDao rd = new ReferenceDao(this.db);
-            rd.addReference(ref);
+        
+            DataManager.getReferenceDao().addReference(ref);
     }
 }
