@@ -22,4 +22,9 @@ public class DataManager {
     public static ReferenceDao getReferenceDao() {
         return dao;
     }
+    
+    public static void setDatabaseFileName(String name) {
+        datastore = new SqlDatastore(name);
+        dao = new ReferenceDao(datastore);
+    }
 }
