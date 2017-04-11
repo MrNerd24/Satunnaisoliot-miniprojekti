@@ -1,163 +1,112 @@
 package satunnaisoliot.datastructures.references;
 
-import java.util.List;
 import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.fields.Address;
-import satunnaisoliot.datastructures.fields.Editor;
-import satunnaisoliot.datastructures.fields.Month;
-import satunnaisoliot.datastructures.fields.Note;
-import satunnaisoliot.datastructures.fields.Title;
-import satunnaisoliot.datastructures.fields.Volume;
-import satunnaisoliot.datastructures.fields.Number;
-import satunnaisoliot.datastructures.fields.Organization;
-import satunnaisoliot.datastructures.fields.Publisher;
-import satunnaisoliot.datastructures.fields.Series;
-import satunnaisoliot.datastructures.fields.Year;
+import satunnaisoliot.datastructures.enums.ReferenceType;
 import satunnaisoliot.datastructures.generic.GenericReference;
-import satunnaisoliot.datastructures.interfaces.Field;
+
 
 public class Proceedings extends GenericReference {
 
-    public Proceedings(Title title, Year year) {
-        addField(FieldType.TITLE, title);
-        addField(FieldType.YEAR, year);
+    public void setTitle(String value) {
+        setField(FieldType.TITLE, value);
     }
 
-    public void setTitle(int index, Title value) {
-        setField(FieldType.TITLE, index, value);
+    public String getTitle() {
+        return getField(FieldType.TITLE);
     }
 
-    public void addTitle(Title value) {
-        addField(FieldType.TITLE, value);
+    public void setYear(String value) {
+        setField(FieldType.YEAR, value);
     }
 
-    public List<Field> getTitles() {
-        return getFields(FieldType.TITLE);
+    public String getYear() {
+        return getField(FieldType.YEAR);
     }
 
-    public void setYear(int index, Year value) {
-        setField(FieldType.YEAR, index, value);
+    public void setEditor(String value) {
+        setField(FieldType.EDITOR, value);
     }
 
-    public void addYear(Year value) {
-        addField(FieldType.YEAR, value);
+    public String getEditor() {
+        return getField(FieldType.EDITOR);
     }
 
-    public List<Field> getYears() {
-        return getFields(FieldType.YEAR);
+    public void setVolume(String value) {
+        setField(FieldType.VOLUME, value);
     }
 
-    public void setEditor(int index, Editor value) {
-        setField(FieldType.EDITOR, index, value);
+    public String getVolume() {
+        return getField(FieldType.VOLUME);
     }
 
-    public void addEditor(Editor value) {
-        addField(FieldType.EDITOR, value);
+    public void setNumber(String value) {
+        setField(FieldType.NUMBER, value);
     }
 
-    public List<Field> getEditors() {
-        return getFields(FieldType.EDITOR);
+    public String getNumber() {
+        return getField(FieldType.NUMBER);
     }
 
-    public void setVolume(int index, Volume value) {
-        setField(FieldType.VOLUME, index, value);
+    public void setSeries(String value) {
+        setField(FieldType.SERIES, value);
     }
 
-    public void addVolume(Volume value) {
-        addField(FieldType.VOLUME, value);
+    public String getSeries() {
+        return getField(FieldType.SERIES);
     }
 
-    public List<Field> getVolumes() {
-        return getFields(FieldType.VOLUME);
+    public void setAddress(String value) {
+        setField(FieldType.ADDRESS, value);
     }
 
-    public void setNumber(int index, Number value) {
-        setField(FieldType.NUMBER, index, value);
+    public String getAddress() {
+        return getField(FieldType.ADDRESS);
     }
 
-    public void addNumber(Number value) {
-        addField(FieldType.NUMBER, value);
+    public void setMonth(String value) {
+        setField(FieldType.MONTH, value);
     }
 
-    public List<Field> getNumbers() {
-        return getFields(FieldType.NUMBER);
+    public String getMonth() {
+        return getField(FieldType.MONTH);
     }
 
-    public void setSeries(int index, Series value) {
-        setField(FieldType.SERIES, index, value);
+    public void setPublisher(String value) {
+        setField(FieldType.PUBLISHER, value);
     }
 
-    public void addSeries(Series value) {
-        addField(FieldType.SERIES, value);
+    public String getPublisher() {
+        return getField(FieldType.PUBLISHER);
     }
 
-    public List<Field> getSeriesList() {
-        return getFields(FieldType.SERIES);
+    public void setOrganization(String value) {
+        setField(FieldType.ORGANIZATION, value);
     }
 
-    public void setAddress(int index, Address value) {
-        setField(FieldType.ADDRESS, index, value);
+    public String getOrganization() {
+        return getField(FieldType.ORGANIZATION);
     }
 
-    public void addAddress(Address value) {
-        addField(FieldType.ADDRESS, value);
+    public void setNote(String value) {
+        setField(FieldType.NOTE, value);
     }
 
-    public List<Field> getAddresses() {
-        return getFields(FieldType.ADDRESS);
+    public String getNote() {
+        return getField(FieldType.NOTE);
+    }
+    
+    public void setKey(String value) {
+        setField(FieldType.BIBKEY, value);
     }
 
-    public void setMonth(int index, Month value) {
-        setField(FieldType.MONTH, index, value);
-    }
-
-    public void addMonth(Month value) {
-        addField(FieldType.MONTH, value);
-    }
-
-    public List<Field> getMonths() {
-        return getFields(FieldType.MONTH);
-    }
-
-    public void setPublisher(int index, Publisher value) {
-        setField(FieldType.PUBLISHER, index, value);
-    }
-
-    public void addPublisher(Publisher value) {
-        addField(FieldType.PUBLISHER, value);
-    }
-
-    public List<Field> getPublishers() {
-        return getFields(FieldType.PUBLISHER);
-    }
-
-    public void setOrganization(int index, Organization value) {
-        setField(FieldType.ORGANIZATION, index, value);
-    }
-
-    public void addOrganization(Organization value) {
-        addField(FieldType.ORGANIZATION, value);
-    }
-
-    public List<Field> getOrganizations() {
-        return getFields(FieldType.ORGANIZATION);
-    }
-
-    public void setNote(int index, Note value) {
-        setField(FieldType.NOTE, index, value);
-    }
-
-    public void addNote(Note value) {
-        addField(FieldType.NOTE, value);
-    }
-
-    public List<Field> getNotes() {
-        return getFields(FieldType.NOTE);
+    public String getKey() {
+        return getField(FieldType.BIBKEY);
     }
 
     @Override
-    public List<String> toBibTex() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ReferenceType getType() {
+        return ReferenceType.PROCEEDINGS;
     }
+
 
 }
