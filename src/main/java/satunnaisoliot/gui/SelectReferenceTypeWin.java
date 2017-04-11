@@ -73,7 +73,7 @@ public class SelectReferenceTypeWin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaMouseClicked
-       LomakeController lomake = new LomakeController(db);
+       LomakeController lomake = new LomakeController();
         
        if(lista.getSelectedValue().equals("Article reference")){
            lomake.newArticle();
