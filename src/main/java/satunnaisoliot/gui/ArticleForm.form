@@ -30,17 +30,19 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="keyLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="noteLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="monthLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pagesLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="numberLabel" alignment="0" pref="70" max="32767" attributes="0"/>
-                                  <Component id="volumeLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="yearLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="journalLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="titleLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="authorLabel" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="keyLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="noteLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="monthLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="pagesLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="numberLabel" alignment="0" pref="110" max="32767" attributes="0"/>
+                                      <Component id="volumeLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="yearLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="journalLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="titleLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="authorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -57,7 +59,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="clearButton" min="-2" max="-2" attributes="0"/>
@@ -73,7 +75,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="authorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="authorField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,15 +145,37 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="388" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="BibtexkeyField" pref="295" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BibtexkeyField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="BibTeX key:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="BibtexkeyField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BibtexkeyFieldActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="titleLabel">
       <Properties>
