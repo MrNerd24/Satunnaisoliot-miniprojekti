@@ -3,15 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.lomake;
+package satunnaisoliot.gui;
 
+import satunnaisoliot.datastructures.database.ReferenceDao;
+import satunnaisoliot.datastructures.interfaces.Reference;
 import satunnaisoliot.SqlDatastore;
-import satunnaisoliot.datastructures.database.BookDao;
-import satunnaisoliot.datastructures.database.ProceedingsDao;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import satunnaisoliot.datastructures.database.ArticleDao;
 import satunnaisoliot.datastructures.references.Article;
 import satunnaisoliot.datastructures.references.Book;
 import satunnaisoliot.datastructures.references.Proceedings;
@@ -29,19 +25,16 @@ public class LomakeController {
         this.db = sql;
     }
 
-    public void main(String[] args) { //stub testaamiselle
-        ArticleForm af = new ArticleForm();
-        af.showForm();
-    }
+//    public void main(String[] args) { //stub testaamiselle
+//        ArticleForm af = new ArticleForm();
+//        af.showForm();
+//    }
 
     public void newArticle() {
-        ArticleForm af = new ArticleForm();
+        ArticleForm af = new ArticleForm(this,"","", "","","","","","","","");
         af.showForm();
     }
     public void saveArticle(String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
-        ArticleDao ad = new ArticleDao(new SqlDatastore("referenceDB.db"));
-
-        
         Article article = new Article();
         article.setAuthor(author);
         article.setTitle(title);
@@ -54,13 +47,8 @@ public class LomakeController {
         article.setNote(note);
         article.setKey(key);
         
-        //tee jotain artikkelille
-
-        try {
-            ad.addArticle(author, title, journal, year, volume, number, pages, month, note, key);
-        } catch (SQLException ex) {
-            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      //  tee jotain artikkelille
+        addReference(article);
     }
 
     public void newBook() {
@@ -82,19 +70,14 @@ public class LomakeController {
         book.setKey(key);
         
         //tee jotain kirjalle
-
-        BookDao bd = new BookDao(this.db);
-        try {
-            bd.addBook(author, title, publisher, year, volume, series, address, month, note, key);
-        } catch (SQLException ex) {
-            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        addReference(book);
     }
 
     public void newProceeding() {
         ProceedingsForm pf = new ProceedingsForm();
         pf.showForm();
     }
+    
     public void saveProceeding(String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         
         Proceedings proceedings = new Proceedings();
@@ -112,11 +95,11 @@ public class LomakeController {
         
         //tee jotain proceedingille
 
-        ProceedingsDao pd = new ProceedingsDao(this.db);
-        try {
-            pd.addProceedings(title, year, editor, volume, series, address, month, publisher, organization, note, key);
-        } catch (SQLException ex) {
-            Logger.getLogger(LomakeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        addReference(proceedings);
+    }
+
+    public void addReference(Reference ref) {
+        ReferenceDao rd = new ReferenceDao(this.db);
+            rd.addReference(ref);
     }
 }

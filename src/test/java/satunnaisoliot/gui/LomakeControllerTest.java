@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.lomake;
+package satunnaisoliot.gui;
 
+import satunnaisoliot.SqlDatastore;
+import satunnaisoliot.gui.LomakeController;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,7 +19,7 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class LomakeControllerTest {
-    LomakeController lc = new LomakeController();
+    LomakeController lc = new LomakeController(new SqlDatastore("testDB.db"));
     
     public LomakeControllerTest() {
     }

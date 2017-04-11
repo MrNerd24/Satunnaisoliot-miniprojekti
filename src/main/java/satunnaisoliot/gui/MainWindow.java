@@ -14,7 +14,8 @@ public class MainWindow extends javax.swing.JFrame {
         // tehään tällä jotain, ehkä? vai halutaanko MainWindowille
         // antaa SqlDatastore-viite erikseen? olisi kai DAO-periaatteen
         // mukaista että tehtäisiin näin.
-        datastore = new SqlDatastore(":memory:");
+//        datastore = new SqlDatastore(":memory:");
+        datastore = new SqlDatastore("referenceDB.db");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -188,7 +189,12 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // Tähän tulee tietueenlisäysikkunan luonti.
-        showUnimplementedFeatureMessageBox();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new SelectReferenceTypeWin(datastore).setVisible(true);
+            }
+        });
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed

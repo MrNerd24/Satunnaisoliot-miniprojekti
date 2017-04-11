@@ -19,6 +19,9 @@ repositories {
     mavenCentral()
     jcenter()
 }
+project.ext {
+    cucumberVersion = '1.2.5'
+}
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
@@ -32,6 +35,10 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+    //cucumber
+    testCompile 'info.cukes:cucumber-java:' + cucumberVersion
+    testCompile 'info.cukes:cucumber-junit:' + cucumberVersion   
+    
 }
 
 jar {
@@ -43,8 +50,8 @@ jar {
 apply plugin: 'application'
 
 //mainClassName = 'ReferenceManager.Main'
-mainClassName = 'satunnaisoliot.lomake.LomakeController'
-//mainClassName = 'satunnaisoliot.Main'
+//mainClassName = 'satunnaisoliot.lomake.LomakeController'
+mainClassName = 'satunnaisoliot.Main'
 
 run {
     standardInput = System.in

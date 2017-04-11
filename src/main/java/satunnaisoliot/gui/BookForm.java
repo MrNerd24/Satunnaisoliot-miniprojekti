@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.lomake;
+package satunnaisoliot.gui;
 
 /**
  *
@@ -83,7 +83,7 @@ public class BookForm extends javax.swing.JFrame {
         clearButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         authorLabel.setText("Author: ");
 
@@ -235,7 +235,7 @@ public class BookForm extends javax.swing.JFrame {
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookForm().setVisible(true);
+                setVisible(true);
             }
         });
     }

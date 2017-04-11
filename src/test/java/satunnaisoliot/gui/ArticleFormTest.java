@@ -1,3 +1,5 @@
+package satunnaisoliot.gui;
+
 //package satunnaisoliot.lomake;
 //
 //import org.junit.After;
@@ -6,16 +8,16 @@
 //import org.junit.BeforeClass;
 //import org.junit.Test;
 //import static org.junit.Assert.*;
-//import satunnaisoliot.lomake.ProceedingsForm;
+//import satunnaisoliot.lomake.ArticleForm;
 //
 ///**
 // *
 // * @author Peter
 // */
-//public class ProceedingsFormTest {
-//    private static ProceedingsForm instance = new ProceedingsForm();
+//public class ArticleFormTest {
+//    private static ArticleForm instance = new ArticleForm();
 //    
-//    public ProceedingsFormTest() {
+//    public ArticleFormTest() {
 //    }
 //    
 //    @BeforeClass
@@ -43,12 +45,12 @@
 //    public void testShowForm() {
 //        System.out.println("showForm");
 //        if(!instance.isVisible()){
-//            fail("proceedingslomake ei näy");
+//            fail("Artikkelilomake ei näy");
 //        }
 //    }
 //    @Test
 //    public void testSetAndGetAllFields() {
-//        instance.setAllFields("asd", "asd", "", "", "", "", "", "", "", "","");
+//        instance.setAllFields("asd", "asd", "", "", "", "", "", "", "", "");
 //        String[] a = instance.getAllFields();
 //        if(a[0].equals("asd") && a[1].equals("asd") && a[2].equals("")){
 //        }else fail("setteri ja getteri ei toimi");

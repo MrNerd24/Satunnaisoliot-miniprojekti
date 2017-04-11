@@ -96,11 +96,11 @@ public class Proceedings extends GenericReference {
     }
     
     public void setKey(String value) {
-        setField(FieldType.KEY, value);
+        setField(FieldType.BIBKEY, value);
     }
 
     public String getKey() {
-        return getField(FieldType.KEY);
+        return getField(FieldType.BIBKEY);
     }
 
     @Override

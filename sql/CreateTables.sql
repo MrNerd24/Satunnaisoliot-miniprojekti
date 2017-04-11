@@ -1,3 +1,29 @@
-CREATE TABLE Article (id SERIAL PRIMARY KEY, author varchar, title varchar, journal varchar, year varchar, volume varchar, number varchar, pages varchar, month varchar, note varchar, key varchar);
-CREATE TABLE Book (id SERIAL PRIMARY KEY, author varchar, title varchar, publisher varchar, year varchar, volume varchar, series varchar, address varchar, month varchar, note varchar, key varchar);
-CREATE TABLE Proceedings (id SERIAL PRIMARY KEY, title varchar, year varchar, editor varchar, volume varchar, series varchar, address varchar, month varchar, publisher varchar, organization varchar, note varchar, key varchar);
+CREATE TABLE IF NOT EXISTS Reference (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  reference_type varchar,
+  bibtex_key varchar,
+  address varchar,
+  annote varchar,
+  author varchar,
+  booktitle varchar,
+  chapter varchar,
+  crossref varchar,
+  edition varchar,
+  editor varchar,
+  howpublished varchar,
+  institution varchar,
+  journal varchar,
+  bibkey varchar,
+  month varchar,
+  note varchar,
+  number varchar,
+  organization varchar,
+  pages varchar,
+  publisher varchar,
+  school varchar,
+  series varchar,
+  title varchar,
+  type varchar,
+  volume varchar,
+  year varchar
+);
