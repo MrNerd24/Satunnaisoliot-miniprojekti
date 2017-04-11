@@ -22,17 +22,21 @@ public class BibTexKeyManager {
     
     public static boolean hasKey(String bibkey) {
         if (keys == null) {
-            keys = new HashSet<String>();
-            ReferenceDao dao = DataManager.getReferenceDao();
-            try {
-                for (Reference ref : dao.findAll()) {
-                    keys.add(ref.getBibTexKey());
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(BibTexKeyManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            pullKeysFromDatabase();
         }
         return keys.contains(bibkey);
+    }
+
+    public static void pullKeysFromDatabase() {
+        keys = new HashSet<String>();
+        ReferenceDao dao = DataManager.getReferenceDao();
+        try {
+            for (Reference ref : dao.findAll()) {
+                keys.add(ref.getBibTexKey());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BibTexKeyManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void addKey(String bibKey) {
