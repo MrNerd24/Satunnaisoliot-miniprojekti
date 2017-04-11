@@ -5,6 +5,7 @@
  */
 package satunnaisoliot.datastructures.database;
 
+import java.util.List;
 import satunnaisoliot.datastructures.interfaces.Reference;
 
 /**
@@ -17,16 +18,26 @@ public class DummyDao implements Dao{
     public void addReference(Reference ref) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     private void createFile(){
-        
-        
+
+
     }
-    
+
     private void addToFile(String text){
         //luo työpöydälle tekstitiedoston (popup jossa annetaan tiedoston nimi yms)
-        
-        
+
+
     }
-    
+
+    @Override
+    public List<Reference> findAll() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public int rowcount() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

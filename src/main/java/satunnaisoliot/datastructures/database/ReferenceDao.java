@@ -64,15 +64,16 @@ public class ReferenceDao implements Dao {
 
     }
 
+    @Override
     public List<Reference> findAll() {
         try {
             List<Reference> references = new ArrayList<>();
             ResultSet rs = this.datastore.query("SELECT * FROM Reference");
-            
+
             while (rs.next()) {
                 String referenceType = rs.getString("reference_type");
                 Reference ref;
-                
+
                 switch (referenceType) {
                     case "article":
                         ref = new Article();
@@ -86,7 +87,7 @@ public class ReferenceDao implements Dao {
                     default:
                         throw new UnsupportedOperationException("Reference type not supported yet.");
                 }
-                
+
                 for (FieldType field : FieldType.values()) {
                     String column = field.toString().toLowerCase();
                     if (column.equals("key")) {
@@ -99,11 +100,22 @@ public class ReferenceDao implements Dao {
                 references.add(ref);
             }
             rs.close();
-            
+
             return references;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         }
     }
 
+    @Override
+    public int rowcount() {
+        try {
+            ResultSet rs = this.datastore.query("SELECT COUNT(id) AS count FROM Reference");
+            rs.next();
+            int rowcount = rs.getInt("count");
+            return rowcount;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
 }
