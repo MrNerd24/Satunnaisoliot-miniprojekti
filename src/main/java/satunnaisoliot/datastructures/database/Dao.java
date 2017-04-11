@@ -5,7 +5,6 @@
  */
 package satunnaisoliot.datastructures.database;
 
-import java.sql.SQLException;
 import java.util.List;
 import satunnaisoliot.datastructures.interfaces.Reference;
 
@@ -15,5 +14,6 @@ import satunnaisoliot.datastructures.interfaces.Reference;
  */
 public interface Dao {
     public void addReference(Reference ref);
-    public List<Reference> findAll() throws SQLException;
+    public List<Reference> findAll();
+    public int rowcount();
 }

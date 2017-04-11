@@ -1,6 +1,8 @@
 package satunnaisoliot.gui;
 
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
 
@@ -10,13 +12,32 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form MainWindow
      */
     public MainWindow() {
+        System.out.println("MainWindow is valid: " + this.isValid());
+        this.setMinimumSize(new Dimension(300, 300));
         initComponents();
-
-        // tehään tällä jotain, ehkä? vai halutaanko MainWindowille
-        // antaa SqlDatastore-viite erikseen? olisi kai DAO-periaatteen
-        // mukaista että tehtäisiin näin.
-//        datastore = new SqlDatastore(":memory:");
+        System.out.println("MainWindow is valid: " + this.isValid());
         datastore = DataManager.getSqlDatastore();
+        tableModel = new ReferenceTable(DataManager.getReferenceDao());
+        
+        mainTable = new JTable(tableModel);
+        mainTable.setPreferredScrollableViewportSize(new Dimension(500, 70));
+        mainTable.setFillsViewportHeight(true);
+        System.out.println("Created mainTable");
+        System.out.println("MainWindow is valid: " + this.isValid());
+        tableScroller.add(mainTable);
+        System.out.println("Added mainTable to tableScroller");
+        System.out.println("MainWindow is valid: " + this.isValid());
+        System.out.println("mainTable is visible: " + mainTable.isVisible());
+        
+        this.revalidate();
+        System.out.println("Revalidated");
+        System.out.println("MainWindow is valid: " + this.isValid());
+        System.out.println("mainTable is valid: " + mainTable.isValid());
+        System.out.println("tableScroller is valid: " + tableScroller.isValid());
+        System.out.println("mainTable is visible: " + mainTable.isVisible());
+        
+        System.out.println("tableModel columns: " + tableModel.getColumnCount());
+        System.out.println("tableModel rows: " + tableModel.getRowCount());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -24,17 +45,17 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton exportButton;
     private javax.swing.JButton importButton;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JTable mainTable;
     private javax.swing.JToolBar mainToolbar;
     private javax.swing.JButton newFileButton;
     private javax.swing.JButton openButton;
     private javax.swing.JButton searchButton;
+    private javax.swing.JScrollPane tableScroller;
     // End of variables declaration//GEN-END:variables
-
+    private JTable mainTable;
+    private ReferenceTable tableModel;
     private SqlDatastore datastore;
 
     /**
@@ -57,8 +78,7 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         searchButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mainTable = new javax.swing.JTable();
+        tableScroller = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ReferenceManager");
@@ -149,20 +169,10 @@ public class MainWindow extends javax.swing.JFrame {
 
         getContentPane().add(mainToolbar, java.awt.BorderLayout.PAGE_START);
 
-        mainTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(mainTable);
-
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        tableScroller.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        tableScroller.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        tableScroller.setViewportBorder(javax.swing.BorderFactory.createEtchedBorder());
+        getContentPane().add(tableScroller, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,7 +194,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_openButtonActionPerformed
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportButtonActionPerformed
-        // Tähän tulee export-ikkunan luonti.
+        // Export-ikkunan luonti.
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -194,7 +204,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_exportButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // Tähän tulee tietueenlisäysikkunan luonti.
+        // Tietueenlisäysikkunan luonti.
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
