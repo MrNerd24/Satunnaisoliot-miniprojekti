@@ -27,7 +27,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
         this.setTitle("Uusi proceeding");
     }
     public void setAllFields(String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
-        BibtexkeyField.setText(bibkey);
+        bibtexKeyField.setText(bibkey);
         titleField.setText(title);
         yearField.setText(year);
         editorField.setText(editor);
@@ -42,8 +42,8 @@ public class ProceedingsForm extends javax.swing.JFrame {
         bibtexKeyField.setText(bibkey);
     }
     public String[] getAllFields() {
-        String[] list = new String[11];
-        list[0] = BibtexkeyField.getText();
+        String[] list = new String[12];
+        list[0] = bibtexKeyField.getText();
         list[1] = titleField.getText();
         list[2] = yearField.getText();
         list[3] = editorField.getText();
@@ -93,8 +93,6 @@ public class ProceedingsForm extends javax.swing.JFrame {
         bibtexKeyField = new javax.swing.JTextField();
         clearButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        BibtexkeyField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -228,8 +226,6 @@ public class ProceedingsForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Bib TeX key:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -242,23 +238,14 @@ public class ProceedingsForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(saveButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BibtexkeyField, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(BibtexkeyField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +277,6 @@ public class ProceedingsForm extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField BibtexkeyField;
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField bibtexKeyField;
@@ -298,7 +284,6 @@ public class ProceedingsForm extends javax.swing.JFrame {
     private javax.swing.JButton clearButton;
     private javax.swing.JTextField editorField;
     private javax.swing.JLabel editorLabel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField keyField;
     private javax.swing.JLabel keyLabel;
