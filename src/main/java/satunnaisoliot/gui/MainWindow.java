@@ -1,6 +1,7 @@
 package satunnaisoliot.gui;
 
 import javax.swing.JOptionPane;
+import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
 
 public class MainWindow extends javax.swing.JFrame {
@@ -15,7 +16,7 @@ public class MainWindow extends javax.swing.JFrame {
         // antaa SqlDatastore-viite erikseen? olisi kai DAO-periaatteen
         // mukaista että tehtäisiin näin.
 //        datastore = new SqlDatastore(":memory:");
-        datastore = new SqlDatastore("referenceDB.db");
+        datastore = DataManager.getSqlDatastore();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

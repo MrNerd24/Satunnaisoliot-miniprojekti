@@ -40,7 +40,7 @@ public class ReferenceDao implements Dao {
                     if (content == null) {
                         continue;
                     }
-                    if (column == "key") {
+                    if (column.equals("key")) {
                         column = "bibkey";
                     }
                     stmt = this.datastore.getNewPreparedStatement("UPDATE Reference SET " + column + " = ? WHERE id = " + id);
@@ -85,9 +85,13 @@ public class ReferenceDao implements Dao {
 
             for (FieldType field : FieldType.values()) {
                 String column = field.toString().toLowerCase();
+                if (column.equals("key")) {
+                    column = "bibkey";
+                }
                 String content = rs.getString(column);
                 ref.setField(field, content);
             }
+            ref.setBibTexKey(rs.getString("bibtex_key"));
             references.add(ref);
         }
         rs.close();
