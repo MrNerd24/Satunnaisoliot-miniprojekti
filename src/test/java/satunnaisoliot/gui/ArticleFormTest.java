@@ -1,5 +1,6 @@
 package satunnaisoliot.gui;
 
+import java.awt.Frame;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,6 +25,10 @@ public class ArticleFormTest {
     
     @AfterClass
     public static void tearDownClass() {
+        Frame[] a = ArticleForm.getFrames();
+        for(Frame i : a){
+            i.dispose();
+        }
     }
     
     @Before
