@@ -107,7 +107,7 @@ public class ExportTexWindow extends javax.swing.JFrame {
             
         }
 
-        BibFileWriter.writeToFile(file, DataManager.getReferenceDao().findAll());
+        BibFileWriter.writeToFile(file, DataManager.getDao().findAll());
         this.dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed

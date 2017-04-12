@@ -21,7 +21,7 @@ public class BibtexKeyManager {
     
     
     public static boolean hasKey(String bibkey) {
-        List<Reference> references = DataManager.getReferenceDao().findAll();
+        List<Reference> references = DataManager.getDao().findAll();
         for (Reference reference : references) {
             if (reference.getBibTexKey().equals(bibkey)) {
                 return true;

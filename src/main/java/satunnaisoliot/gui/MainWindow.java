@@ -18,7 +18,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.setPreferredSize(new Dimension(1024, 500));
 
         datastore = DataManager.getSqlDatastore();
-        tableModel = new ReferenceTable(DataManager.getReferenceDao());
+        tableModel = new ReferenceTable(DataManager.getDao());
 
         initComponents();
     }

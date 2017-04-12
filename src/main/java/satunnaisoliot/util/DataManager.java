@@ -5,6 +5,7 @@
  */
 package satunnaisoliot.util;
 
+import satunnaisoliot.structs.dao.Dao;
 import satunnaisoliot.structs.dao.ReferenceDao;
 
 /**
@@ -14,7 +15,7 @@ import satunnaisoliot.structs.dao.ReferenceDao;
 public class DataManager {
 
     private static SqlDatastore datastore = null;
-    private static ReferenceDao dao = null;
+    private static Dao dao = null;
 
     public static SqlDatastore getSqlDatastore() {
         if (datastore == null) {
@@ -23,7 +24,7 @@ public class DataManager {
         return datastore;
     }
 
-    public static ReferenceDao getReferenceDao() {
+    public static Dao getDao() {
         if (dao == null) {
             dao = new ReferenceDao(getSqlDatastore());
         }
@@ -32,6 +33,6 @@ public class DataManager {
 
     public static void setDatabaseFileName(String name) {
         datastore = new SqlDatastore(name);
-        dao = new ReferenceDao(datastore);
+        dao = new ReferenceDao(datastore) {};
     }
 }
