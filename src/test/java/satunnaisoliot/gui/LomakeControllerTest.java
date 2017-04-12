@@ -5,14 +5,13 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.util.SqlDatastore;
-import satunnaisoliot.gui.LomakeController;
+import java.awt.Frame;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import satunnaisoliot.util.DataManager;
 
 /**
  *
@@ -26,10 +25,23 @@ public class LomakeControllerTest {
     
     @BeforeClass
     public static void setUpClass() {
+        DataManager.setDatabaseFileName(":memory:");
     }
     
     @AfterClass
     public static void tearDownClass() {
+        Frame[] a = ArticleForm.getFrames();
+        Frame[] b = ProceedingsForm.getFrames();
+        Frame[] c = BookForm.getFrames();
+        for(Frame i : a){
+            i.dispose();
+        }
+        for(Frame i : b){
+            i.dispose();
+        }
+        for(Frame i : c){
+            i.dispose();
+        }
     }
     
     @Before
@@ -43,11 +55,10 @@ public class LomakeControllerTest {
     /**
      * Test of newArticle method, of class LomakeController.
      */
-//    @Test
-//    public void testNewArticle() {
-//        System.out.println("newArticle");
-//        LomakeController.newArticle();
-//    }
+    @Test
+    public void testNewArticle() {
+        System.out.println("newArticle");
+    }
 
     /**
      * Test of saveArticle method, of class LomakeController.
@@ -73,10 +84,10 @@ public class LomakeControllerTest {
     /**
      * Test of newBook method, of class LomakeController.
      */
-//    public void testNewBook() {
-//        System.out.println("newBook");
-//        LomakeController.newBook();
-//    }
+    public void testNewBook() {
+        System.out.println("newBook");
+        lc.newBook();
+    }
 
     /**
      * Test of saveBook method, of class LomakeController.
@@ -101,11 +112,11 @@ public class LomakeControllerTest {
     /**
      * Test of newProceeding method, of class LomakeController.
      */
-//    @Test
-//    public void testNewProceeding() {
-//        System.out.println("newProceeding");
-//        LomakeController.newProceeding();
-//    }
+    @Test
+    public void testNewProceeding() {
+        System.out.println("newProceeding");
+        lc.newProceeding();
+    }
 
     /**
      * Test of saveProceeding method, of class LomakeController.
