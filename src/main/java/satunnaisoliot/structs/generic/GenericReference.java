@@ -1,8 +1,8 @@
-package satunnaisoliot.datastructures.generic;
+package satunnaisoliot.structs.generic;
 
 import java.util.ArrayList;
-import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.structs.enums.FieldType;
+import satunnaisoliot.structs.interfaces.Reference;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;

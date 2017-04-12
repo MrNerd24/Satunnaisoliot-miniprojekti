@@ -5,7 +5,7 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.util.BibTexKeyManager;
+import satunnaisoliot.util.BibtexKeyManager;
 
 /**
  *
@@ -13,7 +13,7 @@ import satunnaisoliot.util.BibTexKeyManager;
  */
 public class BookForm extends javax.swing.JFrame {
 
-    LomakeController lc;
+    FormController lc;
 
     /**
      * Creates new form ArticleForm
@@ -25,7 +25,7 @@ public class BookForm extends javax.swing.JFrame {
         this.setTitle("Uusi kirja");
     }
 
-    public BookForm(LomakeController lc, String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
+    public BookForm(FormController lc, String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         this.lc=lc;
         initComponents();
         this.setTitle("Uusi kirja");
@@ -248,7 +248,7 @@ public class BookForm extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
      
-        if (!BibTexKeyManager.hasKey(list[0])) {
+        if (!BibtexKeyManager.hasKey(list[0])) {
             lc.saveBook(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
             this.dispose();
         } else {

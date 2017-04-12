@@ -27,6 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton exportButton;
     private javax.swing.JButton importButton;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
@@ -54,6 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
         exportButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         searchButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ReferenceManager");
@@ -142,6 +144,17 @@ public class MainWindow extends javax.swing.JFrame {
         });
         mainToolbar.add(searchButton);
 
+        refreshButton.setText("Refresh");
+        refreshButton.setFocusable(false);
+        refreshButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        refreshButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(refreshButton);
+
         getContentPane().add(mainToolbar, java.awt.BorderLayout.PAGE_START);
 
         mainTable = new JTable(tableModel);
@@ -168,6 +181,10 @@ public class MainWindow extends javax.swing.JFrame {
         showUnimplementedFeatureMessageBox();
     }
 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        this.updateDataTable();
+    }
+
     private void newFileButtonActionPerformed(java.awt.event.ActionEvent evt) {
         showUnimplementedFeatureMessageBox();
     }
@@ -191,7 +208,7 @@ public class MainWindow extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SelectReferenceTypeWin(datastore).setVisible(true);
+                new TypeSelectionWindow(datastore).setVisible(true);
             }
         });
     }
@@ -207,6 +224,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Call this method after creating/deleting/modifying data.
     public void updateDataTable() {
         this.tableModel.updateReferenceList();
+        this.repaint();
     }
 
 }

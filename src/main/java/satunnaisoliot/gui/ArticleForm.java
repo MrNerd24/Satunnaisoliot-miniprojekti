@@ -5,8 +5,8 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.datastructures.references.Article;
-import satunnaisoliot.util.BibTexKeyManager;
+import satunnaisoliot.structs.references.Article;
+import satunnaisoliot.util.BibtexKeyManager;
 
 /**
  *
@@ -14,7 +14,7 @@ import satunnaisoliot.util.BibTexKeyManager;
  */
 public class ArticleForm extends javax.swing.JFrame {
 
-    LomakeController lc;
+    FormController lc;
 //    SqlDatastore db;
 
     /**
@@ -25,7 +25,7 @@ public class ArticleForm extends javax.swing.JFrame {
         this.setTitle("Uusi artikkeli");
     }
 
-    public ArticleForm(LomakeController loc, String bibtexkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
+    public ArticleForm(FormController loc, String bibtexkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         this.lc = loc;
         initComponents();
         this.setTitle("Uusi artikkeli");
@@ -270,7 +270,7 @@ public class ArticleForm extends javax.swing.JFrame {
 //                list[i] = " ";
 //            }
 //        }
-        if (!BibTexKeyManager.hasKey(list[0])) {
+        if (!BibtexKeyManager.hasKey(list[0])) {
             lc.saveArticle(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
             this.dispose();
         } else{

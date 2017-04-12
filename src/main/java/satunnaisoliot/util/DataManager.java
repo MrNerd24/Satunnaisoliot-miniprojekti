@@ -5,7 +5,7 @@
  */
 package satunnaisoliot.util;
 
-import satunnaisoliot.datastructures.database.ReferenceDao;
+import satunnaisoliot.structs.dao.ReferenceDao;
 
 /**
  *

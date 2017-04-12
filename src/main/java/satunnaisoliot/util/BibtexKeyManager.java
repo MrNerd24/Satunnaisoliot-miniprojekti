@@ -10,14 +10,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import satunnaisoliot.datastructures.database.ReferenceDao;
-import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.structs.dao.ReferenceDao;
+import satunnaisoliot.structs.interfaces.Reference;
 
 /**
  *
  * @author juuso_j0pbwen
  */
-public class BibTexKeyManager {
+public class BibtexKeyManager {
     
     
     public static boolean hasKey(String bibkey) {

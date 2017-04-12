@@ -6,10 +6,10 @@ import java.util.Locale;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
-import satunnaisoliot.datastructures.database.Dao;
-import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.enums.ReferenceType;
-import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.structs.dao.Dao;
+import satunnaisoliot.structs.enums.FieldType;
+import satunnaisoliot.structs.enums.ReferenceType;
+import satunnaisoliot.structs.interfaces.Reference;
 
 public class ReferenceTable extends AbstractTableModel {
 

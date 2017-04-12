@@ -5,24 +5,24 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.datastructures.database.ReferenceDao;
-import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.structs.dao.ReferenceDao;
+import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.util.SqlDatastore;
-import satunnaisoliot.datastructures.references.Article;
-import satunnaisoliot.datastructures.references.Book;
-import satunnaisoliot.datastructures.references.Proceedings;
+import satunnaisoliot.structs.references.Article;
+import satunnaisoliot.structs.references.Book;
+import satunnaisoliot.structs.references.Proceedings;
 import satunnaisoliot.util.DataManager;
 
 /**
  *
  * @author Peter
  */
-public class LomakeController {
+public class FormController {
     SqlDatastore db;
-    public LomakeController(){
+    public FormController(){
         
     }
-    public LomakeController(SqlDatastore sql){
+    public FormController(SqlDatastore sql){
         this.db = sql;
     }
 

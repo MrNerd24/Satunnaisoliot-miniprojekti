@@ -5,8 +5,8 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.gui.LomakeController;
-import satunnaisoliot.util.BibTexKeyManager;
+import satunnaisoliot.gui.FormController;
+import satunnaisoliot.util.BibtexKeyManager;
 
 /**
  *
@@ -14,7 +14,7 @@ import satunnaisoliot.util.BibTexKeyManager;
  */
 public class ProceedingsForm extends javax.swing.JFrame {
 
-    LomakeController lc;
+    FormController lc;
 
     /**
      * Creates new form ArticleForm
@@ -26,7 +26,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
         this.setTitle("Uusi proceeding");
     }
 
-    public ProceedingsForm(LomakeController lc, String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
+    public ProceedingsForm(FormController lc, String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         this.lc=lc;
         initComponents();
         this.setTitle("Uusi proceeding");
@@ -270,7 +270,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = this.getAllFields();
-        if (!BibTexKeyManager.hasKey(list[0])) {
+        if (!BibtexKeyManager.hasKey(list[0])) {
             lc.saveProceeding(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11]);
             this.dispose();
         } else {

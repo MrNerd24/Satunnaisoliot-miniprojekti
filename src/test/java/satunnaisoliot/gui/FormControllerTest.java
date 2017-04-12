@@ -17,10 +17,10 @@ import satunnaisoliot.util.DataManager;
  *
  * @author Peter
  */
-public class LomakeControllerTest {
-    LomakeController lc = new LomakeController();
+public class FormControllerTest {
+    FormController lc = new FormController();
     
-    public LomakeControllerTest() {
+    public FormControllerTest() {
     }
     
     @BeforeClass
@@ -53,7 +53,7 @@ public class LomakeControllerTest {
     }
 
     /**
-     * Test of newArticle method, of class LomakeController.
+     * Test of newArticle method, of class FormController.
      */
     @Test
     public void testNewArticle() {
@@ -61,7 +61,7 @@ public class LomakeControllerTest {
     }
 
     /**
-     * Test of saveArticle method, of class LomakeController.
+     * Test of saveArticle method, of class FormController.
      */
     @Test
     public void testSaveArticle() {
@@ -82,7 +82,7 @@ public class LomakeControllerTest {
     }
 
     /**
-     * Test of newBook method, of class LomakeController.
+     * Test of newBook method, of class FormController.
      */
     public void testNewBook() {
         System.out.println("newBook");
@@ -90,7 +90,7 @@ public class LomakeControllerTest {
     }
 
     /**
-     * Test of saveBook method, of class LomakeController.
+     * Test of saveBook method, of class FormController.
      */
     @Test
     public void testSaveBook() {
@@ -110,7 +110,7 @@ public class LomakeControllerTest {
     }
 
     /**
-     * Test of newProceeding method, of class LomakeController.
+     * Test of newProceeding method, of class FormController.
      */
     @Test
     public void testNewProceeding() {
@@ -119,7 +119,7 @@ public class LomakeControllerTest {
     }
 
     /**
-     * Test of saveProceeding method, of class LomakeController.
+     * Test of saveProceeding method, of class FormController.
      */
     @Test
     public void testSaveProceeding() {
