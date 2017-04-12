@@ -11,6 +11,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import satunnaisoliot.util.DataManager;
 
 /**
  *
@@ -24,6 +25,7 @@ public class LomakeControllerTest {
     
     @BeforeClass
     public static void setUpClass() {
+        DataManager.setDatabaseFileName(":memory:");
     }
     
     @AfterClass
