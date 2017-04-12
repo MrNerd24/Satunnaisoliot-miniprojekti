@@ -1,8 +1,8 @@
-package satunnaisoliot.datastructures.references;
+package satunnaisoliot.structs.references;
 
-import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.enums.ReferenceType;
-import satunnaisoliot.datastructures.generic.GenericReference;
+import satunnaisoliot.structs.enums.FieldType;
+import satunnaisoliot.structs.enums.ReferenceType;
+import satunnaisoliot.structs.generic.GenericReference;
 
 
 public class Article extends GenericReference {

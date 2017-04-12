@@ -1,8 +1,8 @@
-package satunnaisoliot.datastructures.interfaces;
+package satunnaisoliot.structs.interfaces;
 
-import satunnaisoliot.datastructures.enums.FieldType;
+import satunnaisoliot.structs.enums.FieldType;
 import java.util.List;
-import satunnaisoliot.datastructures.enums.ReferenceType;
+import satunnaisoliot.structs.enums.ReferenceType;
 
 public interface Reference {
 

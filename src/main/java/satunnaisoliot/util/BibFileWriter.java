@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.structs.interfaces.Reference;
 
 /**
  *

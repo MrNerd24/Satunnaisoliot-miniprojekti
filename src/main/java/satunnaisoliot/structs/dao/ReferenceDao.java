@@ -1,12 +1,12 @@
-package satunnaisoliot.datastructures.database;
+package satunnaisoliot.structs.dao;
 
 import satunnaisoliot.util.SqlDatastore;
-import satunnaisoliot.datastructures.enums.FieldType;
-import satunnaisoliot.datastructures.generic.GenericReference;
-import satunnaisoliot.datastructures.interfaces.Reference;
-import satunnaisoliot.datastructures.references.Article;
-import satunnaisoliot.datastructures.references.Book;
-import satunnaisoliot.datastructures.references.Proceedings;
+import satunnaisoliot.structs.enums.FieldType;
+import satunnaisoliot.structs.generic.GenericReference;
+import satunnaisoliot.structs.interfaces.Reference;
+import satunnaisoliot.structs.references.Article;
+import satunnaisoliot.structs.references.Book;
+import satunnaisoliot.structs.references.Proceedings;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

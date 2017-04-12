@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.datastructures.references;
+package satunnaisoliot.structs.references;
 
+import satunnaisoliot.structs.references.Article;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,7 +13,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import satunnaisoliot.datastructures.enums.ReferenceType;
+import satunnaisoliot.structs.enums.ReferenceType;
 
 /**
  *

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package satunnaisoliot.datastructures.database;
+package satunnaisoliot.structs.dao;
 
 import java.util.List;
-import satunnaisoliot.datastructures.interfaces.Reference;
+import satunnaisoliot.structs.interfaces.Reference;
 
 /**
  *
