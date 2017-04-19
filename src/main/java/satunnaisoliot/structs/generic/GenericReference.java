@@ -95,12 +95,13 @@ public abstract class GenericReference implements Reference {
             //Many authors
             String[] authors = author.split(";");
 
-            for(int i = 0; i < authors.length - 1; i++) {
+            for(int i = 0; i < authors.length; i++) {
                 author = authors[i];
-                BibTexKey += author.charAt(0);
+                BibTexKey += author.charAt(0); //Take first letter of each last name
             }
         } else {
             //Only one author
+            //Take three first letters of the last name or all if less than three
             String lastName = author.substring(0, author.indexOf(","));
 
             if(lastName.length() < 3) {
@@ -109,7 +110,7 @@ public abstract class GenericReference implements Reference {
                 BibTexKey += lastName.substring(0, 3);
             }
         }
-
+        //Add year
         String year = this.getField(FieldType.YEAR);
         BibTexKey += year.substring(2);
 
