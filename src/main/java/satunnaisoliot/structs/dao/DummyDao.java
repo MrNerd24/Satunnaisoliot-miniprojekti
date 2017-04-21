@@ -41,5 +41,5 @@ public class DummyDao implements Dao{
     }
 
     @Override
-    public int countReferencesOfSameAuthorAndYear(String author, String year) { throw new UnsupportedOperationException("Not supported yet."); }
+    public int countReferenceswithSameBibTexKey(String bibTexKey) { throw new UnsupportedOperationException("Not supported yet."); }
 }

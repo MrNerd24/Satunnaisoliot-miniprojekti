@@ -90,7 +90,7 @@ public abstract class GenericReference implements Reference {
 
     public void generateBibTexKey() {
         String authorContent = this.getField(FieldType.AUTHOR);
-        String BibTexKey = "";
+        String bibTexKey = "";
 
         if(authorContent.contains(";")) {
             //Many authors
@@ -98,7 +98,7 @@ public abstract class GenericReference implements Reference {
 
             for(int i = 0; i < authors.length; i++) {
                 String author = authors[i];
-                BibTexKey += author.charAt(0); //Take first letter of each last name
+                bibTexKey += author.charAt(0); //Take first letter of each last name
             }
         } else {
             //Only one author
@@ -106,24 +106,24 @@ public abstract class GenericReference implements Reference {
             String lastName = authorContent.substring(0, authorContent.indexOf(","));
 
             if(lastName.length() < 3) {
-                BibTexKey += lastName;
+                bibTexKey += lastName;
             } else {
-                BibTexKey += lastName.substring(0, 3);
+                bibTexKey += lastName.substring(0, 3);
             }
         }
         //Add year
         String year = this.getField(FieldType.YEAR);
-        BibTexKey += year.substring(2);
+        bibTexKey += year.substring(2);
 
-        //Add letter if same author has multiple publications in the same year
+        //Add letter if this BibTexKey is already taken
         String letters = "abcdefghijklmnopqrstuvwxyz";
-        int publications = DataManager.getDao().countReferencesOfSameAuthorAndYear(authorContent, year);
+        int publications = DataManager.getDao().countReferenceswithSameBibTexKey(bibTexKey);
 
         if(publications > 0) {
-            BibTexKey += letters.charAt(publications);
+            bibTexKey += letters.charAt(publications - 1);
         }
 
-        setBibTexKey(BibTexKey);
+        setBibTexKey(bibTexKey);
     }
 
     @Override

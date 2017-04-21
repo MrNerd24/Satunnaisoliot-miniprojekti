@@ -120,24 +120,18 @@ public class ReferenceDao implements Dao {
     }
 
     @Override
-    public int countReferencesOfSameAuthorAndYear(String author, String year) {
+    public int countReferenceswithSameBibTexKey(String bibTexKey) {
         try {
-            PreparedStatement stmt = DataManager.getSqlDatastore().getNewPreparedStatement("SELECT COUNT(id) AS count, bibtex_key, id FROM Reference WHERE author = ? AND year = ?");
-            stmt.setString(1, author);
-            stmt.setString(2, year);
-            ResultSet rs = stmt.executeQuery();
-            rs.next();
-            int count = rs.getInt("count");
+            ResultSet rs = DataManager.getSqlDatastore().query("SELECT bibtex_key FROM Reference");
+            int count = 0;
 
-            if(count == 1) { //Change the first one to
-                String bibtexKey = rs.getString("bibtex_key");
-                String newBibtexKey = bibtexKey + "a";
-                int id = rs.getInt("id");
-                stmt = DataManager.getSqlDatastore().getNewPreparedStatement("UPDATE Reference SET bibtex_key = ? WHERE id = " + id);
-                stmt.setString(1, newBibtexKey);
-                stmt.executeUpdate();
+            while(rs.next()) {
+                String key = rs.getString("bibtex_key");
+                if(key.matches("^" + bibTexKey + "[a-z]?")) {
+                    count++;
+                }
             }
-            stmt.close();
+
             rs.close();
             return count;
         } catch (SQLException ex) {

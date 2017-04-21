@@ -18,5 +18,5 @@ public interface Dao {
     public void addReference(Reference ref);
     public List<Reference> findAll();
     public int rowcount();
-    public int countReferencesOfSameAuthorAndYear(String author, String year);
+    public int countReferenceswithSameBibTexKey(String bibTexKey);
 }
