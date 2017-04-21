@@ -118,4 +118,19 @@ public class ReferenceDao implements Dao {
             throw new RuntimeException(ex.getMessage());
         }
     }
+
+    @Override
+    public int countPublicationsOfSameAuthorAndYear(String author, String year) {
+        try {
+            PreparedStatement stmt = DataManager.getSqlDatastore().getNewPreparedStatement("SELECT COUNT(id) FROM Reference WHERE author = ? AND year = ?");
+            stmt.setString(1, author);
+            stmt.setString(2, year);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            return count;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
 }

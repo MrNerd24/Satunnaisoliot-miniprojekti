@@ -7,6 +7,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
 import satunnaisoliot.util.BibtexTextTransform;
+import satunnaisoliot.util.DataManager;
 
 /**
  *
@@ -88,21 +89,21 @@ public abstract class GenericReference implements Reference {
     }
 
     public void generateBibTexKey() {
-        String author = this.getField(FieldType.AUTHOR);
+        String authorContent = this.getField(FieldType.AUTHOR);
         String BibTexKey = "";
 
-        if(author.contains(";")) {
+        if(authorContent.contains(";")) {
             //Many authors
-            String[] authors = author.split(";");
+            String[] authors = authorContent.split(";");
 
             for(int i = 0; i < authors.length; i++) {
-                author = authors[i];
+                String author = authors[i];
                 BibTexKey += author.charAt(0); //Take first letter of each last name
             }
         } else {
             //Only one author
             //Take three first letters of the last name or all if less than three
-            String lastName = author.substring(0, author.indexOf(","));
+            String lastName = authorContent.substring(0, authorContent.indexOf(","));
 
             if(lastName.length() < 3) {
                 BibTexKey += lastName;
@@ -113,6 +114,14 @@ public abstract class GenericReference implements Reference {
         //Add year
         String year = this.getField(FieldType.YEAR);
         BibTexKey += year.substring(2);
+
+        //Add letter if same author has multiple publications in the same year
+        String letters = "abcdefghijklmnopqrstuvwxyz";
+        int publications = DataManager.getDao().countPublicationsOfSameAuthorAndYear(authorContent, year);
+
+        if(publications > 0) {
+            BibTexKey += letters.charAt(publications - 1);
+        }
 
         setBibTexKey(BibTexKey);
     }
