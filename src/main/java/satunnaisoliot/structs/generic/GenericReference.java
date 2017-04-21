@@ -117,10 +117,10 @@ public abstract class GenericReference implements Reference {
 
         //Add letter if same author has multiple publications in the same year
         String letters = "abcdefghijklmnopqrstuvwxyz";
-        int publications = DataManager.getDao().countPublicationsOfSameAuthorAndYear(authorContent, year);
+        int publications = DataManager.getDao().countReferencesOfSameAuthorAndYear(authorContent, year);
 
         if(publications > 0) {
-            BibTexKey += letters.charAt(publications - 1);
+            BibTexKey += letters.charAt(publications);
         }
 
         setBibTexKey(BibTexKey);
