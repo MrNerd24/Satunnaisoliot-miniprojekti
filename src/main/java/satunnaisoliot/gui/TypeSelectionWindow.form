@@ -63,7 +63,7 @@
                 <StringItem index="0" value="Article reference"/>
                 <StringItem index="1" value="Book reference"/>
                 <StringItem index="2" value="Proceedings reference"/>
-                <StringItem index="3" value=" "/>
+                <StringItem index="3" value=""/>
               </StringArray>
             </Property>
             <Property name="name" type="java.lang.String" value="referenceTypeList" noResource="true"/>

@@ -9,7 +9,9 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.AfterClass;
 import satunnaisoliot.gui.ArticleForm;
+import satunnaisoliot.gui.BookForm;
 import satunnaisoliot.gui.MainWindow;
+import satunnaisoliot.gui.ProceedingsForm;
 import satunnaisoliot.gui.TypeSelectionWindow;
 
 public class Stepdefs {
@@ -17,6 +19,8 @@ public class Stepdefs {
     private FrameFixture mainWindow;
     private FrameFixture typeSelect;
     private FrameFixture newArticle;
+    private FrameFixture newBook;
+    private FrameFixture newProceeding;
     private Robot robot;
     
     
@@ -27,14 +31,18 @@ public class Stepdefs {
       mainWindow = new FrameFixture(robot, new MainWindow());
       typeSelect = new FrameFixture(robot, new TypeSelectionWindow());
       newArticle = new FrameFixture(robot, new ArticleForm());
+      newBook = new FrameFixture(robot, new BookForm());
+      newProceeding = new FrameFixture(robot, new ProceedingsForm());
       //fmain.show();
     }
     @AfterClass
     public void tearDown() {
       //openFrames = MainWindow.getFrames();
-      //fmain.cleanUp();
-//      ftypes.cleanUp();
-//      fnewarticle.cleanUp();
+        mainWindow.cleanUp();
+        typeSelect.cleanUp();
+        newArticle.cleanUp();
+        newBook.cleanUp();
+        newProceeding.cleanUp();
     }
     @Given("^Program is running$")
     public void program_is_running() throws Throwable {
@@ -53,29 +61,113 @@ public class Stepdefs {
         typeSelect.show();
         Thread.sleep(1000);
         typeSelect.list("referenceTypeList").clickItem("Article reference");
-        Thread.sleep(1000);
     }
-        @When("^User inputs test values to new article$")
-    public void ref_new_test_article() throws Throwable {
+        @When("^User selects new book")
+    public void ref_select_new_book() throws Throwable {
+        typeSelect.show();
+        Thread.sleep(1000);
+        typeSelect.list("referenceTypeList").clickItem("Book reference");
+    }
+        @When("^User selects new proceeding")
+    public void ref_select_new_proceeding() throws Throwable {
+        typeSelect.show();
+        Thread.sleep(1000);
+        typeSelect.list("referenceTypeList").clickItem("Proceedings reference");
+    }
+        @When("^User hits clear button on article form")
+    public void ref_clear_article() throws Throwable {
+        newArticle.show();
+        Thread.sleep(1000);
+        newArticle.button("clearButton").click();
+        newArticle.textBox("bibtexKeyField").requireText("");
+        newArticle.textBox("authorField").requireText("");
+        newArticle.textBox("titleField").requireText("");
+        newArticle.textBox("journalField").requireText("");
+        newArticle.textBox("yearField").requireText("");
+        newArticle.textBox("volumeField").requireText("");
+    }
+        @When("^User hits clear button on book form")
+    public void ref_clear_book() throws Throwable {
+        newBook.show();
+        Thread.sleep(1000);
+        newBook.button("clearButton").click();
+        newBook.textBox("bibtexKeyField").requireText("");
+        newBook.textBox("authorField").requireText("");
+        newBook.textBox("titleField").requireText("");
+        newBook.textBox("publisherField").requireText("");
+        newBook.textBox("yearField").requireText("");
+    }
+        @When("^User hits clear button on proceedings form")
+    public void ref_clear_proceeding() throws Throwable {
+        newProceeding.show();
+        Thread.sleep(1000);
+        newProceeding.button("clearButton").click();
+        newProceeding.textBox("bibtexKeyField").requireText("");
+        newProceeding.textBox("titleField").requireText("");
+        newProceeding.textBox("yearField").requireText("");
+    }
+        @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new article$")
+    public void ref_new_article(String bibkey, String author, String title, String journal, String year, String volume) throws Throwable {
         newArticle.show();
         Thread.sleep(2500);
-        newArticle.textBox("bibkeyField").enterText("ErkkiKalle");
-        newArticle.textBox("authorField").enterText("Erkki,Kalle");
-        newArticle.textBox("titleField").enterText("Erkki");
-        newArticle.textBox("journalField").enterText("Erkki");
-        newArticle.textBox("yearField").enterText("1000");
-        newArticle.textBox("volumeField").enterText("1");
-        newArticle.textBox("bibkeyField").requireText("ErkkiKalle");
-        newArticle.textBox("authorField").requireText("Erkki,Kalle");
-        newArticle.textBox("titleField").requireText("Erkki");
-        newArticle.textBox("journalField").requireText("Erkki");
-        newArticle.textBox("yearField").requireText("1000");
-        newArticle.textBox("volumeField").requireText("1");
-        Thread.sleep(2500);
+        newArticle.textBox("bibtexKeyField").enterText(bibkey);
+        newArticle.textBox("authorField").enterText(author);
+        newArticle.textBox("titleField").enterText(title);
+        newArticle.textBox("journalField").enterText(journal);
+        newArticle.textBox("yearField").enterText(year);
+        newArticle.textBox("volumeField").enterText(volume);
+        
+        newArticle.textBox("bibtexKeyField").requireText(bibkey);
+        newArticle.textBox("authorField").requireText(author);
+        newArticle.textBox("titleField").requireText(title);
+        newArticle.textBox("journalField").requireText(journal);
+        newArticle.textBox("yearField").requireText(year);
+        newArticle.textBox("volumeField").requireText(volume);
+        Thread.sleep(1000);
         newArticle.button("saveButton").click();
+        newArticle.cleanUp();
+            System.out.println("article done");
+    }
+        @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new book$")
+    public void ref_new_book(String bibkey, String author, String title, String publisher, String year, String volume) throws Throwable {
+        newBook.show();
         Thread.sleep(2500);
+        newBook.textBox("bibtexKeyField").enterText(bibkey);
+        newBook.textBox("authorField").enterText(author);
+        newBook.textBox("titleField").enterText(title);
+        newBook.textBox("publisherField").enterText(publisher);
+        newBook.textBox("yearField").enterText(year);
+        
+        newBook.textBox("bibtexKeyField").requireText(bibkey);
+        newBook.textBox("authorField").requireText(author);
+        newBook.textBox("titleField").requireText(title);
+        newBook.textBox("publisherField").requireText(publisher);
+        newBook.textBox("yearField").requireText(year);
+        Thread.sleep(500);
+        newBook.button("saveButton").click();
+        newBook.cleanUp();
+    }
+        @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new proceeding$")
+    public void ref_new_proceeding(String bibkey, String title, String year) throws Throwable {
+        newProceeding.show();
+        Thread.sleep(2500);
+        newProceeding.textBox("bibtexKeyField").enterText(bibkey);
+        newProceeding.textBox("titleField").enterText(title);
+        newProceeding.textBox("yearField").enterText(year);
+        
+        newProceeding.textBox("bibtexKeyField").requireText(bibkey);
+        newProceeding.textBox("titleField").requireText(title);
+        newProceeding.textBox("yearField").requireText(year);
+        Thread.sleep(500);
+        newProceeding.button("saveButton").click();
+        newProceeding.cleanUp();
     }
         @Then("^Values are added$")
     public void ref_new_article_added() throws Throwable {
+        //check that the value was added somehow
+    }
+            @Then("^Values are cleared")
+    public void ref_values_cleared() throws Throwable {
+        //check that the values were cleared somehow
     }
 }

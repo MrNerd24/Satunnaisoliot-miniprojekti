@@ -150,6 +150,7 @@ public class ArticleForm extends javax.swing.JFrame {
         keyField.setName("keyField"); // NOI18N
 
         clearButton.setText("Tyhjennä");
+        clearButton.setName("clearButton"); // NOI18N
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
@@ -166,7 +167,7 @@ public class ArticleForm extends javax.swing.JFrame {
 
         bibtexKeyLabel.setText("BibTeX Key:");
 
-        bibtexKeyField.setName("bibkeyField"); // NOI18N
+        bibtexKeyField.setName("bibtexKeyField"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -34,7 +34,7 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
         setTitle("Reference Type Selection");
 
         lista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Article reference", "Book reference", "Proceedings reference", " " };
+            String[] strings = { "Article reference", "Book reference", "Proceedings reference", "" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });

@@ -259,6 +259,7 @@
     <Component class="javax.swing.JButton" name="clearButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tyhjenn&#xe4;"/>
+        <Property name="name" type="java.lang.String" value="clearButton" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearButtonActionPerformed"/>
@@ -280,7 +281,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="bibtexKeyField">
       <Properties>
-        <Property name="name" type="java.lang.String" value="bibkeyField" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="bibtexKeyField" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>
