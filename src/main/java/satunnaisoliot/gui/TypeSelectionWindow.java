@@ -31,12 +31,14 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Reference Type Selection");
 
         lista.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Article reference", "Book reference", "Proceedings reference", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        lista.setName("referenceTypeList"); // NOI18N
         lista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listaMouseClicked(evt);

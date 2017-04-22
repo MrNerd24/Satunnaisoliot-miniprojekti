@@ -129,6 +129,26 @@ public class ArticleForm extends javax.swing.JFrame {
 
         keyLabel.setText("Key:");
 
+        authorField.setName("authorField"); // NOI18N
+
+        titleField.setName("titleField"); // NOI18N
+
+        journalField.setName("journalField"); // NOI18N
+
+        yearField.setName("yearField"); // NOI18N
+
+        volumeField.setName("volumeField"); // NOI18N
+
+        numberField.setName("numberField"); // NOI18N
+
+        pagesField.setName("pagesField"); // NOI18N
+
+        monthField.setName("monthField"); // NOI18N
+
+        noteField.setName("noteField"); // NOI18N
+
+        keyField.setName("keyField"); // NOI18N
+
         clearButton.setText("Tyhjennä");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +157,7 @@ public class ArticleForm extends javax.swing.JFrame {
         });
 
         saveButton.setText("Tallenna");
+        saveButton.setName("saveButton"); // NOI18N
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -144,6 +165,8 @@ public class ArticleForm extends javax.swing.JFrame {
         });
 
         bibtexKeyLabel.setText("BibTeX Key:");
+
+        bibtexKeyField.setName("bibkeyField"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

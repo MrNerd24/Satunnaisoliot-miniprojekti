@@ -86,6 +86,7 @@ public class MainWindow extends javax.swing.JFrame {
         mainToolbar.add(jSeparator1);
 
         addButton.setText("Add Ref");
+        addButton.setName("AddButton");
         addButton.setToolTipText("Create a new reference in the table.");
         addButton.setFocusable(false);
         addButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

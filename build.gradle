@@ -6,9 +6,9 @@
  * user guide available at https://docs.gradle.org/3.4.1/userguide/tutorial_java_projects.html
  */
 
- plugins {
-     id 'com.github.kt3k.coveralls' version '2.8.1'
- }
+plugins {
+    id 'com.github.kt3k.coveralls' version '2.8.1'
+}
 
 
 // Apply the java plugin to add support for Java
@@ -40,6 +40,30 @@ dependencies {
     //cucumber
     testCompile 'info.cukes:cucumber-java:' + cucumberVersion
     testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
+    
+    //https://mvnrepository.com/artifact/org.easytesting/fest-assert
+    testCompile group: 'org.easytesting', name: 'fest-assert', version: '1.2'
+    // https://mvnrepository.com/artifact/org.easytesting/fest-reflect
+    testCompile group: 'org.easytesting', name: 'fest-reflect', version: '1.2'
+    // https://mvnrepository.com/artifact/org.easytesting/fest-util
+    testCompile group: 'org.easytesting', name: 'fest-util', version: '1.1.2'
+    // https://mvnrepository.com/artifact/net.jcip/jcip-annotations
+    testCompile group: 'net.jcip', name: 'jcip-annotations', version: '1.0'
+    // https://mvnrepository.com/artifact/org.easytesting/fest-swing
+    testCompile group: 'org.easytesting', name: 'fest-swing', version: '1.2'
+
+    
+    // http://central.maven.org/maven2/org/easytesting/fest-swing/1.2.1/fest-swing-1.2.1.jar
+    //testCompile 'org.easytesting:fest-swing:1.2.1'
+    //testCompile 'org.easytesting'
+
+
+
+
+
+
+
+
 
 }
 
