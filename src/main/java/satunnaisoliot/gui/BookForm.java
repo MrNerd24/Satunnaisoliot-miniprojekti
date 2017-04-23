@@ -129,7 +129,28 @@ public class BookForm extends javax.swing.JFrame {
 
         keyLabel.setText("Key:");
 
+        authorField.setName("authorField"); // NOI18N
+
+        titleField.setName("titleField"); // NOI18N
+
+        publisherField.setName("publisherField"); // NOI18N
+
+        yearField.setName("yearField"); // NOI18N
+
+        volumeField.setName("volumeField"); // NOI18N
+
+        seriesField.setName("seriesField"); // NOI18N
+
+        addressField.setName("addressField"); // NOI18N
+
+        monthField.setName("monthField"); // NOI18N
+
+        noteField.setName("noteField"); // NOI18N
+
+        keyField.setName("keyField"); // NOI18N
+
         clearButton.setText("Tyhjennä");
+        clearButton.setName("clearButton"); // NOI18N
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
@@ -137,6 +158,7 @@ public class BookForm extends javax.swing.JFrame {
         });
 
         saveButton.setText("Tallenna");
+        saveButton.setName("saveButton"); // NOI18N
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -144,6 +166,8 @@ public class BookForm extends javax.swing.JFrame {
         });
 
         bibtexKeyLabel.setText("BibTeX Key:");
+
+        bibtexKeyField.setName("bibtexKeyField"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
