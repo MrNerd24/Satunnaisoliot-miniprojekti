@@ -63,7 +63,7 @@ public class BibtexKeyManager {
             String[] authors = authorContent.split(";");
 
             for (int i = 0; i < authors.length; i++) {
-                String author = authors[i];
+                String author = authors[i].trim();
                 bibTexKey += author.charAt(0); //Take first letter of each last name
             }
         } else {
@@ -85,10 +85,13 @@ public class BibtexKeyManager {
         }
         //Add year
         String year = reference.getField(FieldType.YEAR);
-        if (year.length() < 2) {
-            bibTexKey += year;
-        } else {
-            bibTexKey += year.substring(2);
+        
+        if (year != null) {
+            if (year.length() < 2) {
+                bibTexKey += year;
+            } else {
+                bibTexKey += year.substring(2);
+            }
         }
 
         bibTexKey += getLetterSuffix(bibTexKey);
