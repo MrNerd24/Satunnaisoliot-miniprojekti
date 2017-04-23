@@ -27,7 +27,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }
 
     public ProceedingsForm(FormController lc, String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
-        this.lc=lc;
+        this.lc = lc;
         initComponents();
         this.setTitle("Uusi proceeding");
     }
@@ -270,12 +270,10 @@ public class ProceedingsForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = this.getAllFields();
-        if (!BibtexKeyManager.hasKey(list[0])) {
-            lc.saveProceeding(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11]);
-            this.dispose();
-        } else {
-            new ErrorWindow("That BibTeX key already exists.").setVisible(true);
-        }
+
+        lc.saveProceeding(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11]);
+        this.dispose();
+
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void editorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorFieldActionPerformed

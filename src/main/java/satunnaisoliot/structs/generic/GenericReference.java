@@ -88,43 +88,6 @@ public abstract class GenericReference implements Reference {
         return lines;
     }
 
-    public void generateBibTexKey() {
-        String authorContent = this.getField(FieldType.AUTHOR);
-        String bibTexKey = "";
-
-        if(authorContent.contains(";")) {
-            //Many authors
-            String[] authors = authorContent.split(";");
-
-            for(int i = 0; i < authors.length; i++) {
-                String author = authors[i];
-                bibTexKey += author.charAt(0); //Take first letter of each last name
-            }
-        } else {
-            //Only one author
-            //Take three first letters of the last name or all if less than three
-            String lastName = authorContent.substring(0, authorContent.indexOf(","));
-
-            if(lastName.length() < 3) {
-                bibTexKey += lastName;
-            } else {
-                bibTexKey += lastName.substring(0, 3);
-            }
-        }
-        //Add year
-        String year = this.getField(FieldType.YEAR);
-        bibTexKey += year.substring(2);
-
-        //Add letter if this BibTexKey is already taken
-        String letters = "abcdefghijklmnopqrstuvwxyz";
-        int publications = DataManager.getDao().countReferenceswithSameBibTexKey(bibTexKey);
-
-        if(publications > 0) {
-            bibTexKey += letters.charAt(publications - 1);
-        }
-
-        setBibTexKey(bibTexKey);
-    }
 
     @Override
     public String toString() {
