@@ -38,10 +38,9 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
     //cucumber
-    cucumberRuntime 'info.cukes:cucumber-java:' + cucumberVersion
     testCompile 'info.cukes:cucumber-java:' + cucumberVersion
     testCompile 'info.cukes:cucumber-junit:' + cucumberVersion
-    
+
     //https://mvnrepository.com/artifact/org.easytesting/fest-assert
     testCompile group: 'org.easytesting', name: 'fest-assert', version: '1.2'
     // https://mvnrepository.com/artifact/org.easytesting/fest-reflect
@@ -53,18 +52,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.easytesting/fest-swing
     testCompile group: 'org.easytesting', name: 'fest-swing', version: '1.2'
 
-    
+
     // http://central.maven.org/maven2/org/easytesting/fest-swing/1.2.1/fest-swing-1.2.1.jar
     //testCompile 'org.easytesting:fest-swing:1.2.1'
     //testCompile 'org.easytesting'
-
-
-
-
-
-
-
-
 
 }
 
