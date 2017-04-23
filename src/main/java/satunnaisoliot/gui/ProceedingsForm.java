@@ -106,10 +106,17 @@ public class ProceedingsForm extends javax.swing.JFrame {
 
         titleLabel.setText("Title:");
 
+        keyField.setName("keyField"); // NOI18N
+
+        yearField.setName("yearField"); // NOI18N
+
+        titleField.setName("titleField"); // NOI18N
+
         yearLabel.setText("Year: ");
 
         editorLabel.setText("Editor:");
 
+        editorField.setName("editorField"); // NOI18N
         editorField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editorFieldActionPerformed(evt);
@@ -118,21 +125,37 @@ public class ProceedingsForm extends javax.swing.JFrame {
 
         volumeLabel.setText("Volume:");
 
+        volumeField.setName("volumeField"); // NOI18N
+
         seriesLabel.setText("Series:");
+
+        seriesField.setName("seriesField"); // NOI18N
 
         addressLabel.setText("Address:");
 
+        addressField.setName("addressField"); // NOI18N
+
         monthLabel.setText("Month:");
+
+        monthField.setName("monthField"); // NOI18N
 
         publisherLabel.setText("Publisher:");
 
+        publisherField.setName("publisherField"); // NOI18N
+
         organizationLabel.setText("Organization:");
 
+        organizationField.setName("organizationField"); // NOI18N
+
         noteLabel.setText("Note:");
+
+        noteField.setName("noteField"); // NOI18N
 
         keyLabel.setText("Key:");
 
         bibtexKeyLabel.setText("BibTeX Key:");
+
+        bibtexKeyField.setName("bibtexKeyField"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,6 +244,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
         );
 
         clearButton.setText("Tyhjennä");
+        clearButton.setName("clearButton"); // NOI18N
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
@@ -228,6 +252,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
         });
 
         saveButton.setText("Tallenna");
+        saveButton.setName("saveButton"); // NOI18N
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);

@@ -104,6 +104,6 @@ public class FormController {
 
     public void addReference(Reference ref) {
         
-            DataManager.getReferenceDao().addReference(ref);
+            DataManager.getDao().addReference(ref);
     }
 }
