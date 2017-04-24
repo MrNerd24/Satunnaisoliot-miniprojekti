@@ -7,6 +7,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
 import satunnaisoliot.util.BibtexTextTransform;
+import satunnaisoliot.util.DataManager;
 
 /**
  *
@@ -81,15 +82,15 @@ public abstract class GenericReference implements Reference {
                 value = value + " and " + values[i] ;
             }
             value = BibtexTextTransform.texifyString(value);
-            lines.add(field.toString().toLowerCase() + " = {" + value + "},");
+            lines.add("\t" + field.toString().toLowerCase() + " = {" + value + "},");
         }
         lines.add("}");
         return lines;
     }
 
+
     @Override
     public String toString() {
         return getType().toString() + " " + getBibTexKey();
     }
-
 }

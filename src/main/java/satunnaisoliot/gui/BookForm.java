@@ -26,7 +26,7 @@ public class BookForm extends javax.swing.JFrame {
     }
 
     public BookForm(FormController lc, String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
-        this.lc=lc;
+        this.lc = lc;
         initComponents();
         this.setTitle("Uusi kirja");
     }
@@ -129,7 +129,28 @@ public class BookForm extends javax.swing.JFrame {
 
         keyLabel.setText("Key:");
 
+        authorField.setName("authorField"); // NOI18N
+
+        titleField.setName("titleField"); // NOI18N
+
+        publisherField.setName("publisherField"); // NOI18N
+
+        yearField.setName("yearField"); // NOI18N
+
+        volumeField.setName("volumeField"); // NOI18N
+
+        seriesField.setName("seriesField"); // NOI18N
+
+        addressField.setName("addressField"); // NOI18N
+
+        monthField.setName("monthField"); // NOI18N
+
+        noteField.setName("noteField"); // NOI18N
+
+        keyField.setName("keyField"); // NOI18N
+
         clearButton.setText("Tyhjennä");
+        clearButton.setName("clearButton"); // NOI18N
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearButtonActionPerformed(evt);
@@ -137,6 +158,7 @@ public class BookForm extends javax.swing.JFrame {
         });
 
         saveButton.setText("Tallenna");
+        saveButton.setName("saveButton"); // NOI18N
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -144,6 +166,8 @@ public class BookForm extends javax.swing.JFrame {
         });
 
         bibtexKeyLabel.setText("BibTeX Key:");
+
+        bibtexKeyField.setName("bibtexKeyField"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -247,13 +271,9 @@ public class BookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
-     
-        if (!BibtexKeyManager.hasKey(list[0])) {
-            lc.saveBook(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
-            this.dispose();
-        } else {
-            new ErrorWindow("That BibTeX key already exists.").setVisible(true);
-        }
+
+        lc.saveBook(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
+        this.dispose();
 
 
     }//GEN-LAST:event_saveButtonActionPerformed

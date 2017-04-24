@@ -6,13 +6,18 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
+import satunnaisoliot.util.MessageListener;
+import satunnaisoliot.util.PostOffice;
 
-public class MainWindow extends javax.swing.JFrame implements UpdatableGui {
+
+public class MainWindow extends javax.swing.JFrame implements UpdatableGui, MessageListener {
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
+        
+        PostOffice.register(this, "reference added");
 
         this.setMinimumSize(new Dimension(200, 80));
         this.setPreferredSize(new Dimension(1024, 500));
@@ -86,6 +91,7 @@ public class MainWindow extends javax.swing.JFrame implements UpdatableGui {
         mainToolbar.add(jSeparator1);
 
         addButton.setText("Add Ref");
+        addButton.setName("AddButton");
         addButton.setToolTipText("Create a new reference in the table.");
         addButton.setFocusable(false);
         addButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -224,11 +230,16 @@ public class MainWindow extends javax.swing.JFrame implements UpdatableGui {
     public void updateGui() {
         this.updateDataTable();
     }
-    
+
     // Call this method after creating/deleting/modifying data.
     public void updateDataTable() {
         this.tableModel.updateReferenceList();
         this.repaint();
+    }
+
+    @Override
+    public void receiveMessage(String message) {
+        updateDataTable();
     }
 
 }

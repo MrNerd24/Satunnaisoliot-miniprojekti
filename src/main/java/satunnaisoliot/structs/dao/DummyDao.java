@@ -40,4 +40,6 @@ public class DummyDao implements Dao{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public int countReferenceswithSameBibTexKey(String bibTexKey) { throw new UnsupportedOperationException("Not supported yet."); }
 }

@@ -118,4 +118,24 @@ public class ReferenceDao implements Dao {
             throw new RuntimeException(ex.getMessage());
         }
     }
+
+    @Override
+    public int countReferenceswithSameBibTexKey(String bibTexKey) {
+        try {
+            ResultSet rs = DataManager.getSqlDatastore().query("SELECT bibtex_key FROM Reference");
+            int count = 0;
+
+            while(rs.next()) {
+                String key = rs.getString("bibtex_key");
+                if(key.matches("^" + bibTexKey + "[a-z]?")) {
+                    count++;
+                }
+            }
+
+            rs.close();
+            return count;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
 }

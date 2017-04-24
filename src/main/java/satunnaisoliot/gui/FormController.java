@@ -11,18 +11,23 @@ import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.structs.references.Article;
 import satunnaisoliot.structs.references.Book;
 import satunnaisoliot.structs.references.Proceedings;
+import satunnaisoliot.util.BibtexKeyManager;
 import satunnaisoliot.util.DataManager;
+import satunnaisoliot.util.PostOffice;
 
 /**
  *
  * @author Peter
  */
 public class FormController {
+
     SqlDatastore db;
-    public FormController(){
+
+    public FormController() {
         
     }
-    public FormController(SqlDatastore sql){
+
+    public FormController(SqlDatastore sql) {
         this.db = sql;
     }
 
@@ -30,11 +35,11 @@ public class FormController {
 //        ArticleForm af = new ArticleForm();
 //        af.showForm();
 //    }
-
     public void newArticle() {
-        ArticleForm af = new ArticleForm(this,"","", "","","","","","","","","");
+        ArticleForm af = new ArticleForm(this, "", "", "", "", "", "", "", "", "", "", "");
         af.showForm();
     }
+
     public void saveArticle(String bibkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         Article article = new Article();
         article.setAuthor(author);
@@ -48,15 +53,16 @@ public class FormController {
         article.setNote(note);
         article.setKey(key);
         article.setBibTexKey(bibkey);
-        
-      //  tee jotain artikkelille
+
+        //  tee jotain artikkelille
         addReference(article);
     }
-
+    
     public void newBook() {
-        BookForm bf = new BookForm(this,"","", "","","","","","","","","");
+        BookForm bf = new BookForm(this, "", "", "", "", "", "", "", "", "", "", "");
         bf.showForm();
     }
+
     public void saveBook(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         
         Book book = new Book();
@@ -71,13 +77,13 @@ public class FormController {
         book.setNote(note);
         book.setKey(key);
         book.setBibTexKey(bibkey);
-        
+
         //tee jotain kirjalle
         addReference(book);
     }
-
+    
     public void newProceeding() {
-        ProceedingsForm pf = new ProceedingsForm(this,"","", "","","","","","","","","","");
+        ProceedingsForm pf = new ProceedingsForm(this, "", "", "", "", "", "", "", "", "", "", "", "");
         pf.showForm();
     }
     
@@ -96,14 +102,17 @@ public class FormController {
         proceedings.setNote(note);
         proceedings.setKey(key);
         proceedings.setBibTexKey(bibkey);
-        
-        //tee jotain proceedingille
 
+        //tee jotain proceedingille
         addReference(proceedings);
     }
-
+    
     public void addReference(Reference ref) {
+        if (BibtexKeyManager.handleBibTexKey(ref)) {
+            new ErrorWindow("Reference's bibTexKey has been generated or changed to: " + ref.getBibTexKey()).setVisible(true);
+        }
         
-            DataManager.getDao().addReference(ref);
+        DataManager.getDao().addReference(ref);
+        PostOffice.sendMessage("reference added");
     }
 }
