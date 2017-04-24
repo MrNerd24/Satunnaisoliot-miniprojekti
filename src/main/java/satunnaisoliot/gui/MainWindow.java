@@ -10,13 +10,14 @@ import satunnaisoliot.util.MessageListener;
 import satunnaisoliot.util.PostOffice;
 
 
-public class MainWindow extends javax.swing.JFrame implements UpdatableGui, MessageListener {
+public class MainWindow extends javax.swing.JFrame
+        implements UpdatableGui, MessageListener {
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
-        
+
         PostOffice.register(this, "reference added");
 
         this.setMinimumSize(new Dimension(200, 80));
@@ -24,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame implements UpdatableGui, Mess
 
         datastore = DataManager.getSqlDatastore();
         tableModel = new ReferenceTable(DataManager.getDao());
+        DataManager.getDao().setMainTableUpdateThing(this);
 
         initComponents();
     }
@@ -211,12 +213,8 @@ public class MainWindow extends javax.swing.JFrame implements UpdatableGui, Mess
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // Tietueenlisäysikkunan luonti.
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new TypeSelectionWindow(datastore).setVisible(true);
-            }
-        });
+        TypeSelectionWindow w = new TypeSelectionWindow(datastore);
+        w.setVisible(true);
     }
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {

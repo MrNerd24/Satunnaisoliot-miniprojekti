@@ -24,17 +24,12 @@ public class FormController {
     SqlDatastore db;
 
     public FormController() {
-        
     }
 
     public FormController(SqlDatastore sql) {
         this.db = sql;
     }
 
-//    public void main(String[] args) { //stub testaamiselle
-//        ArticleForm af = new ArticleForm();
-//        af.showForm();
-//    }
     public void newArticle() {
         ArticleForm af = new ArticleForm(this, "", "", "", "", "", "", "", "", "", "", "");
         af.showForm();
@@ -57,14 +52,14 @@ public class FormController {
         //  tee jotain artikkelille
         addReference(article);
     }
-    
+
     public void newBook() {
         BookForm bf = new BookForm(this, "", "", "", "", "", "", "", "", "", "", "");
         bf.showForm();
     }
 
     public void saveBook(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
-        
+
         Book book = new Book();
         book.setAuthor(author);
         book.setTitle(title);
@@ -81,14 +76,14 @@ public class FormController {
         //tee jotain kirjalle
         addReference(book);
     }
-    
+
     public void newProceeding() {
         ProceedingsForm pf = new ProceedingsForm(this, "", "", "", "", "", "", "", "", "", "", "", "");
         pf.showForm();
     }
-    
+
     public void saveProceeding(String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
-        
+
         Proceedings proceedings = new Proceedings();
         proceedings.setTitle(title);
         proceedings.setPublisher(publisher);
@@ -106,12 +101,12 @@ public class FormController {
         //tee jotain proceedingille
         addReference(proceedings);
     }
-    
+
     public void addReference(Reference ref) {
         if (BibtexKeyManager.handleBibTexKey(ref)) {
             new ErrorWindow("Reference's bibTexKey has been generated or changed to: " + ref.getBibTexKey()).setVisible(true);
         }
-        
+
         DataManager.getDao().addReference(ref);
         PostOffice.sendMessage("reference added");
     }

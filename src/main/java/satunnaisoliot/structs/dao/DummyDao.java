@@ -6,6 +6,7 @@
 package satunnaisoliot.structs.dao;
 
 import java.util.List;
+import satunnaisoliot.gui.UpdatableGui;
 import satunnaisoliot.structs.interfaces.Reference;
 
 /**
@@ -42,4 +43,9 @@ public class DummyDao implements Dao{
 
     @Override
     public int countReferenceswithSameBibTexKey(String bibTexKey) { throw new UnsupportedOperationException("Not supported yet."); }
+
+    @Override
+    public void setMainTableUpdateThing(UpdatableGui thing) {
+        System.out.println("updated main gui table (" + DummyDao.class + ")");
+    }
 }
