@@ -6,13 +6,17 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
+import satunnaisoliot.util.MessageListener;
+import satunnaisoliot.util.PostOffice;
 
-public class MainWindow extends javax.swing.JFrame {
+public class MainWindow extends javax.swing.JFrame implements MessageListener {
 
     /**
      * Creates new form MainWindow
      */
     public MainWindow() {
+        
+        PostOffice.register(this, "reference added");
 
         this.setMinimumSize(new Dimension(200, 80));
         this.setPreferredSize(new Dimension(1024, 500));
@@ -226,6 +230,11 @@ public class MainWindow extends javax.swing.JFrame {
     public void updateDataTable() {
         this.tableModel.updateReferenceList();
         this.repaint();
+    }
+
+    @Override
+    public void receiveMessage(String message) {
+        updateDataTable();
     }
 
 }

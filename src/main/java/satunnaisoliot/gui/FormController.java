@@ -13,6 +13,7 @@ import satunnaisoliot.structs.references.Book;
 import satunnaisoliot.structs.references.Proceedings;
 import satunnaisoliot.util.BibtexKeyManager;
 import satunnaisoliot.util.DataManager;
+import satunnaisoliot.util.PostOffice;
 
 /**
  *
@@ -110,6 +111,8 @@ public class FormController {
         if (BibtexKeyManager.handleBibTexKey(ref)) {
             new ErrorWindow("Reference's bibTexKey has been generated or changed to: " + ref.getBibTexKey()).setVisible(true);
         }
+        
         DataManager.getDao().addReference(ref);
+        PostOffice.sendMessage("reference added");
     }
 }
