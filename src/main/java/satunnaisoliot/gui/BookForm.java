@@ -23,12 +23,14 @@ public class BookForm extends javax.swing.JFrame {
     public BookForm() {
         initComponents();
         this.setTitle("Uusi kirja");
+        this.setTooltips();
     }
 
     public BookForm(FormController lc, String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         this.lc = lc;
         initComponents();
         this.setTitle("Uusi kirja");
+        this.setTooltips();
     }
 
     public void setAllFields(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
@@ -311,4 +313,8 @@ public class BookForm extends javax.swing.JFrame {
     private javax.swing.JTextField yearField;
     private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
+    private void setTooltips() {
+        authorField.setToolTipText("separate multiple authors with semicolon (;)");
+    }
+
 }

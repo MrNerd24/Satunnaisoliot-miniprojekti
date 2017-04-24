@@ -24,12 +24,14 @@ public class ProceedingsForm extends javax.swing.JFrame {
     public ProceedingsForm() {
         initComponents();
         this.setTitle("Uusi proceeding");
+        this.setTooltips();
     }
 
     public ProceedingsForm(FormController lc, String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         this.lc = lc;
         initComponents();
         this.setTitle("Uusi proceeding");
+        this.setTooltips();
     }
 
     public void setAllFields(String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
@@ -340,4 +342,9 @@ public class ProceedingsForm extends javax.swing.JFrame {
     private javax.swing.JTextField yearField;
     private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
+    private void setTooltips() {
+        
+    }
+
+
 }

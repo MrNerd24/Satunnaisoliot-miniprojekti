@@ -23,12 +23,14 @@ public class ArticleForm extends javax.swing.JFrame {
     public ArticleForm() {
         initComponents();
         this.setTitle("Uusi artikkeli");
+        this.setTooltips();
     }
 
     public ArticleForm(FormController loc, String bibtexkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         this.lc = loc;
         initComponents();
         this.setTitle("Uusi artikkeli");
+        this.setTooltips();
     }
 
     public void setAllFields(String bibkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
@@ -343,4 +345,8 @@ public class ArticleForm extends javax.swing.JFrame {
     private javax.swing.JTextField yearField;
     private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
+private void setTooltips() {
+        authorField.setToolTipText("separate multiple authors with semicolon (;)");
+    }
+
 }
