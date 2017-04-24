@@ -7,7 +7,7 @@ import javax.swing.table.TableColumn;
 import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
 
-public class MainWindow extends javax.swing.JFrame {
+public class MainWindow extends javax.swing.JFrame implements UpdatableGui {
 
     /**
      * Creates new form MainWindow
@@ -221,6 +221,10 @@ public class MainWindow extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "This feature is unimplemented.");
     }
 
+    public void updateGui() {
+        this.updateDataTable();
+    }
+    
     // Call this method after creating/deleting/modifying data.
     public void updateDataTable() {
         this.tableModel.updateReferenceList();
