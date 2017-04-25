@@ -65,7 +65,7 @@ public class Stepdefs {
         @When("^User opens export window$")
     public void open_export_window() throws Throwable {
             System.out.println("User opens reference selection window");
-            mainWindow.button("exportButton").click();
+            mainWindow.button("ExportButton").click();
            Thread.sleep(1000);
     }
         @When("^User selects new article$")

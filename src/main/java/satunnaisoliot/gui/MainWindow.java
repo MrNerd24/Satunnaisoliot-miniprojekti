@@ -106,8 +106,9 @@ public class MainWindow extends javax.swing.JFrame
         });
         mainToolbar.add(addButton);
 
-        deleteButton.setText("Delete selected");
-        deleteButton.setToolTipText("Delete selected references");
+        deleteButton.setText("Delete Selected");
+        deleteButton.setName("DeleteButton");
+        deleteButton.setToolTipText("Delete selected references without warning.");
         deleteButton.setFocusable(false);
         deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         deleteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -131,7 +132,8 @@ public class MainWindow extends javax.swing.JFrame
         mainToolbar.add(importButton);
 
         exportButton.setText("Export...");
-        exportButton.setName("Export all references into a file");
+        exportButton.setName("ExportButton");
+        exportButton.setToolTipText("Export all references into a BibTex file");
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
