@@ -9,9 +9,9 @@ public interface Reference {
     public void setField(FieldType name, String value);
 
     public String getField(FieldType name);
-    
+
     public String getBibTexKey();
-    
+
     public void setBibTexKey(String bibTexKey);
 
     public List<String> toBibTex();

@@ -66,6 +66,21 @@ public class ReferenceDao implements Dao {
     }
 
     @Override
+    public void deleteReference(Reference ref) {
+        String bibtexkey = ref.getBibTexKey();
+        String reftype = ref.getType().toString().toLowerCase();
+
+        try {
+            PreparedStatement stmt = datastore.getNewPreparedStatement("DELETE FROM Reference WHERE reference_type = ? AND bibtex_key = ?");
+            stmt.setString(1, reftype);
+            stmt.setString(2, bibtexkey);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println(ex.toString());
+        }
+    }
+
+    @Override
     public List<Reference> findAll() {
         try {
             List<Reference> references = new ArrayList<>();

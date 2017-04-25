@@ -1,9 +1,11 @@
 package satunnaisoliot.gui;
 
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
+import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.util.DataManager;
 import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.util.MessageListener;
@@ -91,7 +93,7 @@ public class MainWindow extends javax.swing.JFrame
         mainToolbar.add(newFileButton);
         mainToolbar.add(jSeparator1);
 
-        addButton.setText("Add Ref");
+        addButton.setText("Add Reference");
         addButton.setName("AddButton");
         addButton.setToolTipText("Create a new reference in the table.");
         addButton.setFocusable(false);
@@ -104,8 +106,8 @@ public class MainWindow extends javax.swing.JFrame
         });
         mainToolbar.add(addButton);
 
-        deleteButton.setText("Delete");
-        deleteButton.setToolTipText("Delete a selected reference");
+        deleteButton.setText("Delete selected");
+        deleteButton.setToolTipText("Delete selected references");
         deleteButton.setFocusable(false);
         deleteButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         deleteButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -129,7 +131,7 @@ public class MainWindow extends javax.swing.JFrame
         mainToolbar.add(importButton);
 
         exportButton.setText("Export...");
-        exportButton.setName("exportButton");
+        exportButton.setName("Export all references into a file");
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -203,12 +205,7 @@ public class MainWindow extends javax.swing.JFrame
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // Export-ikkunan luonti.
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new ExportTexWindow().setVisible(true);
-            }
-        });
+        new ExportTexWindow().setVisible(true);
     }
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +215,12 @@ public class MainWindow extends javax.swing.JFrame
     }
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        showUnimplementedFeatureMessageBox();
+        List<Reference> selectedReferences = this.tableModel.getSelectedReferences();
+        for (Reference ref : selectedReferences) {
+            //System.out.println("Deleting reference " + ref);
+            DataManager.getDao().deleteReference(ref);
+        }
+        this.updateDataTable();
     }
 
     private void showUnimplementedFeatureMessageBox() {

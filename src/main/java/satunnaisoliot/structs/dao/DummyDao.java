@@ -43,4 +43,9 @@ public class DummyDao implements Dao {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public void deleteReference(Reference ref) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

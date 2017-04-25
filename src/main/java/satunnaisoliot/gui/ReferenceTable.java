@@ -1,6 +1,8 @@
 
 package satunnaisoliot.gui;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.event.TableModelListener;
@@ -11,16 +13,17 @@ import satunnaisoliot.structs.enums.FieldType;
 import satunnaisoliot.structs.enums.ReferenceType;
 import satunnaisoliot.structs.interfaces.Reference;
 
-public class ReferenceTable extends AbstractTableModel {
+public final class ReferenceTable extends AbstractTableModel {
 
     private Dao dao;
     private static final String[] dbColumns = {
+        "selected",
         "reference_type",
         "bibtex_key",
 //      "address",
 //      "annote",
         "author",
-        "booktitle",
+//      "booktitle",
 //      "chapter",
 //      "crossref",
 //      "edition",
@@ -47,12 +50,13 @@ public class ReferenceTable extends AbstractTableModel {
     // reference data, and another set of names to display to the user.
     // The order 0f both arrays has to remain the same.
     private static final String[] guiColumns = {
+        "Select",
         "Type",
         "Key",
 //      "Publisher's address",
 //      "Annotation",
         "Author",
-        "Book title",
+//      "Book title",
 //      "Chapter",
 //      "Crossref key",
 //      "Edition",
@@ -76,14 +80,21 @@ public class ReferenceTable extends AbstractTableModel {
     };
 
     List<Reference> referenceList;
+    ArrayList<Boolean> selectedReferences;
 
     public ReferenceTable(Dao dao) {
         this.dao = dao;
+        selectedReferences = new ArrayList();
         updateReferenceList();
     }
 
     public void updateReferenceList() {
         this.referenceList = dao.findAll();
+        int refcount = referenceList.size();
+        selectedReferences.ensureCapacity(refcount);
+        for (int i = 0; i < refcount; i++) {
+            selectedReferences.add(i, Boolean.FALSE);
+        }
     }
 
     @Override
@@ -104,13 +115,13 @@ public class ReferenceTable extends AbstractTableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
+        if (columnIndex == 0) return Boolean.class;
         return String.class;
     }
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        // screw it for now
-        return false;
+        return columnIndex == 0;
     }
 
     @Override
@@ -118,7 +129,9 @@ public class ReferenceTable extends AbstractTableModel {
         Reference ref = referenceList.get(rowIndex);
         String fieldToGet = dbColumns[columnIndex];
 
-        if (fieldToGet.equals("reference_type")) {
+        if (fieldToGet.equals("selected")) {
+            return selectedReferences.get(rowIndex);
+        } else if (fieldToGet.equals("reference_type")) {
             ReferenceType reftype = ref.getType();
             return reftype.toString();
         } else if (fieldToGet.equals("bibtex_key")) {
@@ -136,8 +149,22 @@ public class ReferenceTable extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (columnIndex == 0) {
+            if (aValue.getClass() == Boolean.class) {
+                Boolean b = (Boolean) aValue;
+                selectedReferences.set(rowIndex, b);
+            }
+        }
     }
 
+    public List<Reference> getSelectedReferences() {
+        LinkedList<Reference> selectedRefs = new LinkedList();
+        for (int i = 0; i < referenceList.size(); i++) {
+            if (selectedReferences.get(i)) {
+                selectedRefs.add(referenceList.get(i));
+            }
+        }
+        return selectedRefs;
+    }
 
 }
