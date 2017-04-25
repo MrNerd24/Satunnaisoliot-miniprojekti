@@ -8,4 +8,6 @@ build/
 bibExportTest
 referenceDB.db
 test.bib
+test
+testDB.db
 SqlDatastoreTest2.sqlite
