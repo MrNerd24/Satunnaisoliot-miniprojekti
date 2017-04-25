@@ -6,7 +6,6 @@
 package satunnaisoliot.structs.dao;
 
 import java.util.List;
-import satunnaisoliot.gui.UpdatableGui;
 
 import satunnaisoliot.structs.enums.FieldType;
 import satunnaisoliot.structs.interfaces.Reference;
@@ -20,5 +19,4 @@ public interface Dao {
     public List<Reference> findAll();
     public int rowcount();
     public int countReferenceswithSameBibTexKey(String bibTexKey);
-    public void setMainTableUpdateThing(UpdatableGui thing);
 }

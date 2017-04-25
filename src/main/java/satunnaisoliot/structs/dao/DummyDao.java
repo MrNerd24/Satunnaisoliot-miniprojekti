@@ -6,28 +6,25 @@
 package satunnaisoliot.structs.dao;
 
 import java.util.List;
-import satunnaisoliot.gui.UpdatableGui;
 import satunnaisoliot.structs.interfaces.Reference;
 
 /**
  *
  * @author jambo
  */
-public class DummyDao implements Dao{
+public class DummyDao implements Dao {
 
     @Override
     public void addReference(Reference ref) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void createFile(){
-
+    private void createFile() {
 
     }
 
-    private void addToFile(String text){
+    private void addToFile(String text) {
         //luo työpöydälle tekstitiedoston (popup jossa annetaan tiedoston nimi yms)
-
 
     }
 
@@ -42,10 +39,8 @@ public class DummyDao implements Dao{
     }
 
     @Override
-    public int countReferenceswithSameBibTexKey(String bibTexKey) { throw new UnsupportedOperationException("Not supported yet."); }
-
-    @Override
-    public void setMainTableUpdateThing(UpdatableGui thing) {
-        System.out.println("updated main gui table (" + DummyDao.class + ")");
+    public int countReferenceswithSameBibTexKey(String bibTexKey) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }

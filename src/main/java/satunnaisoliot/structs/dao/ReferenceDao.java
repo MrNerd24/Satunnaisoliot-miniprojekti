@@ -15,22 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import satunnaisoliot.gui.UpdatableGui;
 import satunnaisoliot.util.DataManager;
 
 public class ReferenceDao implements Dao {
 
     private SqlDatastore datastore;
-    private UpdatableGui mainTableUpdateThing;
 
     public ReferenceDao(SqlDatastore datastore) {
         this.datastore = datastore;
     }
 
-    @Override
-    public void setMainTableUpdateThing(UpdatableGui thing) {
-        this.mainTableUpdateThing = thing;
-    }
 
     @Override
     public void addReference(Reference ref) {
@@ -69,9 +63,6 @@ public class ReferenceDao implements Dao {
             System.err.println(ex.toString());
         }
 
-        if (mainTableUpdateThing != null) {
-            mainTableUpdateThing.updateGui();
-        }
     }
 
     @Override

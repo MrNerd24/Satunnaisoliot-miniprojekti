@@ -11,7 +11,7 @@ import satunnaisoliot.util.PostOffice;
 
 
 public class MainWindow extends javax.swing.JFrame
-        implements UpdatableGui, MessageListener {
+        implements MessageListener {
 
     /**
      * Creates new form MainWindow
@@ -25,7 +25,6 @@ public class MainWindow extends javax.swing.JFrame
 
         datastore = DataManager.getSqlDatastore();
         tableModel = new ReferenceTable(DataManager.getDao());
-        DataManager.getDao().setMainTableUpdateThing(this);
 
         initComponents();
     }
@@ -224,10 +223,6 @@ public class MainWindow extends javax.swing.JFrame
 
     private void showUnimplementedFeatureMessageBox() {
         JOptionPane.showMessageDialog(rootPane, "This feature is unimplemented.");
-    }
-
-    public void updateGui() {
-        this.updateDataTable();
     }
 
     // Call this method after creating/deleting/modifying data.
