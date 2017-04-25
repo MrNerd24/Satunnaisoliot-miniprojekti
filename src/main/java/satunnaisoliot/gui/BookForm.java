@@ -314,7 +314,7 @@ public class BookForm extends javax.swing.JFrame {
     private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
     private void setTooltips() {
-        authorField.setToolTipText("separate multiple authors with semicolon (;)");
+        authorField.setToolTipText("\"Add in format Lastname, Firstnames. Separate multiple authors with semicolon (;)\"");
     }
 
 }
