@@ -61,6 +61,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="filePath">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="filePathField" noResource="true"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filePathActionPerformed"/>
       </Events>
@@ -68,6 +71,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Export"/>
+        <Property name="name" type="java.lang.String" value="exportButton" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

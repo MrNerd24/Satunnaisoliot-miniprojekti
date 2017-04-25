@@ -43,6 +43,7 @@ public class ExportTexWindow extends javax.swing.JFrame {
 
         jLabel1.setText("Give file path and name");
 
+        filePath.setName("filePathField"); // NOI18N
         filePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filePathActionPerformed(evt);
@@ -50,6 +51,7 @@ public class ExportTexWindow extends javax.swing.JFrame {
         });
 
         jButton1.setText("Export");
+        jButton1.setName("exportButton"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

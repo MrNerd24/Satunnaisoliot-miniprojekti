@@ -130,6 +130,7 @@ public class MainWindow extends javax.swing.JFrame
         mainToolbar.add(importButton);
 
         exportButton.setText("Export...");
+        exportButton.setName("exportButton");
         exportButton.setFocusable(false);
         exportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

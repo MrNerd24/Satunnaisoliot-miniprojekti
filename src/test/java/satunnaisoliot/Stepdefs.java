@@ -4,12 +4,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.Before;
+import java.io.File;
 import org.fest.swing.core.BasicRobot;
 import org.fest.swing.core.Robot;
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertTrue;
 import satunnaisoliot.gui.ArticleForm;
 import satunnaisoliot.gui.BookForm;
+import satunnaisoliot.gui.ExportTexWindow;
 import satunnaisoliot.gui.MainWindow;
 import satunnaisoliot.gui.ProceedingsForm;
 import satunnaisoliot.gui.TypeSelectionWindow;
@@ -21,6 +24,7 @@ public class Stepdefs {
     private FrameFixture newArticle;
     private FrameFixture newBook;
     private FrameFixture newProceeding;
+    private FrameFixture exportWindow;
     private Robot robot;
     
     
@@ -33,6 +37,7 @@ public class Stepdefs {
       newArticle = new FrameFixture(robot, new ArticleForm());
       newBook = new FrameFixture(robot, new BookForm());
       newProceeding = new FrameFixture(robot, new ProceedingsForm());
+      exportWindow = new FrameFixture(robot, new ExportTexWindow());
       //fmain.show();
     }
     @AfterClass
@@ -56,6 +61,12 @@ public class Stepdefs {
             System.out.println("User opens reference selection window");
             mainWindow.button("AddButton").click();
             Thread.sleep(1000);
+    }
+        @When("^User opens export window$")
+    public void open_export_window() throws Throwable {
+            System.out.println("User opens reference selection window");
+            mainWindow.button("exportButton").click();
+           Thread.sleep(1000);
     }
         @When("^User selects new article$")
     public void ref_select_new_article() throws Throwable {
@@ -124,7 +135,7 @@ public class Stepdefs {
         newArticle.textBox("journalField").requireText(journal);
         newArticle.textBox("yearField").requireText(year);
         newArticle.textBox("volumeField").requireText(volume);
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         newArticle.button("saveButton").click();
         newArticle.cleanUp();
             System.out.println("article done");
@@ -162,6 +173,22 @@ public class Stepdefs {
         Thread.sleep(500);
         newProceeding.button("saveButton").click();
         newProceeding.cleanUp();
+    }
+        @When("^User inputs value: \"([^\"]*)\" to export file path$")
+    public void ref_new_proceeding(String export) throws Throwable {
+        File file = new File(export);
+        file.deleteOnExit();
+        if(file.exists()){
+            file.delete();
+                    }
+        exportWindow.show();
+        Thread.sleep(2500);
+        exportWindow.textBox("filePathField").enterText(export);
+        exportWindow.textBox("filePathField").requireText(export);
+        Thread.sleep(500);
+        exportWindow.button("exportButton").click();
+        exportWindow.cleanUp();
+        assertTrue(file.exists());
     }
         @Then("^Values are added$")
     public void ref_new_article_added() throws Throwable {
