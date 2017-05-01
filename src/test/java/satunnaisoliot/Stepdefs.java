@@ -90,6 +90,7 @@ public class Stepdefs {
         newArticle.show();
         // Thread.sleep(1000);
         newArticle.button("clearButton").click();
+        Thread.sleep(500);
         newArticle.textBox("bibtexKeyField").requireText("");
         newArticle.textBox("authorField").requireText("");
         newArticle.textBox("titleField").requireText("");
@@ -103,6 +104,7 @@ public class Stepdefs {
         newBook.show();
         //Thread.sleep(1000);
         newBook.button("clearButton").click();
+        Thread.sleep(500);
         newBook.textBox("bibtexKeyField").requireText("");
         newBook.textBox("authorField").requireText("");
         newBook.textBox("titleField").requireText("");
@@ -115,6 +117,7 @@ public class Stepdefs {
         newProceeding.show();
         //Thread.sleep(1000);
         newProceeding.button("clearButton").click();
+        Thread.sleep(500);
         newProceeding.textBox("bibtexKeyField").requireText("");
         newProceeding.textBox("titleField").requireText("");
         newProceeding.textBox("yearField").requireText("");
@@ -130,7 +133,7 @@ public class Stepdefs {
         newArticle.textBox("journalField").enterText(journal);
         newArticle.textBox("yearField").enterText(year);
         newArticle.textBox("volumeField").enterText(volume);
-
+        Thread.sleep(500);
         newArticle.textBox("bibtexKeyField").requireText(bibkey);
         newArticle.textBox("authorField").requireText(author);
         newArticle.textBox("titleField").requireText(title);
@@ -152,7 +155,7 @@ public class Stepdefs {
         newBook.textBox("titleField").enterText(title);
         newBook.textBox("publisherField").enterText(publisher);
         newBook.textBox("yearField").enterText(year);
-
+        Thread.sleep(500);
         newBook.textBox("bibtexKeyField").requireText(bibkey);
         newBook.textBox("authorField").requireText(author);
         newBook.textBox("titleField").requireText(title);
@@ -166,15 +169,15 @@ public class Stepdefs {
     @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new proceeding$")
     public void ref_new_proceeding(String bibkey, String title, String year) throws Throwable {
         newProceeding.show();
-        //Thread.sleep(2500);
+//        Thread.sleep(2500);
         newProceeding.textBox("bibtexKeyField").enterText(bibkey);
         newProceeding.textBox("titleField").enterText(title);
         newProceeding.textBox("yearField").enterText(year);
-
+        Thread.sleep(500);
         newProceeding.textBox("bibtexKeyField").requireText(bibkey);
         newProceeding.textBox("titleField").requireText(title);
         newProceeding.textBox("yearField").requireText(year);
-        // Thread.sleep(500);
+        Thread.sleep(500);
         newProceeding.button("saveButton").click();
         newProceeding.cleanUp();
     }
@@ -188,9 +191,10 @@ public class Stepdefs {
         }
         exportWindow.show();
         exportWindow.textBox("filePathField").enterText(export);
+        Thread.sleep(500);
         exportWindow.textBox("filePathField").requireText(export);
         exportWindow.button("exportButton").click();
-        Thread.sleep(2500);
+        //Thread.sleep(500);
         exportWindow.cleanUp();
         assertTrue(file.exists());
     }
