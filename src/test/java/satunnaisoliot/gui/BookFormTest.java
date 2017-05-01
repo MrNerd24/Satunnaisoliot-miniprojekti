@@ -13,7 +13,8 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class BookFormTest {
-    private static BookForm instance = new BookForm();
+    private static FormController fc = new FormController();
+    private static BookForm instance = new BookForm(fc);
     
     public BookFormTest() {
     }

@@ -12,7 +12,8 @@ import static org.junit.Assert.*;
  * @author Peter
  */
 public class ArticleFormTest {
-    private static ArticleForm instance = new ArticleForm();
+    private static FormController fc = new FormController();
+    private static ArticleForm instance = new ArticleForm(fc);
     
     public ArticleFormTest() {
     }

@@ -4,35 +4,36 @@
  * and open the template in the editor.
  */
 package satunnaisoliot.gui;
-
-import satunnaisoliot.util.BibtexKeyManager;
-
 /**
- *
+ * A window for creating new book.
  * @author Peter
  */
 public class BookForm extends javax.swing.JFrame {
 
-    FormController lc;
-
+    FormController fc;
     /**
      * Creates new form ArticleForm
      */
-    private String[] list = new String[11];
-
-    public BookForm() {
+    public BookForm(FormController fc) {
+        this.fc = fc;
         initComponents();
         this.setTitle("Uusi kirja");
         this.setTooltips();
     }
-
-    public BookForm(FormController lc, String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
-        this.lc = lc;
-        initComponents();
-        this.setTitle("Uusi kirja");
-        this.setTooltips();
-    }
-
+    /**
+     * Set all fields in the window.
+     * @param bibkey
+     * @param author
+     * @param title
+     * @param publisher
+     * @param year
+     * @param volume
+     * @param series
+     * @param address
+     * @param month
+     * @param note
+     * @param key 
+     */
     public void setAllFields(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         bibtexKeyField.setText(bibkey);
         authorField.setText(author);
@@ -46,7 +47,11 @@ public class BookForm extends javax.swing.JFrame {
         noteField.setText(note);
         keyField.setText(key);
     }
-
+    /**
+     * get values from all fields in the window
+     *
+     * @return The values in an String list.
+     */
     public String[] getAllFields() {
         String[] list = new String[11];
         list[0] = bibtexKeyField.getText();
@@ -277,7 +282,7 @@ public class BookForm extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = getAllFields();
 
-        lc.saveBook(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
+        fc.saveBook(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
         this.dispose();
 
 

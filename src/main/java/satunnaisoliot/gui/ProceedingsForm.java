@@ -5,35 +5,41 @@
  */
 package satunnaisoliot.gui;
 
-import satunnaisoliot.gui.FormController;
-import satunnaisoliot.util.BibtexKeyManager;
-
 /**
+ * A window for creating new Proceeding.
  *
  * @author Peter
  */
 public class ProceedingsForm extends javax.swing.JFrame {
 
-    FormController lc;
+    FormController fc;
 
     /**
      * Creates new form ArticleForm
      */
-    private String[] list = new String[12];
-
-    public ProceedingsForm() {
+    public ProceedingsForm(FormController fc) {
+        this.fc = fc;
         initComponents();
         this.setTitle("Uusi proceeding");
         this.setTooltips();
     }
 
-    public ProceedingsForm(FormController lc, String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
-        this.lc = lc;
-        initComponents();
-        this.setTitle("Uusi proceeding");
-        this.setTooltips();
-    }
-
+    /**
+     * Set all fields in the window.
+     *
+     * @param bibkey
+     * @param title
+     * @param year
+     * @param editor
+     * @param volume
+     * @param series
+     * @param address
+     * @param month
+     * @param publisher
+     * @param organization
+     * @param note
+     * @param key
+     */
     public void setAllFields(String bibkey, String title, String year, String editor, String volume, String series, String address, String month, String publisher, String organization, String note, String key) {
         bibtexKeyField.setText(bibkey);
         titleField.setText(title);
@@ -50,6 +56,11 @@ public class ProceedingsForm extends javax.swing.JFrame {
         bibtexKeyField.setText(bibkey);
     }
 
+    /**
+     * get values from all fields in the window
+     *
+     * @return The values in an String list.
+     */
     public String[] getAllFields() {
         String[] list = new String[12];
         list[0] = bibtexKeyField.getText();
@@ -299,7 +310,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = this.getAllFields();
 
-        lc.saveProceeding(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11]);
+        fc.saveProceeding(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10], list[11]);
         this.dispose();
 
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -344,8 +355,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
     private void setTooltips() {
-        
-    }
 
+    }
 
 }

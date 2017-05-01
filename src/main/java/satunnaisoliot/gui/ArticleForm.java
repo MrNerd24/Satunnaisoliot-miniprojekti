@@ -4,35 +4,37 @@
  * and open the template in the editor.
  */
 package satunnaisoliot.gui;
-
-import satunnaisoliot.structs.references.Article;
-import satunnaisoliot.util.BibtexKeyManager;
-
 /**
- *
+ * A window for creating new article.
  * @author Peter
  */
 public class ArticleForm extends javax.swing.JFrame {
 
-    FormController lc;
-//    SqlDatastore db;
-
+    FormController fc;
     /**
-     * Creates new form ArticleForm
+     * Creates new form ArticleForm with controller.
+     * @param fc controller to be used.
      */
-    public ArticleForm() {
+    public ArticleForm(FormController fc) {
+        this.fc = fc;
         initComponents();
         this.setTitle("Uusi artikkeli");
         this.setTooltips();
     }
-
-    public ArticleForm(FormController loc, String bibtexkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
-        this.lc = loc;
-        initComponents();
-        this.setTitle("Uusi artikkeli");
-        this.setTooltips();
-    }
-
+    /**
+     * Set all fields in the window.
+     * @param bibkey
+     * @param author
+     * @param title
+     * @param journal
+     * @param year
+     * @param volume
+     * @param number
+     * @param pages
+     * @param month
+     * @param note
+     * @param key 
+     */
     public void setAllFields(String bibkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         authorField.setText(author);
         titleField.setText(title);
@@ -46,7 +48,10 @@ public class ArticleForm extends javax.swing.JFrame {
         keyField.setText(key);
         bibtexKeyField.setText(bibkey);
     }
-
+    /**
+     * get values from all fields in the window
+     * @return The values in an String list.
+     */
     public String[] getAllFields() {
         String[] list = new String[11];
         list[0] = bibtexKeyField.getText();
@@ -275,29 +280,8 @@ public class ArticleForm extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         String[] list = this.getAllFields();
-
-//        Article article = new Article();
-//        article.setAuthor(list[0]);
-//        article.setTitle(list[1]);
-//        article.setJournal(list[2]);
-//        article.setYear(list[3]);
-//        article.setVolume(list[4]);
-//        article.setNumber(list[5]);
-//        article.setPages(list[6]);
-//        article.setMonth(list[7]);
-//        article.setNote(list[8]);
-//        article.setKey(list[9]);
-//        
-//        article.setBibTexKey(list[10]);
-//        for(int i =0; i<list.length;i++){ 
-//            if(list[i].equals("")){
-//                list[i] = " ";
-//            }
-//        }
-        lc.saveArticle(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
+        fc.saveArticle(list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7], list[8], list[9], list[10]);
         this.dispose();
-
-//        addReference(article);
     }//GEN-LAST:event_saveButtonActionPerformed
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -306,16 +290,6 @@ public class ArticleForm extends javax.swing.JFrame {
             }
         });
     }
-//        public void addReference(Reference ref) {
-//        ReferenceDao rd = new ReferenceDao(this.db);
-//        try {
-//            ref.setField(FieldType.TYPE,"Article");
-//            rd.addReference(ref);
-//            throw new SQLException();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ArticleForm.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField authorField;
     private javax.swing.JLabel authorLabel;
