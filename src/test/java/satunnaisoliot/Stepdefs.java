@@ -187,11 +187,10 @@ public class Stepdefs {
             file.delete();
         }
         exportWindow.show();
-        // Thread.sleep(2500);
         exportWindow.textBox("filePathField").enterText(export);
         exportWindow.textBox("filePathField").requireText(export);
-        //Thread.sleep(500);
         exportWindow.button("exportButton").click();
+        Thread.sleep(2500);
         exportWindow.cleanUp();
         assertTrue(file.exists());
     }
