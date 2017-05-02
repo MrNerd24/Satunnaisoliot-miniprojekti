@@ -2,7 +2,7 @@ package satunnaisoliot.structs.references;
 
 import satunnaisoliot.structs.enums.FieldType;
 import satunnaisoliot.structs.enums.ReferenceType;
-import satunnaisoliot.structs.generic.GenericReference;
+import satunnaisoliot.structs.GenericReference;
 
 
 public class Book extends GenericReference {

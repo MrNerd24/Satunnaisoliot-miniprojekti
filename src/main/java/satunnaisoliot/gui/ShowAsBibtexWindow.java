@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 
 import java.io.PrintWriter;
@@ -11,10 +6,6 @@ import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.util.BibtexParser;
 import satunnaisoliot.util.DataManager;
 
-/**
- *
- * @author jambo
- */
 public class ShowAsBibtexWindow extends javax.swing.JFrame {
 
     /**
@@ -24,7 +15,7 @@ public class ShowAsBibtexWindow extends javax.swing.JFrame {
     private String texString;
 
     public ShowAsBibtexWindow(List<Reference> references) {
-        
+
         initComponents();
 
         for (Reference reference : references) {
@@ -33,7 +24,7 @@ public class ShowAsBibtexWindow extends javax.swing.JFrame {
                 this.jTextArea1.append("\n");
             }
             this.jTextArea1.append("\n");
-            
+
         }
     }
 

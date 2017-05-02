@@ -92,7 +92,6 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
             this.dispose();
         }
 
-
     }//GEN-LAST:event_listaMouseClicked
 
     /**

@@ -2,7 +2,6 @@ package satunnaisoliot.structs.dao;
 
 import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.structs.enums.FieldType;
-import satunnaisoliot.structs.generic.GenericReference;
 import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.structs.references.Article;
 import satunnaisoliot.structs.references.Book;
@@ -13,8 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import satunnaisoliot.util.DataManager;
 
 public class ReferenceDao implements Dao {

@@ -1,4 +1,3 @@
-
 package satunnaisoliot.gui;
 
 import java.util.ArrayList;

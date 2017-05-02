@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 
 import satunnaisoliot.util.BibtexParser;
 
-/**
- *
- * @author jambo
- */
 public class PasteBibtexWindow extends javax.swing.JFrame {
 
     /**
@@ -103,9 +94,6 @@ public class PasteBibtexWindow extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

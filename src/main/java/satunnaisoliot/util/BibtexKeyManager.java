@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.util;
 
 import java.sql.SQLException;
@@ -16,10 +11,6 @@ import satunnaisoliot.structs.dao.ReferenceDao;
 import satunnaisoliot.structs.enums.FieldType;
 import satunnaisoliot.structs.interfaces.Reference;
 
-/**
- *
- * @author juuso_j0pbwen
- */
 public class BibtexKeyManager {
 
     /**
@@ -57,22 +48,22 @@ public class BibtexKeyManager {
     private static void generateBibTexKey(Reference reference) {
         String authorContent = reference.getField(FieldType.AUTHOR);
         String year = reference.getField(FieldType.YEAR);
-        
+
         String bibTexKey = generateBibTexKeyAuthorQuantityCheck(authorContent);
         bibTexKey += addYearToBibTexKey(year);
         bibTexKey += getLetterSuffix(bibTexKey);
 
         reference.setBibTexKey(bibTexKey);
     }
-    
+
     private static String generateBibTexKeyAuthorQuantityCheck(String authorContent) {
         if (authorContent.contains(";")) {
             //Many authors
             return generateBibTexKeyForManyAuthors(authorContent);
-        } 
+        }
         return generateBibTexKeyForOneAuthor(authorContent);
     }
-    
+
     private static String generateBibTexKeyForManyAuthors(String authorContent) {
         String bibTexKey = "";
         String[] authors = authorContent.split(";");
@@ -83,29 +74,29 @@ public class BibtexKeyManager {
         }
         return bibTexKey;
     }
-    
+
     private static String generateBibTexKeyForOneAuthor(String authorContent) {
         //Only one author
         //Take three first letters of the last name or all if less than three
         String lastName = getLastNameFromAuthorContent(authorContent);
         return lettersFromOneAuthorsLastName(lastName);
     }
-    
+
     private static String getLastNameFromAuthorContent(String authorContent) {
         int commaIndex = authorContent.indexOf(",");
         if (commaIndex == -1) {
             return authorContent;
-        } 
+        }
         return authorContent.substring(0, commaIndex);
     }
-    
+
     private static String lettersFromOneAuthorsLastName(String lastName) {
         if (lastName.length() < 3) {
             return lastName;
-        } 
+        }
         return lastName.substring(0, 3);
     }
-    
+
     private static String addYearToBibTexKey(String year) {
         if (year != null) {
             if (year.length() < 2) {

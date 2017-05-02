@@ -11,7 +11,6 @@ import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.util.MessageListener;
 import satunnaisoliot.util.PostOffice;
 
-
 public class MainWindow extends javax.swing.JFrame
         implements MessageListener {
 
@@ -145,8 +144,8 @@ public class MainWindow extends javax.swing.JFrame
             }
         });
         mainToolbar.add(exportButton);
-        
-        
+
+
         viewBibtexButton.setText("View as Bibtex");
         viewBibtexButton.setName("ViewBibtexButton");
         viewBibtexButton.setToolTipText("View selected references in bibtex format.");
@@ -159,8 +158,8 @@ public class MainWindow extends javax.swing.JFrame
             }
         });
         mainToolbar.add(viewBibtexButton);
-        
-        
+
+
         mainToolbar.add(jSeparator3);
 
         searchButton.setText("Search...");
@@ -206,12 +205,12 @@ public class MainWindow extends javax.swing.JFrame
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {
         showUnimplementedFeatureMessageBox();
     }
-    
+
     private void viewBibtexButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
+
         ShowAsBibtexWindow win = new ShowAsBibtexWindow(DataManager.getDao().findAll());
         win.setVisible(true);
-        
+
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {

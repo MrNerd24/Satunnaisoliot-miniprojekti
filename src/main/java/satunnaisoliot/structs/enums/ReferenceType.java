@@ -1,4 +1,3 @@
-
 package satunnaisoliot.structs.enums;
 
 public enum ReferenceType {
