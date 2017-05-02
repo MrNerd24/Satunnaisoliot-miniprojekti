@@ -161,8 +161,8 @@ public class ReferenceDao implements Dao {
     public List<Reference> findAllContainingString(String keyword) {
         try {
             PreparedStatement stmt = datastore.getNewPreparedStatement(formSearchQuery());
-            for(int i = 1; i <= FieldType.values().length; i++) {
-                stmt.setString(i, keyword);
+            for(int i = 1; i < FieldType.values().length; i++) {
+                stmt.setString(i, "%" + keyword + "%");
             }
             ResultSet rs = stmt.executeQuery();
             List<Reference> references = convertResultSetToReferenceList(rs);
@@ -175,16 +175,20 @@ public class ReferenceDao implements Dao {
 
     private String formSearchQuery() {
         String query = "SELECT * FROM Reference WHERE ";
-        String condition = " LIKE '%' + ? + '%'";
-        int i = 1;
+        String condition = " LIKE ?";
+        int i = 0;
 
         for (FieldType field : FieldType.values()) {
             String column = field.toString().toLowerCase();
-            query += column + condition;
-            if(i < FieldType.values().length) {
-                query += " OR ";
+            if(!column.matches("key")) {
+                query += column + condition;
+                if(i < FieldType.values().length - 1) {
+                    query += " OR ";
+                }
             }
+            i++;
         }
+        System.out.println(query);
         return query;
     }
 
