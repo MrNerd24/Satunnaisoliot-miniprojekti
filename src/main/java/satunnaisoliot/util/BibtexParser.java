@@ -16,22 +16,22 @@ public class BibtexParser {
     private boolean isArticle = false;
     private boolean isBook = false;
     private boolean isProceedings = false;
-    private String organization;
-    private String note;
-    private String key;
-    private String title;
-    private String author;
-    private String bibkey;
-    private String month;
-    private String pages;
-    private String number;
-    private String volume;
-    private String year;
-    private String journal;
-    private String editor;
-    private String address;
-    private String series;
-    private String publisher;
+    private String organization = "";
+    private String note = "";
+    private String key = "";
+    private String title = "";
+    private String author = "";
+    private String bibkey = "";
+    private String month = "";
+    private String pages = "";
+    private String number = "";
+    private String volume = "";
+    private String year = "";
+    private String journal = "";
+    private String editor = "";
+    private String address = "";
+    private String series = "";
+    private String publisher = "";
 
     public BibtexParser(String text) {
         this.texString = text;
@@ -50,7 +50,7 @@ public class BibtexParser {
         this.key = getFirstSubstringAfter("key");
         this.title = getFirstSubstringAfter("title");
         this.author = getFirstSubstringAfter("author");
-        this.bibkey = getFirstSubstringBetweenChars('{',',');
+        this.bibkey = getFirstSubstringBetweenChars('{', ',');
         this.month = getFirstSubstringAfter("month");
         this.pages = getFirstSubstringAfter("pages");
         this.number = getFirstSubstringAfter("number");
@@ -153,11 +153,15 @@ public class BibtexParser {
     }
 
     private String getFirstSubstringAfter(String identifier) {
-        int indexOfIdentifier = this.texString.indexOf(identifier);
-        int firstDelimiterIndex = this.texString.indexOf('{', indexOfIdentifier);
-        int lastDelimiterIndex = this.texString.indexOf('}', firstDelimiterIndex + 1);
-        return "" + this.texString.subSequence(firstDelimiterIndex + 1, lastDelimiterIndex);
+        if (this.texString.contains(identifier)) {
 
+            int indexOfIdentifier = this.texString.indexOf(identifier);
+            int firstDelimiterIndex = this.texString.indexOf('{', indexOfIdentifier);
+            int lastDelimiterIndex = this.texString.indexOf('}', firstDelimiterIndex + 1);
+            return "" + this.texString.subSequence(firstDelimiterIndex + 1, lastDelimiterIndex);
+        } else {
+            return "";
+        }
     }
 
     private String getFirstSubstringBetweenChars(char ch1, char ch2) {
