@@ -1,4 +1,3 @@
-
 package satunnaisoliot.gui;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public final class ReferenceTable extends AbstractTableModel {
 //      "howpublished",
 //      "institution",
         "journal",
-        "bibkey",
+//      "bibkey",
 //      "month",
 //      "note",
 //      "number",
@@ -64,7 +63,7 @@ public final class ReferenceTable extends AbstractTableModel {
 //      "How published",
 //      "Institution",
         "Journal",
-        "Sort as",
+//      "Sort as",
 //      "Month",
 //      "Note",
 //      "Number",

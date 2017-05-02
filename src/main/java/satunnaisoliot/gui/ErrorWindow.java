@@ -1,21 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 
-/**
- *
- * @author jambo
- */
 public class ErrorWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form ErrorWindow
      */
     public ErrorWindow(String errorMessage) {
-        
         initComponents();
         errorMessage = addHtmlToString(errorMessage);
         jLabel1.setText(errorMessage);
@@ -76,10 +66,6 @@ public class ErrorWindow extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

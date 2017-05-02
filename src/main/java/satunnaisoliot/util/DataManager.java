@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.util;
 
 import satunnaisoliot.structs.dao.Dao;
 import satunnaisoliot.structs.dao.ReferenceDao;
 
-/**
- *
- * @author juuso_j0pbwen
- */
 public class DataManager {
 
     private static SqlDatastore datastore = null;

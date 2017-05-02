@@ -1,4 +1,4 @@
-package satunnaisoliot.structs.generic;
+package satunnaisoliot.structs;
 
 import java.util.ArrayList;
 import satunnaisoliot.structs.enums.FieldType;
@@ -7,12 +7,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Objects;
 import satunnaisoliot.util.BibtexTextTransform;
-import satunnaisoliot.util.DataManager;
 
-/**
- *
- * @author juuso_j0pbwen
- */
 public abstract class GenericReference implements Reference {
 
     EnumMap<FieldType, String> entries = new EnumMap<FieldType, String>(FieldType.class);

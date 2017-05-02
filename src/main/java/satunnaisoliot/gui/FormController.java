@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 
 import satunnaisoliot.structs.interfaces.Reference;
@@ -158,13 +153,6 @@ public class FormController {
 
         addReference(proceedings);
     }
-    
-    void newPasteBibtex() {
-        PasteBibtexWindow pb = new PasteBibtexWindow(this);
-        pb.showForm();
-        
-        
-    }
 
     /**
      * Add reference to the database.
@@ -178,6 +166,11 @@ public class FormController {
 
         DataManager.getDao().addReference(ref);
         PostOffice.sendMessage("reference added");
+    }
+
+    void pasteBibtex() {
+        PasteBibtexWindow pb = new PasteBibtexWindow(this);
+        pb.showForm();
     }
 
 }

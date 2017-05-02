@@ -1,17 +1,31 @@
 package satunnaisoliot.gui;
 
+import java.io.PrintWriter;
+import java.util.List;
+import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.util.BibtexParser;
+import satunnaisoliot.util.DataManager;
 
-public class PasteBibtexWindow extends javax.swing.JFrame {
+public class ShowAsBibtexWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form pasteBibtexWindow
      */
     FormController fc;
+    private String texString;
 
-    public PasteBibtexWindow(FormController fc) {
-        this.fc = fc;
+    public ShowAsBibtexWindow(List<Reference> references) {
+
         initComponents();
+
+        for (Reference reference : references) {
+            for (String bibLine : reference.toBibTex()) {
+                this.jTextArea1.append(bibLine);
+                this.jTextArea1.append("\n");
+            }
+            this.jTextArea1.append("\n");
+
+        }
     }
 
     /**
@@ -34,7 +48,7 @@ public class PasteBibtexWindow extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setText("Add reference");
+        jButton1.setText("Close");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -68,32 +82,12 @@ public class PasteBibtexWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        BibtexParser parser = new BibtexParser(this.jTextArea1.getText());
-
-        if (parser.typeIsArticle()) {
-
-            fc.saveArticle(parser.getBibkey(), parser.getAuthor(), parser.getTitle(),
-                    parser.getJournal(), parser.getYear(), parser.getVolume(),
-                    parser.getNumber(), parser.getPages(), parser.getMonth(),
-                    parser.getNote(), parser.getKey());
-        } else if (parser.typeIsBoook()) {
-            fc.saveBook(parser.getBibkey(), parser.getAuthor(), parser.getTitle(),
-                    parser.getPublisher(), parser.getYear(), parser.getVolume(),
-                    parser.getSeries(), parser.getAddress(), parser.getMonth(),
-                    parser.getNote(), parser.getKey());
-        } else if (parser.typeIsProceedings()) {
-            fc.saveProceeding(parser.getBibkey(), parser.getTitle(), parser.getYear(),
-                    parser.getEditor(), parser.getVolume(), parser.getSeries(),
-                    parser.getAddress(), parser.getMonth(), parser.getPublisher(),
-                    parser.getOrganization(), parser.getNote(), parser.getKey());
-        } else {
-            ErrorWindow err = new ErrorWindow("Could not add reference");
-            err.setVisible(true);
-        }
-
-
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
     public void showForm() {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -1,37 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.util;
 
-/**
- *
- * @author jambo
- */
 public class BibtexParser {
 
     private String texString;
 
-    private boolean isArticle = false;
-    private boolean isBook = false;
-    private boolean isProceedings = false;
-    private String organization = "";
-    private String note = "";
-    private String key = "";
-    private String title = "";
-    private String author = "";
-    private String bibkey = "";
-    private String month = "";
-    private String pages = "";
-    private String number = "";
-    private String volume = "";
-    private String year = "";
-    private String journal = "";
-    private String editor = "";
-    private String address = "";
-    private String series = "";
-    private String publisher = "";
+    private boolean isArticle;
+    private boolean isBook;
+    private boolean isProceedings;
+    private String organization;
+    private String note;
+    private String key;
+    private String title;
+    private String author;
+    private String bibkey;
+    private String month;
+    private String pages;
+    private String number;
+    private String volume;
+    private String year;
+    private String journal;
+    private String editor;
+    private String address;
+    private String series;
+    private String publisher;
 
     public BibtexParser(String text) {
         this.texString = text;
@@ -43,7 +34,7 @@ public class BibtexParser {
 
         this.isArticle = isTypeArticle();
         this.isBook = isTypeBook();
-        this.isProceedings = isProceedings();
+        this.isProceedings = isTypeProceedings();
 
         this.organization = getFirstSubstringAfter("organization");
         this.note = getFirstSubstringAfter("note");
@@ -148,12 +139,13 @@ public class BibtexParser {
         return this.texString.contains("@book");
     }
 
-    private boolean isProceedings() {
+    private boolean isTypeProceedings() {
         return this.texString.contains("@proceedings");
     }
 
     private String getFirstSubstringAfter(String identifier) {
-        if (this.texString.contains(identifier)) {
+        if (this.texString.contains(identifier) && this.texString.contains("" + '{')
+                && this.texString.contains("" + '}')) {
 
             int indexOfIdentifier = this.texString.indexOf(identifier);
             int firstDelimiterIndex = this.texString.indexOf('{', indexOfIdentifier);
@@ -165,8 +157,14 @@ public class BibtexParser {
     }
 
     private String getFirstSubstringBetweenChars(char ch1, char ch2) {
-        int indexOfFirstChar = this.texString.indexOf(ch1 + "");
-        int indexOfSecondChar = this.texString.indexOf(ch2 + "");
-        return "" + this.texString.subSequence(indexOfFirstChar + 1, indexOfSecondChar);
+        if (this.texString.contains("" + ch1)
+                && this.texString.contains("" + ch2)) {
+
+            int indexOfFirstChar = this.texString.indexOf(ch1 + "");
+            int indexOfSecondChar = this.texString.indexOf(ch2 + "");
+            return "" + this.texString.subSequence(indexOfFirstChar + 1, indexOfSecondChar);
+        }
+
+        return "";
     }
 }

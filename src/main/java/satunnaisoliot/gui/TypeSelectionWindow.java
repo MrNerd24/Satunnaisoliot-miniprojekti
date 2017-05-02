@@ -1,4 +1,3 @@
-
 package satunnaisoliot.gui;
 
 import satunnaisoliot.util.SqlDatastore;
@@ -36,7 +35,7 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
         setTitle("Reference Type Selection");
 
         lista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Article reference", "Book reference", "Proceedings reference", " ", "reference in Bibtex code", " " };
+            String[] strings = { "Article reference", "Book reference", "Proceedings reference", " ", "Write reference in bibtex form" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -79,21 +78,20 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
     private void listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaMouseClicked
         FormController lomake = new FormController();
 
-        if(lista.getSelectedValue().equals("Article reference")){
+        if (lista.getSelectedValue().equals("Article reference")) {
             lomake.newArticle();
             this.dispose();
-        } else if(lista.getSelectedValue().equals("Book reference")){
+        } else if (lista.getSelectedValue().equals("Book reference")) {
             lomake.newBook();
             this.dispose();
-        } else if(lista.getSelectedValue().equals("Proceedings reference")){
+        } else if (lista.getSelectedValue().equals("Proceedings reference")) {
             lomake.newProceeding();
             this.dispose();
-        } else if(lista.getSelectedValue().equals("reference in Bibtex code")){
-            lomake.newPasteBibtex();
+        } else if (lista.getSelectedValue().equals("Write reference in bibtex form")) {
+            lomake.pasteBibtex();
             this.dispose();
         }
 
-        
     }//GEN-LAST:event_listaMouseClicked
 
     /**
@@ -127,7 +125,6 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-
         new TypeSelectionWindow().setVisible(true);
 
     }

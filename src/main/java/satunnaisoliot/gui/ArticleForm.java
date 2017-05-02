@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 /**
  * A window for creating new article.
@@ -33,7 +28,7 @@ public class ArticleForm extends javax.swing.JFrame {
      * @param pages
      * @param month
      * @param note
-     * @param key 
+     * @param key
      */
     public void setAllFields(String bibkey, String author, String title, String journal, String year, String volume, String number, String pages, String month, String note, String key) {
         authorField.setText(author);

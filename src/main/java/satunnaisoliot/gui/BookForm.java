@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 /**
  * A window for creating new book.
@@ -32,7 +27,7 @@ public class BookForm extends javax.swing.JFrame {
      * @param address
      * @param month
      * @param note
-     * @param key 
+     * @param key
      */
     public void setAllFields(String bibkey, String author, String title, String publisher, String year, String volume, String series, String address, String month, String note, String key) {
         bibtexKeyField.setText(bibkey);
