@@ -5,7 +5,11 @@
  */
 package satunnaisoliot.gui;
 
+import java.io.PrintWriter;
+import java.util.List;
+import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.util.BibtexParser;
+import satunnaisoliot.util.DataManager;
 
 /**
  *
@@ -17,12 +21,20 @@ public class ShowAsBibtexWindow extends javax.swing.JFrame {
      * Creates new form pasteBibtexWindow
      */
     FormController fc;
+    private String texString;
 
-    public ShowAsBibtexWindow() {
+    public ShowAsBibtexWindow(List<Reference> references) {
         
         initComponents();
-        //this.jTextArea1.addTe
-        
+
+        for (Reference reference : references) {
+            for (String bibLine : reference.toBibTex()) {
+                this.jTextArea1.append(bibLine);
+                this.jTextArea1.append("\n");
+            }
+            this.jTextArea1.append("\n");
+            
+        }
     }
 
     /**

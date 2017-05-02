@@ -208,7 +208,8 @@ public class MainWindow extends javax.swing.JFrame
     }
     
     private void viewBibtexButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        ShowAsBibtexWindow win = new ShowAsBibtexWindow();
+        
+        ShowAsBibtexWindow win = new ShowAsBibtexWindow(DataManager.getDao().findAll());
         win.setVisible(true);
         
     }
