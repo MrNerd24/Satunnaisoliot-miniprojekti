@@ -208,9 +208,9 @@ public class MainWindow extends javax.swing.JFrame
     }
     
     private void viewBibtexButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        ShowAsBibtexWindow win = new ShowAsBibtexWindow();
+        win.setVisible(true);
         
-        
-        showUnimplementedFeatureMessageBox();
     }
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {

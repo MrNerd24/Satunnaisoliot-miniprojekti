@@ -159,13 +159,6 @@ public class FormController {
         addReference(proceedings);
     }
     
-    void newPasteBibtex() {
-        PasteBibtexWindow pb = new PasteBibtexWindow(this);
-        pb.showForm();
-        
-        
-    }
-
     /**
      * Add reference to the database.
      *
