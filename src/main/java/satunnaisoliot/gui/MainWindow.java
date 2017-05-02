@@ -77,6 +77,7 @@ public class MainWindow extends javax.swing.JFrame
 
         mainToolbar.setRollover(true);
 
+/*
         openButton.setText("Open File");
         openButton.setFocusable(false);
         openButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -99,6 +100,7 @@ public class MainWindow extends javax.swing.JFrame
         });
         mainToolbar.add(newFileButton);
         mainToolbar.add(jSeparator1);
+*/
 
         addButton.setText("Add Reference");
         addButton.setName("AddButton");
