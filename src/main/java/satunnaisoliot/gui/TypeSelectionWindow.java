@@ -36,7 +36,7 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
         setTitle("Reference Type Selection");
 
         lista.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Article reference", "Book reference", "Proceedings reference", "" };
+            String[] strings = { "Article reference", "Book reference", "Proceedings reference", " ", "reference in Bibtex code", " " };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -88,7 +88,12 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
         } else if(lista.getSelectedValue().equals("Proceedings reference")){
             lomake.newProceeding();
             this.dispose();
+        } else if(lista.getSelectedValue().equals("reference in Bibtex code")){
+            lomake.newPasteBibtex();
+            this.dispose();
         }
+
+        
     }//GEN-LAST:event_listaMouseClicked
 
     /**
