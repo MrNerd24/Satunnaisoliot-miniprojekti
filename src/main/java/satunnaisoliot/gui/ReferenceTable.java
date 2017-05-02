@@ -96,9 +96,18 @@ public final class ReferenceTable extends AbstractTableModel {
         }
     }
 
+    public void filterReferenceList(String searchTerm) {
+        this.referenceList = dao.findAllContainingString(searchTerm);
+        int refcount = referenceList.size();
+        selectedReferences.ensureCapacity(refcount);
+        for (int i = 0; i < refcount; i++) {
+            selectedReferences.add(i, Boolean.FALSE);
+        }
+    }
+
     @Override
     public int getRowCount() {
-        return dao.rowcount();
+        return referenceList.size();
     }
 
     @Override

@@ -39,10 +39,13 @@ public class MainWindow extends javax.swing.JFrame
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar mainToolbar;
     private javax.swing.JButton newFileButton;
     private javax.swing.JButton openButton;
     private javax.swing.JButton searchButton;
+    private javax.swing.JLabel searchLabel;
+    private javax.swing.JTextField searchField;
     private javax.swing.JScrollPane tableScroller;
     private JTable mainTable; // tableModel has to be created before mainTable
     private final ReferenceTable tableModel;
@@ -64,6 +67,9 @@ public class MainWindow extends javax.swing.JFrame
         jSeparator3 = new javax.swing.JToolBar.Separator();
         searchButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        searchLabel = new javax.swing.JLabel("Search: ");
+        searchField = new javax.swing.JTextField(30);
         viewBibtexButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -171,7 +177,7 @@ public class MainWindow extends javax.swing.JFrame
                 searchButtonActionPerformed(evt);
             }
         });
-        mainToolbar.add(searchButton);
+//      mainToolbar.add(searchButton);
 
         refreshButton.setText("Refresh");
         refreshButton.setFocusable(false);
@@ -183,6 +189,20 @@ public class MainWindow extends javax.swing.JFrame
             }
         });
         mainToolbar.add(refreshButton);
+
+        mainToolbar.add(jSeparator4);
+
+        mainToolbar.add(searchLabel);
+
+        searchField.setEditable(true);
+        searchField.setEnabled(true);
+        searchField.setFocusable(true);
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        mainToolbar.add(searchField);
 
         getContentPane().add(mainToolbar, java.awt.BorderLayout.PAGE_START);
 
@@ -215,6 +235,15 @@ public class MainWindow extends javax.swing.JFrame
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
         showUnimplementedFeatureMessageBox();
+    }
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {
+        String searchTerm = this.searchField.getText();
+        if (searchTerm.length() > 0) {
+            doSearch(searchTerm);
+        } else {
+            updateDataTable();
+        }
     }
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +291,11 @@ public class MainWindow extends javax.swing.JFrame
     @Override
     public void receiveMessage(String message) {
         updateDataTable();
+    }
+
+    public void doSearch(String searchTerm) {
+        this.tableModel.filterReferenceList(searchTerm);
+        this.repaint();
     }
 
 }

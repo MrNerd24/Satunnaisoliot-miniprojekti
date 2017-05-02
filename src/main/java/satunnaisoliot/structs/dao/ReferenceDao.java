@@ -167,6 +167,7 @@ public class ReferenceDao implements Dao {
             ResultSet rs = stmt.executeQuery();
             List<Reference> references = convertResultSetToReferenceList(rs);
             rs.close();
+//          System.out.println(references);
             return references;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
@@ -188,7 +189,7 @@ public class ReferenceDao implements Dao {
             }
             i++;
         }
-        System.out.println(query);
+//      System.out.println(query);
         return query;
     }
 
