@@ -11,18 +11,16 @@ import satunnaisoliot.util.BibtexParser;
  *
  * @author jambo
  */
-public class ShowAsBibtexWindow extends javax.swing.JFrame {
+public class PasteBibtexWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form pasteBibtexWindow
      */
     FormController fc;
 
-    public ShowAsBibtexWindow() {
-        
+    public PasteBibtexWindow(FormController fc) {
+        this.fc = fc;
         initComponents();
-        //this.jTextArea1.addTe
-        
     }
 
     /**
@@ -79,7 +77,27 @@ public class ShowAsBibtexWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+        BibtexParser parser = new BibtexParser(this.jTextArea1.getText());
+
+        if (parser.typeIsArticle()) {
+
+            fc.saveArticle(parser.getBibkey(), parser.getAuthor(), parser.getTitle(),
+                    parser.getJournal(), parser.getYear(), parser.getVolume(),
+                    parser.getNumber(), parser.getPages(), parser.getMonth(),
+                    parser.getNote(), parser.getKey());
+        } else if (parser.typeIsBoook()) {
+            fc.saveBook(parser.getBibkey(), parser.getAuthor(), parser.getTitle(),
+                    parser.getPublisher(), parser.getYear(), parser.getVolume(),
+                    parser.getSeries(), parser.getAddress(), parser.getMonth(),
+                    parser.getNote(), parser.getKey());
+        } else if (parser.typeIsProceedings()) {
+            fc.saveProceeding(parser.getBibkey(), parser.getTitle(), parser.getYear(),
+                    parser.getEditor(), parser.getVolume(), parser.getSeries(),
+                    parser.getAddress(), parser.getMonth(), parser.getPublisher(),
+                    parser.getOrganization(), parser.getNote(), parser.getKey());
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

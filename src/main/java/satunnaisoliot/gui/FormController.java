@@ -173,4 +173,9 @@ public class FormController {
         PostOffice.sendMessage("reference added");
     }
 
+    void pasteBibtex() {
+        PasteBibtexWindow pb = new PasteBibtexWindow(this);
+        pb.showForm();
+    }
+
 }
