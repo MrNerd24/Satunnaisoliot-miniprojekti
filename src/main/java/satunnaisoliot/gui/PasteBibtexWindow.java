@@ -95,6 +95,9 @@ public class PasteBibtexWindow extends javax.swing.JFrame {
                     parser.getEditor(), parser.getVolume(), parser.getSeries(),
                     parser.getAddress(), parser.getMonth(), parser.getPublisher(),
                     parser.getOrganization(), parser.getNote(), parser.getKey());
+        } else {
+            ErrorWindow err = new ErrorWindow("Could not add reference");
+            err.setVisible(true);
         }
 
 

@@ -153,7 +153,8 @@ public class BibtexParser {
     }
 
     private String getFirstSubstringAfter(String identifier) {
-        if (this.texString.contains(identifier)) {
+        if (this.texString.contains(identifier) && this.texString.contains("" + '{')
+                && this.texString.contains("" + '}')) {
 
             int indexOfIdentifier = this.texString.indexOf(identifier);
             int firstDelimiterIndex = this.texString.indexOf('{', indexOfIdentifier);
@@ -165,8 +166,14 @@ public class BibtexParser {
     }
 
     private String getFirstSubstringBetweenChars(char ch1, char ch2) {
-        int indexOfFirstChar = this.texString.indexOf(ch1 + "");
-        int indexOfSecondChar = this.texString.indexOf(ch2 + "");
-        return "" + this.texString.subSequence(indexOfFirstChar + 1, indexOfSecondChar);
+        if (this.texString.contains("" + ch1)
+                && this.texString.contains("" + ch2)) {
+
+            int indexOfFirstChar = this.texString.indexOf(ch1 + "");
+            int indexOfSecondChar = this.texString.indexOf(ch2 + "");
+            return "" + this.texString.subSequence(indexOfFirstChar + 1, indexOfSecondChar);
+        }
+        
+        return "";
     }
 }
