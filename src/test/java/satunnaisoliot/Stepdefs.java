@@ -25,13 +25,13 @@ public class Stepdefs {
         robot = BasicRobot.robotWithCurrentAwtHierarchy();
         robot.settings().delayBetweenEvents(1);
         FormController fc = new FormController();
+        
         mainWindow = new FrameFixture(robot, new MainWindow());
         typeSelect = new FrameFixture(robot, new TypeSelectionWindow());
         newArticle = new FrameFixture(robot, new ArticleForm(fc));
         newBook = new FrameFixture(robot, new BookForm(fc));
         newProceeding = new FrameFixture(robot, new ProceedingsForm(fc));
         exportWindow = new FrameFixture(robot, new ExportTexWindow());
-        //fmain.show();
     }
 
     @AfterClass
@@ -47,21 +47,18 @@ public class Stepdefs {
     public void program_is_running() throws Throwable {
         mainWindow.show();
         System.out.println("running");
-        //Thread.sleep(1000);
     }
 
     @When("^User opens reference selection window$")
     public void ref_select_window_opens() throws Throwable {
         System.out.println("User opens reference selection window");
         mainWindow.button("AddButton").click();
-        //Thread.sleep(1000);
     }
 
     @When("^User opens export window$")
     public void open_export_window() throws Throwable {
         System.out.println("User opens reference selection window");
         mainWindow.button("ExportButton").click();
-        //Thread.sleep(1000);
     }
 
     @When("^User selects new article$")
@@ -74,21 +71,18 @@ public class Stepdefs {
     @When("^User selects new book")
     public void ref_select_new_book() throws Throwable {
         typeSelect.show();
-        //Thread.sleep(1000);
         typeSelect.list("referenceTypeList").clickItem("Book reference");
     }
 
     @When("^User selects new proceeding")
     public void ref_select_new_proceeding() throws Throwable {
         typeSelect.show();
-        //Thread.sleep(1000);
         typeSelect.list("referenceTypeList").clickItem("Proceedings reference");
     }
 
     @When("^User hits clear button on article form")
     public void ref_clear_article() throws Throwable {
         newArticle.show();
-        // Thread.sleep(1000);
         newArticle.button("clearButton").click();
         Thread.sleep(500);
         newArticle.textBox("bibtexKeyField").requireText("");
@@ -102,7 +96,6 @@ public class Stepdefs {
     @When("^User hits clear button on book form")
     public void ref_clear_book() throws Throwable {
         newBook.show();
-        //Thread.sleep(1000);
         newBook.button("clearButton").click();
         Thread.sleep(500);
         newBook.textBox("bibtexKeyField").requireText("");
@@ -115,7 +108,6 @@ public class Stepdefs {
     @When("^User hits clear button on proceedings form")
     public void ref_clear_proceeding() throws Throwable {
         newProceeding.show();
-        //Thread.sleep(1000);
         newProceeding.button("clearButton").click();
         Thread.sleep(500);
         newProceeding.textBox("bibtexKeyField").requireText("");
@@ -126,7 +118,6 @@ public class Stepdefs {
     @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new article$")
     public void ref_new_article(String bibkey, String author, String title, String journal, String year, String volume) throws Throwable {
         newArticle.show();
-        //Thread.sleep(2500);
         newArticle.textBox("bibtexKeyField").enterText(bibkey);
         newArticle.textBox("authorField").enterText(author);
         newArticle.textBox("titleField").enterText(title);
@@ -140,7 +131,6 @@ public class Stepdefs {
         newArticle.textBox("journalField").requireText(journal);
         newArticle.textBox("yearField").requireText(year);
         newArticle.textBox("volumeField").requireText(volume);
-        //Thread.sleep(1000);
         newArticle.button("saveButton").click();
         newArticle.cleanUp();
         System.out.println("article done");
@@ -149,7 +139,6 @@ public class Stepdefs {
     @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new book$")
     public void ref_new_book(String bibkey, String author, String title, String publisher, String year, String volume) throws Throwable {
         newBook.show();
-        //Thread.sleep(2500);
         newBook.textBox("bibtexKeyField").enterText(bibkey);
         newBook.textBox("authorField").enterText(author);
         newBook.textBox("titleField").enterText(title);
@@ -161,7 +150,6 @@ public class Stepdefs {
         newBook.textBox("titleField").requireText(title);
         newBook.textBox("publisherField").requireText(publisher);
         newBook.textBox("yearField").requireText(year);
-        // Thread.sleep(500);
         newBook.button("saveButton").click();
         newBook.cleanUp();
     }
@@ -169,7 +157,6 @@ public class Stepdefs {
     @When("^User inputs values: \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\" to a new proceeding$")
     public void ref_new_proceeding(String bibkey, String title, String year) throws Throwable {
         newProceeding.show();
-//        Thread.sleep(2500);
         newProceeding.textBox("bibtexKeyField").enterText(bibkey);
         newProceeding.textBox("titleField").enterText(title);
         newProceeding.textBox("yearField").enterText(year);
@@ -194,18 +181,15 @@ public class Stepdefs {
         Thread.sleep(500);
         exportWindow.textBox("filePathField").requireText(export);
         exportWindow.button("exportButton").click();
-        //Thread.sleep(500);
         exportWindow.cleanUp();
         assertTrue(file.exists());
     }
 
     @Then("^Values are added$")
     public void ref_new_article_added() throws Throwable {
-        //check that the value was added somehow
     }
 
     @Then("^Values are cleared")
     public void ref_values_cleared() throws Throwable {
-        //check that the values were cleared somehow
     }
 }

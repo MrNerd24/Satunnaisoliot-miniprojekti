@@ -7,10 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-/**
- *
- * @author Peter
- */
+
 public class ProceedingsFormTest {
     private static FormController fc = new FormController();
     private static ProceedingsForm instance = new ProceedingsForm(fc);
@@ -31,15 +28,6 @@ public class ProceedingsFormTest {
             i.dispose();
         }
     }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of showForm method, of class ArticleForm.
      */

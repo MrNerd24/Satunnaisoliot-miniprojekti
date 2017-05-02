@@ -1,55 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 
 import java.awt.Frame;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import satunnaisoliot.util.DataManager;
 
-/**
- *
- * @author Peter
- */
 public class FormControllerTest {
+
     FormController lc = new FormController();
-    
+
     public FormControllerTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
         DataManager.setDatabaseFileName(":memory:");
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
         Frame[] a = ArticleForm.getFrames();
         Frame[] b = ProceedingsForm.getFrames();
         Frame[] c = BookForm.getFrames();
-        for(Frame i : a){
+        for (Frame i : a) {
             i.dispose();
         }
-        for(Frame i : b){
+        for (Frame i : b) {
             i.dispose();
         }
-        for(Frame i : c){
+        for (Frame i : c) {
             i.dispose();
         }
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -66,7 +48,7 @@ public class FormControllerTest {
     @Test
     public void testSaveArticle() {
         System.out.println("saveArticle");
-        
+
         String bibkey = "asd";
         String author = "asd";
         String title = "asd";
@@ -78,7 +60,7 @@ public class FormControllerTest {
         String month = "0";
         String note = "0";
         String key = "0";
-        lc.saveArticle(bibkey,author, title, journal, year, volume, number, pages, month, note, key);
+        lc.saveArticle(bibkey, author, title, journal, year, volume, number, pages, month, note, key);
     }
 
     /**
@@ -138,5 +120,4 @@ public class FormControllerTest {
         String key = "0";
         lc.saveProceeding(bibkey, title, year, editor, volume, series, address, month, publisher, organization, note, key);
     }
-    
 }

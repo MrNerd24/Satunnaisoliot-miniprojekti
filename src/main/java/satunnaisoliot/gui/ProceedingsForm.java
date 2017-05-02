@@ -2,8 +2,6 @@ package satunnaisoliot.gui;
 
 /**
  * A window for creating new Proceeding.
- *
- * @author Peter
  */
 public class ProceedingsForm extends javax.swing.JFrame {
 
@@ -15,7 +13,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
     public ProceedingsForm(FormController fc) {
         this.fc = fc;
         initComponents();
-        this.setTitle("Uusi proceeding");
+        this.setTitle("New Proceeding");
         this.setTooltips();
     }
 
@@ -214,7 +212,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(yearLabel)
                     .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editorLabel)
                     .addComponent(editorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,7 +287,7 @@ public class ProceedingsForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveButton)
                     .addComponent(clearButton))

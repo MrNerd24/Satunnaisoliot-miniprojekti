@@ -1,13 +1,8 @@
 package satunnaisoliot.util;
 
-import java.sql.SQLException;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import satunnaisoliot.structs.dao.ReferenceDao;
 import satunnaisoliot.structs.enums.FieldType;
 import satunnaisoliot.structs.interfaces.Reference;
 

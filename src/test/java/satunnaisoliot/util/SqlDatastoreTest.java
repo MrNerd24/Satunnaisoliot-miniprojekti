@@ -1,7 +1,6 @@
 
 package satunnaisoliot.util;
 
-import satunnaisoliot.util.SqlDatastore;
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.io.File;

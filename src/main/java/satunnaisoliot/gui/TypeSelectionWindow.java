@@ -91,7 +91,6 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
             lomake.pasteBibtex();
             this.dispose();
         }
-
     }//GEN-LAST:event_listaMouseClicked
 
     /**
@@ -126,9 +125,7 @@ public class TypeSelectionWindow extends javax.swing.JFrame {
 
         /* Create and display the form */
         new TypeSelectionWindow().setVisible(true);
-
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package satunnaisoliot.gui;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Peter
- */
 public class ExportTexWindowTest {
     
     public ExportTexWindowTest() {

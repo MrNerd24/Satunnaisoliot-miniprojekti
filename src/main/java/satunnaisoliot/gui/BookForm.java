@@ -1,7 +1,6 @@
 package satunnaisoliot.gui;
 /**
  * A window for creating new book.
- * @author Peter
  */
 public class BookForm extends javax.swing.JFrame {
 
@@ -12,7 +11,7 @@ public class BookForm extends javax.swing.JFrame {
     public BookForm(FormController fc) {
         this.fc = fc;
         initComponents();
-        this.setTitle("Uusi kirja");
+        this.setTitle("New Book");
         this.setTooltips();
     }
     /**

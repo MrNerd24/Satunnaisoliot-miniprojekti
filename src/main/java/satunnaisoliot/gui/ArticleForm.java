@@ -13,7 +13,7 @@ public class ArticleForm extends javax.swing.JFrame {
     public ArticleForm(FormController fc) {
         this.fc = fc;
         initComponents();
-        this.setTitle("Uusi artikkeli");
+        this.setTitle("New Article");
         this.setTooltips();
     }
     /**

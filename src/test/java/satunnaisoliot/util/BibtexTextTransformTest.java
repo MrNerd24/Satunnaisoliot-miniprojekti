@@ -1,6 +1,5 @@
 package satunnaisoliot.util;
 
-import satunnaisoliot.util.BibtexTextTransform;
 import org.junit.*;
 import static org.junit.Assert.*;
 

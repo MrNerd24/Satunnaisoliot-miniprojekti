@@ -11,8 +11,6 @@ import satunnaisoliot.util.PostOffice;
 
 /**
  * Handles opening and saving new references.
- *
- * @author Peter
  */
 public class FormController {
 
