@@ -5,10 +5,9 @@
  */
 package satunnaisoliot.structs.dao;
 
-import java.util.List;
-
-import satunnaisoliot.structs.enums.FieldType;
 import satunnaisoliot.structs.interfaces.Reference;
+
+import java.util.List;
 
 /**
  *
@@ -20,4 +19,5 @@ public interface Dao {
     public List<Reference> findAll();
     public int rowcount();
     public int countReferenceswithSameBibTexKey(String bibTexKey);
+    public List<Reference> findAllContainingString(String searchTerm);
 }

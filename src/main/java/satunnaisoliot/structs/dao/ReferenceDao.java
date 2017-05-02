@@ -1,21 +1,18 @@
 package satunnaisoliot.structs.dao;
 
-import satunnaisoliot.util.SqlDatastore;
 import satunnaisoliot.structs.enums.FieldType;
-import satunnaisoliot.structs.generic.GenericReference;
 import satunnaisoliot.structs.interfaces.Reference;
 import satunnaisoliot.structs.references.Article;
 import satunnaisoliot.structs.references.Book;
 import satunnaisoliot.structs.references.Proceedings;
+import satunnaisoliot.util.DataManager;
+import satunnaisoliot.util.SqlDatastore;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import satunnaisoliot.util.DataManager;
 
 public class ReferenceDao implements Dao {
 
@@ -83,42 +80,47 @@ public class ReferenceDao implements Dao {
     @Override
     public List<Reference> findAll() {
         try {
-            List<Reference> references = new ArrayList<>();
             ResultSet rs = this.datastore.query("SELECT * FROM Reference");
-
-            while (rs.next()) {
-                String referenceType = rs.getString("reference_type");
-                Reference ref;
-
-                switch (referenceType) {
-                    case "article":
-                        ref = new Article();
-                        break;
-                    case "book":
-                        ref = new Book();
-                        break;
-                    case "proceedings":
-                        ref = new Proceedings();
-                        break;
-                    default:
-                        throw new UnsupportedOperationException("Reference type not supported yet.");
-                }
-
-                for (FieldType field : FieldType.values()) {
-                    String column = field.toString().toLowerCase();
-                    if (column.equals("key")) {
-                        column = "bibkey";
-                    }
-                    String content = rs.getString(column);
-                    ref.setField(field, content);
-                }
-                ref.setBibTexKey(rs.getString("bibtex_key"));
-                references.add(ref);
-            }
+            List<Reference> references = convertResultSetToReferenceList(rs);
             rs.close();
 
             return references;
         } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    private Reference createReference(String referenceType) {
+        Reference ref;
+        switch (referenceType) {
+            case "article":
+                ref = new Article();
+                break;
+            case "book":
+                ref = new Book();
+                break;
+            case "proceedings":
+                ref = new Proceedings();
+                break;
+            default:
+                throw new UnsupportedOperationException("Reference type not supported yet.");
+        }
+        return ref;
+    }
+
+    private Reference setFields(Reference ref, ResultSet rs) {
+        try {
+            for (FieldType field : FieldType.values()) {
+                String column = field.toString().toLowerCase();
+                if (column.equals("key")) {
+                    column = "bibkey";
+                }
+                String content = rs.getString(column);
+                ref.setField(field, content);
+            }
+            ref.setBibTexKey(rs.getString("bibtex_key"));
+            return ref;
+        }  catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         }
     }
@@ -150,6 +152,54 @@ public class ReferenceDao implements Dao {
 
             rs.close();
             return count;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public List<Reference> findAllContainingString(String keyword) {
+        try {
+            PreparedStatement stmt = datastore.getNewPreparedStatement(formSearchQuery());
+            for(int i = 1; i <= FieldType.values().length; i++) {
+                stmt.setString(i, keyword);
+            }
+            ResultSet rs = stmt.executeQuery();
+            List<Reference> references = convertResultSetToReferenceList(rs);
+            rs.close();
+            return references;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+    }
+
+    private String formSearchQuery() {
+        String query = "SELECT * FROM Reference WHERE ";
+        String condition = " LIKE '%' + ? + '%'";
+        int i = 1;
+
+        for (FieldType field : FieldType.values()) {
+            String column = field.toString().toLowerCase();
+            query += column + condition;
+            if(i < FieldType.values().length) {
+                query += " OR ";
+            }
+        }
+        return query;
+    }
+
+    private List<Reference> convertResultSetToReferenceList(ResultSet rs) {
+        List<Reference> references = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                String referenceType = rs.getString("reference_type");
+                Reference ref = createReference(referenceType);
+                setFields(ref, rs);
+                references.add(ref);
+            }
+            rs.close();
+
+            return references;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         }

@@ -5,8 +5,9 @@
  */
 package satunnaisoliot.structs.dao;
 
-import java.util.List;
 import satunnaisoliot.structs.interfaces.Reference;
+
+import java.util.List;
 
 /**
  *
@@ -46,6 +47,11 @@ public class DummyDao implements Dao {
     @Override
     public void deleteReference(Reference ref) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Reference> findAllContainingString(String searchTerm) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
