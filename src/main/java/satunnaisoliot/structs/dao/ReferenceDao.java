@@ -161,13 +161,12 @@ public class ReferenceDao implements Dao {
     public List<Reference> findAllContainingString(String keyword) {
         try {
             PreparedStatement stmt = datastore.getNewPreparedStatement(formSearchQuery());
-            for(int i = 1; i < FieldType.values().length; i++) {
+            for(int i = 1; i < FieldType.values().length + 1; i++) {
                 stmt.setString(i, "%" + keyword + "%");
             }
             ResultSet rs = stmt.executeQuery();
             List<Reference> references = convertResultSetToReferenceList(rs);
             rs.close();
-//          System.out.println(references);
             return references;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
@@ -181,15 +180,17 @@ public class ReferenceDao implements Dao {
 
         for (FieldType field : FieldType.values()) {
             String column = field.toString().toLowerCase();
-            if(!column.matches("key")) {
-                query += column + condition;
-                if(i < FieldType.values().length - 1) {
-                    query += " OR ";
-                }
+            if(column.matches("key")) {
+                column = "bibkey";
+            }
+            query += column + condition;
+            if(i < FieldType.values().length) {
+                query += " OR ";
             }
             i++;
         }
-//      System.out.println(query);
+
+        query += "reference_type" + condition + " OR bibtex_key" + condition;
         return query;
     }
 
