@@ -12,4 +12,6 @@ Miniprojektin pääsivu: https://github.com/mluukkai/ohtu2017/wiki/Miniprojekti
 
 SQLite dependency: https://github.com/xerial/sqlite-jdbc
 
+Loppu raportti: https://docs.google.com/document/d/1ZF09nV59podALE857aYM76JYQdUknlso2aENfjofjIk/edit?usp=sharing
+
 
